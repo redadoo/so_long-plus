@@ -10,7 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char **CreateMap(int ysize,int xsize)
+char **CreateCubeMap(int ysize,int xsize)
 {
+    int     i;
+    char **Map;
+
+    i = ysize * xsize;
+    Map = (char **)malloc(xsize * (sizeof(char *)));
+    while (i)
+    {
+        
+
+        i--;
+    }
+    
+}
+
+char **CreateIsometricMap(int ysize,int xsize)
+{
+    int     i;
+
+
+    i = ysize * xsize;
+    while (i)
+    {
+
+
+        i--;
+    }
     
 }
