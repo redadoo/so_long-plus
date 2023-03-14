@@ -38,9 +38,23 @@ int random_int(int min, int max)
 
 void PrintMatrix(char **Matrix)
 {
+    char *str;
     while (*Matrix)
     {
-        printf("%s\n",*Matrix);
+        str = *Matrix;
+        while (*str)
+        {
+            printf("\033[0m");
+            if(*str == 'P')
+                printf("\x1b[32m");
+            if(*str == 'C')
+                printf("\x1b[33m");
+            if(*str == 'E')
+                printf("\x1b[34m");
+            printf("%c",*str);
+            str++;
+        }
+        printf("\n");
         Matrix++;
     }
     return;

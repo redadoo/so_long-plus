@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void PlaceSmallWall(char **map,int x,int j)
+void PlaceSmallWall(char **map,int x,int j,int colum,int row)
 {
     if(map[x][j] != '1' && map[x + 1][j] != '1' && map[x][j + 1] != '1' && map[x + 1][j + 1] != '1')
     {
@@ -22,8 +22,10 @@ void PlaceSmallWall(char **map,int x,int j)
     return;
 }
 
-void LongWall(char **map,int x,int j)
+void LongWall(char **map,int x,int j,int colum,int row)
 {
+    if(x + 2 > row || j + 2 > colum)
+        return ;
     if(map[x][j] != '1' && map[x + 1][j] != '1' && map[x + 2][j] != '1' && map[x ][j + 2] != '1'&& map[x + 2][j + 2] != '1')
     {
         map[x][j] = '1'; 

@@ -15,9 +15,8 @@ int Random01();
 int RandomMax(int max);
 char    **ProceduralMap(char **map,int lenghtmatrix,int row,int colum);
 char    **MapPlace(char **map,int lenghtmatrix,int colum,int row);
-int RandomMaxMin(int max,int min);
 int random_int(int min, int max);
-void PlaceSmallWall(char **map,int x,int j);
-void LongWall(char **map,int x,int j);
+void PlaceSmallWall(char **map,int x,int j,int xmax,int ymax);
+void LongWall(char **map,int x,int j,int xmax,int ymax);
 
 #endif
