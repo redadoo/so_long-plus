@@ -36,16 +36,17 @@ char **CreateCubeMap(int ysize,int xsize)
         else
             Map[x] = FillMatrix(false,Map[x],ysize);
     }
+    Map = ProceduralAlgorithm(Map,i,ysize,xsize);
     PrintMatrix(Map);
     return (Map);
 }
 
 char *FillMatrix(bool wall, char *row,int size)
 {
-    row[size] = '\0';
     char c;
     int x;
 
+    row[size] = '\0';
     x = size -1;
     while (size)
     {
@@ -60,12 +61,15 @@ char *FillMatrix(bool wall, char *row,int size)
     return (row);
 }
 
-void PrintMatrix(char **Matrix)
+char    **ProceduralAlgorithm(char **map,int lenghtmatrix,int row,int colum)
 {
-    while (*Matrix)
-    {
-        printf("%s\n",*Matrix);
-        Matrix++;
-    }
-    
+    char c;
+    int x;
+    int j;
+
+    x = RandomMax(row);
+    j = RandomMax(colum);
+    //printf("%i\n",x);
+    //printf("%i\n",j);
+    //map[x][j] = 'c'; 
 }
