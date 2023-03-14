@@ -10,33 +10,62 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+
 char **CreateCubeMap(int ysize,int xsize)
 {
     int     i;
     char **Map;
+    int x;
+    int y;
 
+    y = ysize;
+    x = xsize;
     i = ysize * xsize;
-    Map = (char **)malloc(xsize * (sizeof(char *)));
-    while (i)
+    Map = (char **)calloc(xsize + 1, (sizeof(char *)));
+    if(!Map || ysize <=2 ||xsize <=2)
+        return (NULL);
+    while (x)
     {
-        
-
-        i--;
+        x--;
+        Map[x] = (char *)malloc(ysize + 1 * (sizeof(char)));
+        if(!Map)
+            return (NULL);
+        if(x == 0 || x == xsize - 1)
+            Map[x] = FillMatrix(true,Map[x],ysize);
+        else
+            Map[x] = FillMatrix(false,Map[x],ysize);
     }
-    
+    PrintMatrix(Map);
+    return (Map);
 }
 
-char **CreateIsometricMap(int ysize,int xsize)
+char *FillMatrix(bool wall, char *row,int size)
 {
-    int     i;
+    row[size] = '\0';
+    char c;
+    int x;
 
-
-    i = ysize * xsize;
-    while (i)
+    x = size -1;
+    while (size)
     {
+        size--;
+        if(size == 0 || size == x || wall)
+            row[size] = '1';
+        else
+        {
+            row[size] = '0';
+        }
+    }
+    return (row);
+}
 
-
-        i--;
+void PrintMatrix(char **Matrix)
+{
+    while (*Matrix)
+    {
+        printf("%s\n",*Matrix);
+        Matrix++;
     }
     
 }
