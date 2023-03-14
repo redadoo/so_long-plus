@@ -25,11 +25,15 @@ int Random01()
 int RandomMax(int max)
 {
     int i = rand() % max;
-    
-    if (i == 0)
-        return 0;    
+    if (i == 0 || i == max)
+        return RandomMax(max);    
     else
         return i;
+}
+
+int random_int(int min, int max)
+{
+   return min + rand() % (max+1 - min);
 }
 
 void PrintMatrix(char **Matrix)
@@ -39,6 +43,5 @@ void PrintMatrix(char **Matrix)
         printf("%s\n",*Matrix);
         Matrix++;
     }
-    printf("ciao");
     return;
 }

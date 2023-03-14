@@ -13,5 +13,11 @@ char *FillMatrix(bool wall, char *row,int size);
 void PrintMatrix(char **Matrix);
 int Random01();
 int RandomMax(int max);
-char    **ProceduralAlgorithm(char **map,int lenghtmatrix,int row,int colum);
+char    **ProceduralMap(char **map,int lenghtmatrix,int row,int colum);
+char    **MapPlace(char **map,int lenghtmatrix,int colum,int row);
+int RandomMaxMin(int max,int min);
+int random_int(int min, int max);
+void PlaceSmallWall(char **map,int x,int j);
+void LongWall(char **map,int x,int j);
+
 #endif

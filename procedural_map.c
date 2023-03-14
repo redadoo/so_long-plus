@@ -19,9 +19,9 @@ char **CreateCubeMap(int ysize,int xsize)
     int x;
     int y;
 
-    y = ysize;
-    x = xsize;
-    i = ysize * xsize;
+    y = ysize;//colonne
+    x = xsize;//righe
+    i = ysize * xsize;//quantita di spazi dentro la tabella
     Map = (char **)calloc(xsize + 1, (sizeof(char *)));
     if(!Map || ysize <=2 ||xsize <=2)
         return (NULL);
@@ -36,7 +36,8 @@ char **CreateCubeMap(int ysize,int xsize)
         else
             Map[x] = FillMatrix(false,Map[x],ysize);
     }
-    Map = ProceduralAlgorithm(Map,i,ysize,xsize);
+    Map = MapPlace(Map,i,ysize,xsize);
+    Map = ProceduralMap(Map,i,ysize,xsize);
     PrintMatrix(Map);
     return (Map);
 }
@@ -61,15 +62,47 @@ char *FillMatrix(bool wall, char *row,int size)
     return (row);
 }
 
-char    **ProceduralAlgorithm(char **map,int lenghtmatrix,int row,int colum)
+char    **MapPlace(char **map,int lenghtmatrix,int colum,int row)
 {
     char c;
     int x;
     int j;
+    int m;
 
-    x = RandomMax(row);
-    j = RandomMax(colum);
-    //printf("%i\n",x);
-    //printf("%i\n",j);
-    //map[x][j] = 'c'; 
+    m = 0;
+    x = RandomMax(colum);
+    j = RandomMax(row);
+    map[j][x] = 'E'; 
+    x = RandomMax(colum);
+    j = RandomMax(row);
+    map[j][x] = 'P';
+    m = RandomMax(50);
+    while (m)
+    {
+        x = RandomMax(colum);
+        j = RandomMax(row);
+        map[j][x] = 'C';
+        m--;
+    }
+     
+    return (map);
+}
+
+char    **ProceduralMap(char **map,int lenghtmatrix,int colum,int row)
+{
+    char c;
+    int x;
+    int j;
+    int m;
+
+    m = 4;
+    while (m)
+    {
+        j = random_int(0,colum);
+        x = random_int(0,row);
+        LongWall(map,x,j);
+        m--;
+    }
+    printf("%i %i\n",j,x);
+    return (map);
 }
