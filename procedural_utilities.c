@@ -59,3 +59,25 @@ void PrintMatrix(char **Matrix)
     }
     return;
 }
+
+int Distance(int x1,int x2,int y1,int y2)
+{
+    int x;
+    if(x1 > y2)
+    {
+        x = x1 - y2;
+    }
+    else
+    {
+        x = y2 - x1;
+    }
+    if(x2 > y1)
+    {
+        x += x2 - y1;
+    }
+    else    
+    {
+        x += y1 - x2;
+    }
+    return (x);
+}

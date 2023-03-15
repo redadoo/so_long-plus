@@ -68,6 +68,7 @@ char    **MapPlace(char **map,int lenghtmatrix,int colum,int row)
 	int x;
 	int j;
 	int m;
+	int l;
 
 	x = RandomMax(colum);
 	j = RandomMax(row);
@@ -84,21 +85,24 @@ char    **MapPlace(char **map,int lenghtmatrix,int colum,int row)
 		}
 		map[j][x] = 'E';
 	}
+	l = j;
+	m = x;
 	x = RandomMax(colum);
 	j = RandomMax(row);
-	if(map[j][x] != '1')
+	if(map[j][x] != '1' && Distance(x,j,l,m) > 23)
 	{
 		map[j][x] = 'P';
 	}
 	else
 	{
-		while (map[j][x] == '1')
+		while (Distance(x,j,l,m) < 23 && map[j][x] == '1')
 		{
 			x = RandomMax(colum);
 			j = RandomMax(row);  
 		}
 		map[j][x] = 'P';
 	}
+	printf("%i\n",Distance(x,j,l,m));
 	m = random_int(8,50);
 	while (m)
 	{
@@ -124,6 +128,14 @@ char    **ProceduralMap(char **map,int lenghtmatrix,int colum,int row)
 		j = random_int(0,colum);
 		x = random_int(0,row);
 		LongWall(map,x,j,colum,row);
+		m--;
+	}
+	m = 12;
+	while (m)
+	{
+		j = random_int(0,colum);
+		x = random_int(0,row);
+		PlaceSmallWall(map,x,j,colum,row);
 		m--;
 	}
 	return (map);

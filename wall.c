@@ -12,6 +12,8 @@
 
 void PlaceSmallWall(char **map,int x,int j,int colum,int row)
 {
+    if(x + 1 > row || j + 1 > colum)
+        return ;
     if(map[x][j] != '1' && map[x + 1][j] != '1' && map[x][j + 1] != '1' && map[x + 1][j + 1] != '1')
     {
         map[x][j] = '1'; 

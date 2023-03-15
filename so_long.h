@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <time.h>
+# include <math.h>
 
 
 char **CreateCubeMap(int ysize,int xsize);
@@ -18,5 +19,6 @@ char    **MapPlace(char **map,int lenghtmatrix,int colum,int row);
 int random_int(int min, int max);
 void PlaceSmallWall(char **map,int x,int j,int xmax,int ymax);
 void LongWall(char **map,int x,int j,int xmax,int ymax);
+int Distance(int x1,int x2,int y1,int y2);
 
 #endif
