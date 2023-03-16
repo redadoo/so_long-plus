@@ -9,6 +9,7 @@
 # include <math.h>
 # include <mlx.h>
 
+# ifndef ANIMATION_FRAMES
 #  define ANIMATION_FRAMES 10
 # endif
 
