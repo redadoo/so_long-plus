@@ -6,15 +6,17 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/03/13 12:23:08 by evocatur         ###   ########.fr        #
+#    Updated: 2023/03/16 13:34:54 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long.out
-SRC = so_long.c window.c
+MAP = procedural_map.c procedural_utilities.c wall.c 
+MAPGEN = $(addprefix MapGen/, $(MAP))
+SRC = so_long.c window.c 
 OBJ = $(SRC:.c=.o)
 
-FLAGS = 
+FLAGS = #-Wall -Wextra -Werror
 LINKS = -lmlx -framework OpenGL -framework AppKit
 
 NONE='\033[0m'

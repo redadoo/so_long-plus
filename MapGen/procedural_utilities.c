@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   procedural_utilities.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/14 11:12:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:30:46 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "map.h"
 
 int Random01()
 {

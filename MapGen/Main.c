@@ -1,5 +1,5 @@
 
-#include "so_long.h"
+#include "map.h"
 
 int main(void)
 {
