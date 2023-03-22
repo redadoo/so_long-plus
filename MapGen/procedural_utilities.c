@@ -6,11 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/16 13:30:46 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:07:01 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "../so_long.h"
 
 int Random01()
 {

@@ -6,15 +6,26 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/03/16 13:34:54 by evocatur         ###   ########.fr        #
+#    Updated: 2023/03/22 12:16:06 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long.out
-MAP = procedural_map.c procedural_utilities.c wall.c 
-MAPGEN = $(addprefix MapGen/, $(MAP))
-SRC = so_long.c window.c 
-OBJ = $(SRC:.c=.o)
+
+
+SRC = $(MAIN_SRC) $(SRC_GNL) $(SRC_MAP) $(SRC_GAME)
+
+
+MAIN_SRC = so_long.c 
+
+GNL = get_next_line.c get_next_line_utils.c
+SRC_GNL = $(addprefix gnl/, $(GNL))
+
+MAP = 	wall.c procedural_map.c procedural_utilities.c map.c
+SRC_MAP = $(addprefix MapGen/, $(MAP))
+
+OBJ = *.o
+
 
 FLAGS = #-Wall -Wextra -Werror
 LINKS = -lmlx -framework OpenGL -framework AppKit
@@ -28,14 +39,12 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-	@gcc $(FLAGS) $(OBJ) $(LINKS) -o $(NAME)
+	@gcc $(FLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
 	@echo $(GREEN)"- Compiled -"$(NONE)
-	@rm $(OBJ)
-	@echo $(CURSIVE)$(GRAY) "     Deleted object files" $(NONE)
 
 $(OBJ): $(SRC)
 	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
-	@gcc $(FLAGS) -c $(SRC)
+	@gcc $(FALGS) -c $(SRC)
 
 exe: all
 	@echo "     - Executing $(NAME)... \n"
@@ -44,6 +53,11 @@ exe: all
 
 play: all
 	@./$(NAME) Map/map_0.ber
+
+norm:
+	@echo $(GRAY) ""
+	@norminette $(SRC) *.h */*.h
+	@echo $(NONE) ""
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)

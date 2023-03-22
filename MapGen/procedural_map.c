@@ -6,11 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/16 13:30:41 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:06:51 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "../so_long.h"
 
 char **CreateCubeMap(int ysize,int xsize)
 {

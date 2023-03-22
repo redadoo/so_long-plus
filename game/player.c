@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_manage_windows.c                                :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 12:30:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/13 11:34:17 by evocatur         ###   ########.fr       */
+/*   Created: 2023/03/17 14:57:00 by evocatur          #+#    #+#             */
+/*   Updated: 2023/03/21 11:14:07 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_close ()
+void set_player(t_program program)
 {
-	exit(0);
-}
+/*     int		img_width = 30;
+	int		img_height = 30;
 
-screen	ft_new_window(void *mlx, int widht, int height, char *name)
-{
-	screen	window;
-
-	window.reference = mlx_new_window(mlx, widht, height, name);
-	window.size.x = widht;
-	window.size.y = height;
-
-	mlx_hook(window.reference, 17, 0, ft_close, 0);
-
-	return (window);
+    program.sprite.img = mlx_xpm_file_to_image(program.mlx, "Asset/Player.xpm", &img_width, &img_height);
+	mlx_put_image_to_window(program.mlx, program.window.reference, program.sprite.img ,0, 0);
+	program.sprite_position.x = 0;
+	program.sprite_position.y = 0; */
 }

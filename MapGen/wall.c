@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:07:12 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/14 16:07:12 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:06:58 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../so_long.h"
+
 
 void PlaceSmallWall(char **map,int x,int j,int colum,int row)
 {
