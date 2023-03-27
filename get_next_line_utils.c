@@ -6,11 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:16:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/22 09:47:21 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:38:54 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 size_t	ft_strlen(const char *str)
 {

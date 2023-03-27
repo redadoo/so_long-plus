@@ -1,7 +1,7 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-
+# include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
@@ -14,6 +14,10 @@
 
 # ifndef ANIMATION_FRAMES
 #  define ANIMATION_FRAMES 15
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
 # endif
 
 typedef struct    t_vector
@@ -29,7 +33,18 @@ typedef struct    s_vector
     int    y;
 }                vector2;
 
+typedef struct    s_wall {
+    struct s_wall       *next_wall;
+    void       *img;
+    char       *addr;
+    vector2     pos;
+}                t_wall;
+
 typedef struct    s_data {
+    struct s_data       *right_img;
+    struct s_data       *left_img;
+    struct s_data       *up_img;
+    struct s_data       *down_img;
     void       *img;
     char       *addr;
     int        bits_per_pixel;
@@ -77,5 +92,17 @@ void PlaceSmallWall(char **map,int x,int j,int xmax,int ymax);
 void LongWall(char **map,int x,int j,int xmax,int ymax);
 int Distance(int x1,int x2,int y1,int y2);
 void set_game(t_program program,int argc,char **argv);
+char	*get_next_line(int fd);
+char	*ft_statstr(int fd, char *statstr);
+size_t	ft_strlen(const char *str);
+char	*ft_strjoin(char *backup, char *buff);
+char	*ft_strchr(const char *str, int ch);
+char	*ft_backup(char *backup);
+char	*ft_get_line(char *backup);
+int insert_upper_wall(int  d,t_program program);
+int insert_down_wall(int d,t_program program);
+void insert_colum(int x,int y,t_program program);
+int insert_left_wall(int d,t_program program);
+int insert_right_wall(int d,t_program program);
 
 #endif

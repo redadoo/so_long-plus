@@ -6,11 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 09:17:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/16 13:54:14 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:38:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 char	*ft_statstr(int fd, char *statstr)
 {

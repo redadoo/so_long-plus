@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/22 12:06:51 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:37:14 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,15 @@ char    **ProceduralMap(char **map,int lenghtmatrix,int colum,int row)
 	int j;
 	int m;
 
-	m = 30;
+ 	m = 30;
 	while (m)
 	{
-		j = random_int(0,colum);
-		x = random_int(0,row);
+		j = Random01();
+		x = Random01();
 		LongWall(map,x,j,colum,row);
 		m--;
 	}
-	m = 12;
+	m = 60;
 	while (m)
 	{
 		j = random_int(0,colum);

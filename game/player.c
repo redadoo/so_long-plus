@@ -6,11 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:57:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/21 11:14:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:44:51 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void set_player(t_program program)
 {
