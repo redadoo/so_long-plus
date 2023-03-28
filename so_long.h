@@ -10,7 +10,6 @@
 # include <time.h>
 # include <math.h>
 # include <mlx.h>
-# include "gnl/get_next_line.h"
 
 # ifndef ANIMATION_FRAMES
 #  define ANIMATION_FRAMES 15
@@ -80,15 +79,15 @@ void map(int n,char **argv,t_program program);
 int	key_hook(int keycode, void *param);
 int	ft_update (void *param);
 void place_background(t_program program);
-char **CreateCubeMap(int ysize,int xsize);
-char *FillMatrix(bool wall, char *row,int size);
+char **CreateCubeMap(int ysize,int xsize,t_program program);
+char *FillMatrix(bool wall, char *row,int size,t_program program);
 void PrintMatrix(char **Matrix);
 int Random01();
 int RandomMax(int max);
-char    **ProceduralMap(char **map,int lenghtmatrix,int row,int colum);
+char    **ProceduralMap(char **map,int lenghtmatrix,int colum,int row,t_program program);
 char    **MapPlace(char **map,int lenghtmatrix,int colum,int row);
 int random_int(int min, int max);
-void PlaceSmallWall(char **map,int x,int j,int xmax,int ymax);
+void PlaceSmallWall(char **map,int x,int j,int colum,int row,t_program program);
 void LongWall(char **map,int x,int j,int xmax,int ymax);
 int Distance(int x1,int x2,int y1,int y2);
 void set_game(t_program program,int argc,char **argv);
@@ -99,10 +98,11 @@ char	*ft_strjoin(char *backup, char *buff);
 char	*ft_strchr(const char *str, int ch);
 char	*ft_backup(char *backup);
 char	*ft_get_line(char *backup);
-int insert_upper_wall(int  d,t_program program);
-int insert_down_wall(int d,t_program program);
-void insert_colum(int x,int y,t_program program);
-int insert_left_wall(int d,t_program program);
-int insert_right_wall(int d,t_program program);
+void insert_wall(t_program program);
+void wall_manage(t_program program);
+void insert_lateral(t_program program);
+void insert_corner(t_program program);
+void insert_background(t_program program);
+
 
 #endif

@@ -6,17 +6,26 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:07:12 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/27 12:32:19 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:22:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
 
-void PlaceSmallWall(char **map,int x,int j,int colum,int row)
-{
-    if(x + 1 > row || j + 1 > colum)
-        return ;
+void PlaceSmallWall(char **map,int x,int j,int colum,int row,t_program program)
+{    
+    int		img_width; 
+	int		img_height;
+    t_wall  wall;
+    if(j + 1 > colum)
+    {
+        j -= 2;
+    }
+    if(x + 1 > row)
+    {
+        x -= 2;
+    }
     if(map[x][j] != '1' && map[x + 1][j] != '1' && map[x][j + 1] != '1' && map[x + 1][j + 1] != '1')
     {
         map[x][j] = '1'; 
@@ -24,6 +33,10 @@ void PlaceSmallWall(char **map,int x,int j,int colum,int row)
         map[x ][j + 1] = '1'; 
         map[x + 1][j + 1] = '1';
     }
+    img_width = 65;
+    img_height = 100;
+/*     wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/colonna.xpm", &img_width, &img_height); 
+    mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, x * 10, j * 10); */
     return;
 }
 
