@@ -40,15 +40,12 @@ typedef struct    s_wall {
 }                t_wall;
 
 typedef struct    s_data {
-    struct s_data       *right_img;
-    struct s_data       *left_img;
-    struct s_data       *up_img;
-    struct s_data       *down_img;
     void       *img;
     char       *addr;
     int        bits_per_pixel;
     int        line_length;
     int        endian;
+    void       *reference;
 }                t_data;
 
 typedef struct    s_window {
@@ -56,19 +53,20 @@ typedef struct    s_window {
     vector2      size;
 }                screen;
 
+typedef struct  s_player 
+{
+    void            *reference;
+    t_data          sprite;
+    int             life;
+    vector2          pos;
+}               t_player;
+
 typedef struct    s_program {
     void           *reference;
     void           *mlx;
     screen         window;
+    t_player       man;
 }                  t_program;
-
-typedef struct  s_player 
-{
-    void            *reference;
-    t_data          Sprite;
-    int             life;
-    vector2          pos;
-}               t_player;
 
 screen    ft_new_window(void *mlx, int widht, int height, char *name);
 void readmap(t_program program ,char *file);

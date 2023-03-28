@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/22 12:45:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:29:51 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 int	ft_update (void *param)
 {
 	t_program	*program = (t_program *)param;
-/* 	static int	frame;
+	// a static that saves how many frames have passed
+	static int	frame;
 
+	// add a frame and every x frames change the position by 1 pixel
+	// so it looks like its animated
 	frame++;
 	if (frame == ANIMATION_FRAMES)
-		program->sprite_position.y += 1;
+		program->man.pos.y += 1;
+	// every x*2 frames go back that pixel to loop the animation
 	else if (frame >= ANIMATION_FRAMES * 2)
 	{
-		program->sprite_position.y -= 1;
+		program->man.pos.y -= 1;
 		frame = 0;
 	}
 	
 	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->sprite.img, program->sprite_position.x, program->sprite_position.y); */
-
+		program->man.sprite.reference, program->man.pos.x, program->man.pos.y);
 
 	return (0);
 }
@@ -36,21 +39,15 @@ int	ft_update (void *param)
 int	key_hook(int keycode, void *param)
 {
 	t_program *program = (t_program *)param;
-/* 	if (keycode == 2)
-		program->sprite_position.x += 10;
+ 	if (keycode == 2)
+		program->man.pos.x += 10;
 	else if(keycode == 0)
-		program->sprite_position.x -= 10;
+		program->man.pos.x  -= 10;
 	else if(keycode == 13)
-		program->sprite_position.y -= 10;
+		program->man.pos.y -= 10;
 	else if(keycode == 1)
-		program->sprite_position.y += 10;	
-	if(!program->sprite.img)
-		mlx_put_image_to_window(program->mlx, program->window.reference, program->sprite.img, program->sprite_position.x, program->sprite_position.y);
-	else
-		{
-			player(*program);
-			mlx_put_image_to_window(program->mlx, program->window.reference, program->sprite.img, program->sprite_position.x, program->sprite_position.y);
-		} */
+		program->man.pos.y += 10; 
+
 	printf("Key pressed -> %d\n", keycode);
 	return (0);
 }
