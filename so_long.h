@@ -68,11 +68,12 @@ typedef struct    s_program {
     t_player       man;
 }                  t_program;
 
+int	ft_update (void *param);
 screen    ft_new_window(void *mlx, int widht, int height, char *name);
 void readmap(t_program program ,char *file);
 void generatemap(t_program program);
 void test(t_program program);
-void set_player(t_program program);
+t_player set_player(t_program program);
 void map(int n,char **argv,t_program program);
 int	key_hook(int keycode, void *param);
 int	ft_update (void *param);
@@ -101,6 +102,8 @@ void wall_manage(t_program program);
 void insert_lateral(t_program program);
 void insert_corner(t_program program);
 void insert_background(t_program program);
+int mouse_event(int button, int x, int y, void *param);
+t_data img_player(void *param);
 
 
 #endif
