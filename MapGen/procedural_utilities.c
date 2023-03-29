@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/28 09:54:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:44:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@ int Random01()
     else
         return 1;
 }
-
-int RandomMax(int max)
-{
-    int i = rand() % max;
-    if (i == 0 || i == max)
-        return RandomMax(max);    
-    else
-        return i;
-}
-
 int random_int(int min, int max)
 {
    return min + rand() % (max+1 - min);

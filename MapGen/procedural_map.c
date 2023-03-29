@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/28 13:52:49 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:44:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 		Map[width] = (char *)malloc((ysize + 1) * (sizeof(char)));
 		if(!Map)
 			return (NULL);
-		if(width == 0 || width == xsize - 1)
+		if((width >= 0 && width <=5) || (width >=  xsize - 5 && width <= xsize - 1))
 			Map[width] = FillMatrix(true,Map[width],ysize,program);
 		else
 			Map[width] = FillMatrix(false,Map[width],ysize,program);
 	}
 	wall_manage(program);
-	//Map = ProceduralMap(Map,xsize * ysize,ysize,xsize,program);
+	Map = ProceduralMap(Map,xsize * ysize,ysize,xsize,program);
 	PrintMatrix(Map);
 	return (Map);
 }
@@ -52,7 +52,7 @@ char *FillMatrix(bool wall, char *row,int size,t_program program)
 		size--;
 		if(size == 0 || size == x || wall)
 			row[size] = '1';
-		else
+		else 
 			row[size] = '0';
 	}
 	return (row);
@@ -60,54 +60,6 @@ char *FillMatrix(bool wall, char *row,int size,t_program program)
 
 char    **MapPlace(char **map,int lenghtmatrix,int colum,int row)
 {
-	char c;
-	int x;
-	int j;
-	int m;
-	int l;
-
-	x = RandomMax(colum);
-	j = RandomMax(row);
-	if(map[j][x] != '1')
-	{
-		map[j][x] = 'E';
-	}
-	else
-	{
-		while (map[j][x] == '1')
-		{
-			x = RandomMax(colum);
-			j = RandomMax(row);  
-		}
-		map[j][x] = 'E';
-	}
-	l = j;
-	m = x;
-	x = RandomMax(colum);
-	j = RandomMax(row);
-	if(map[j][x] != '1' && Distance(x,j,l,m) > 23)
-	{
-		map[j][x] = 'P';
-	}
-	else
-	{
-		while (Distance(x,j,l,m) < 23 && map[j][x] == '1')
-		{
-			x = RandomMax(colum);
-			j = RandomMax(row);  
-		}
-		map[j][x] = 'P';
-	}
-	printf("%i\n",Distance(x,j,l,m));
-	m = random_int(8,50);
-	while (m)
-	{
-		x = RandomMax(colum);
-		j = RandomMax(row);
-		if(map[j][x] != '1')
-			map[j][x] = 'C';
-		m--;
-	}
 	return (map);
 }
 
@@ -118,15 +70,15 @@ char    **ProceduralMap(char **map,int lenghtmatrix,int colum,int row,t_program 
 	int j;
 	int m;
 
- 	m = (row * colum) / 100;
-	while (m)
-	{
-		j = random_int(0,colum);
-		x = random_int(0,row);
-		PlaceSmallWall(map,x,j,colum,row,program);
-		m--;
-	}
-	return (map);
+	j = random_int(6,colum -2);
+	x = random_int(6,row  - 5);
+	map[x][j] = 'E';
+
+	j = random_int(6,colum - 2);
+	x = random_int(6,row  - 5);
+	map[x][j] = 'P';
+	return(map);
+
 }
 void wall_manage(t_program program)
 {

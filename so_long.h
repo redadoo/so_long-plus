@@ -12,19 +12,16 @@
 # include <mlx.h>
 
 # ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 15
+#  define ANIMATION_FRAMES 30
+# endif
+
+# ifndef IMAGINE_SIZE
+#  define IMAGINE_SIZE 30
 # endif
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
-
-typedef struct    t_vector
-{
-    int    x;
-    int    y;
-    int    z;
-}                vector3;
 
 typedef struct    s_vector
 {
@@ -66,14 +63,15 @@ typedef struct    s_program {
     void           *mlx;
     screen         window;
     t_player       man;
+    char           **Map;
 }                  t_program;
 
 int	ft_update (void *param);
 screen    ft_new_window(void *mlx, int widht, int height, char *name);
-void readmap(t_program program ,char *file);
-void generatemap(t_program program);
+char **readmap(t_program program ,char *file);
+char **generatemap(t_program program);
 void test(t_program program);
-t_player set_player(t_program program);
+t_player set_player(t_program program,char **map);
 void map(int n,char **argv,t_program program);
 int	key_hook(int keycode, void *param);
 int	ft_update (void *param);
@@ -103,7 +101,10 @@ void insert_lateral(t_program program);
 void insert_corner(t_program program);
 void insert_background(t_program program);
 int mouse_event(int button, int x, int y, void *param);
-t_data img_player(void *param);
+void move(char c,int x,void *param);
+void special_action(char c,int keycode,void *param);
+int *obj_pos(char c,char **map);
+
 
 
 #endif

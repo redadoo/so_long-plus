@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/28 14:10:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/29 11:54:13 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void insert_background(t_program program)
     {
         while (space <= program.window.size.x)
         {
-            wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/grass_background.xpm", &img_width, &img_height); 
+            wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/grass.xpm", &img_width, &img_height); 
             mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, space, len);
             space += 124;
         }

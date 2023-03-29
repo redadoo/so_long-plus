@@ -6,19 +6,21 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/28 13:06:55 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:52:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../so_long.h"
 
-void generatemap(t_program program)
+char **generatemap(t_program program)
 {
     char    **Matrix;
-    Matrix = CreateCubeMap(program.window.size.x / 10,program.window.size.y / 10,program);    
+    Matrix = CreateCubeMap(program.window.size.x / 10,program.window.size.y / 10,program);   
+    program.Map = Matrix;
+    return (Matrix);
 }
 
-void readmap(t_program program ,char *file)
+char **readmap(t_program program ,char *file)
 {   
     int fd;
     char **matrix;
@@ -38,6 +40,6 @@ void readmap(t_program program ,char *file)
         //printf("%s",*matrix);
     }
     //program.window = ft_new_window(program.mlx, test * 100, test * 100, "Rogue like Game");
-    return;
+    return (NULL);
 }
 

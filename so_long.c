@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:56:38 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/28 15:58:24 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:51:53 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@ int	main(int argc, char **argv)
 
 void set_game(t_program program,int argc,char **argv)
 {
-	int fd;
-	char *line;
-	int keycode;
-	program.window = ft_new_window(program.mlx,  800, 600, "Rogue like Game");
+	char **map;
+
+	program.window = ft_new_window(program.mlx,  600, 400, "Rogue like Game");
+
 	if(argc == 1)
-		generatemap(program);
+		map = generatemap(program);
 	else if(argc == 2)
-		readmap(program,argv[1]);
-	program.man = set_player(program);
+		map = readmap(program,argv[1]);
+	
+	program.man = set_player(program,map);
+
 	mlx_mouse_hook(program.window.reference, &mouse_event, &program);
 	mlx_key_hook(program.window.reference, *key_hook, &program);
 	mlx_loop_hook(program.mlx, *ft_update, &program);
