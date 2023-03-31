@@ -103,8 +103,8 @@ void insert_background(t_program program);
 int mouse_event(int button, int x, int y, void *param);
 void move(char c,int x,void *param);
 void special_action(char c,int keycode,void *param);
-int *obj_pos(char c,char **map);
-
-
-
+vector2 obj_pos(char c,char **map);
+void spawn_enviroment(t_program program,char **map);
+void spawn_manage(t_program program,char **map);
+void spawn_collectable(t_program program,char **map);
 #endif

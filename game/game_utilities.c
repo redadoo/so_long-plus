@@ -6,16 +6,16 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/29 12:55:15 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:13:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int *obj_pos(char c,char **map)
+vector2 obj_pos(char c,char **map)
 {
     char *str;
-    int *list;
+    vector2 pos;
     int x;
     int j;
 
@@ -28,10 +28,10 @@ int *obj_pos(char c,char **map)
         {
             if(*str == c)
             {
-                list = calloc(sizeof(int) , 2);
-                list[0] = x;
-                list[1] = j;
-                return (list);
+                //pos = malloc(sizeof(*vector2));
+                pos.x = x;
+                pos.y = j;
+                return (pos);
             }
             j++;
             str++;
@@ -40,5 +40,5 @@ int *obj_pos(char c,char **map)
         x++;
         map++;
     }
-    return (NULL);
+    return (pos);
 }
