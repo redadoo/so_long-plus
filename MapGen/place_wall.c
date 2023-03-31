@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/29 11:54:13 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:22:16 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void insert_wall(t_program program)
     int		img_width; 
 	int		img_height;
     int     space;
-    t_wall  wall;
+    t_data  wall;
 
     img_height = 60;
     img_width = 130;
@@ -42,7 +42,7 @@ void insert_lateral(t_program program)
     int		img_width; 
 	int		img_height;
     int     space;
-    t_wall  wall;
+    t_data  wall;
 
     img_width = 8;
     img_height = 96;
@@ -67,7 +67,7 @@ void insert_corner(t_program program)
     int		img_width; 
 	int		img_height;
     int     space;
-    t_wall  wall;
+    t_data  wall;
 
     img_width =96;
     img_height = 104;
@@ -93,7 +93,7 @@ void insert_background(t_program program)
 	int		img_height;
     int     space;
     int     len;
-    t_wall  wall;
+    t_data  wall;
 
     img_height = 124;
     img_width = 129;

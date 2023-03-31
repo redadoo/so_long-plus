@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/29 13:44:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:46:01 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,21 @@ void PrintMatrix(char **Matrix)
     return;
 }
 
-int Distance(int x1,int x2,int y1,int y2)
+vector2 random_pos(t_program program)
 {
-    int x;
-    if(x1 > y2)
+    vector2     pos;
+    char        **map;
+
+    map = program.map.matrix_map;
+    pos.x = random_int(0 , program.map.widht);
+    pos.y = random_int(0 , program.map.height);
+    printf("\n%i %i %c\n", pos.x ,pos.y,map[pos.x][pos.y]);
+    while (map[pos.x][pos.y] == '0')
     {
-        x = x1 - y2;
+        printf("\n%i %i %c\n", pos.x ,pos.y,map[pos.x][pos.y]);
+        pos.x = random_int(0 , program.map.widht);
+        pos.y = random_int(0 , program.map.height);
     }
-    else
-    {
-        x = y2 - x1;
-    }
-    if(x2 > y1)
-    {
-        x += x2 - y1;
-    }
-    else    
-    {
-        x += y1 - x2;
-    }
-    return (x);
+    return (pos);
+    
 }

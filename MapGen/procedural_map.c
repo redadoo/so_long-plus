@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 15:45:20 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:44:24 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 		Map[width] = (char *)malloc((ysize + 1) * (sizeof(char)));
 		if(!Map)
 			return (NULL);
-		if((width >= 0 && width <=5) || (width >=  xsize - 7 && width <= xsize - 1))
+		if((width >= 0 && width <=5) || (width >=  xsize - 9 && width <= xsize - 1))
 			Map[width] = FillMatrix(true,Map[width],ysize,program);
 		else
 			Map[width] = FillMatrix(false,Map[width],ysize,program);
@@ -67,20 +67,15 @@ char    **MapPlace(char **map,int lenghtmatrix,int colum,int row)
 char    **ProceduralMap(char **map,int lenghtmatrix,int colum,int row,t_program program)
 {
 	char c;
-	int x;
-	int j;
 	int m;
+	vector2 pos;
 
-	printf("\n%i %i\n",colum,row);
-	x = random_int(1,colum - 1);
-	j = random_int(6,row - 8);
-	printf("\n%i %i\n",x,j);
-	map[j][x] = 'P';
+	program.map.matrix_map = map;
+	pos = random_pos(program);
+	map[pos.x][pos.y] = 'P';
 	
-	x = random_int(1,colum - 1);
-	j = random_int(6,row);
-	printf("\n%i %i\n",x,j);
-	map[j][x] = 'E';
+	pos = random_pos(program);
+	map[pos.x][pos.y] = 'E';
 
 	return(map);
 

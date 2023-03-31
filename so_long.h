@@ -29,13 +29,6 @@ typedef struct    s_vector
     int    y;
 }                vector2;
 
-typedef struct    s_wall {
-    struct s_wall       *next_wall;
-    void       *img;
-    char       *addr;
-    vector2     pos;
-}                t_wall;
-
 typedef struct    s_data {
     void       *img;
     char       *addr;
@@ -58,12 +51,20 @@ typedef struct  s_player
     vector2          pos;
 }               t_player;
 
+typedef struct s_map{
+
+    char        **matrix_map;
+    int         widht;
+    int         height;
+
+}             t_map;
+
 typedef struct    s_program {
     void           *reference;
     void           *mlx;
     screen         window;
     t_player       man;
-    char           **Map;
+    t_map          map;
 }                  t_program;
 
 int	ft_update (void *param);
@@ -107,4 +108,7 @@ vector2 obj_pos(char c,char **map);
 void spawn_enviroment(t_program program,char **map);
 void spawn_manage(t_program program,char **map);
 void spawn_collectable(t_program program,char **map);
+bool check_move(char **map,int x,int y);
+vector2 random_pos(t_program program);
+
 #endif
