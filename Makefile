@@ -6,28 +6,26 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/03/22 12:16:06 by evocatur         ###   ########.fr        #
+#    Updated: 2023/04/03 09:23:31 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long.out
 
 
-SRC = $(MAIN_SRC) $(SRC_GNL) $(SRC_MAP) $(SRC_GAME)
+SRC = $(MAIN_SRC) $(SRC_MAP) $(SRC_GAME)
 
 
-MAIN_SRC = so_long.c 
+MAIN_SRC = *.c
 
-GNL = get_next_line.c get_next_line_utils.c
-SRC_GNL = $(addprefix gnl/, $(GNL))
+SRC_GAME = game/*.c
 
-MAP = 	wall.c procedural_map.c procedural_utilities.c map.c
-SRC_MAP = $(addprefix MapGen/, $(MAP))
+SRC_MAP = MapGen/*.c
 
 OBJ = *.o
 
 
-FLAGS = #-Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 LINKS = -lmlx -framework OpenGL -framework AppKit
 
 NONE='\033[0m'
@@ -39,12 +37,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-	@gcc $(FLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
+	@gcc $(FLAGS) $(OBJ) $(LINKS) -o $(NAME)
 	@echo $(GREEN)"- Compiled -"$(NONE)
-
+	@rm -rf $(OBJ)
+	
 $(OBJ): $(SRC)
 	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
-	@gcc $(FALGS) -c $(SRC)
+	@gcc $(FLAAGS) -c $(SRC)
 
 exe: all
 	@echo "     - Executing $(NAME)... \n"

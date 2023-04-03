@@ -82,7 +82,7 @@ char *FillMatrix(bool wall, char *row,int size,t_program program);
 void PrintMatrix(char **Matrix);
 int Random01();
 int RandomMax(int max);
-char    **ProceduralMap(char **map,int lenghtmatrix,int colum,int row,t_program program);
+char    **spawn(char **map,int lenghtmatrix,int colum,int row,t_program program);
 char    **MapPlace(char **map,int lenghtmatrix,int colum,int row);
 int random_int(int min, int max);
 void PlaceSmallWall(char **map,int x,int j,int colum,int row,t_program program);
@@ -110,5 +110,6 @@ void spawn_manage(t_program program,char **map);
 void spawn_collectable(t_program program,char **map);
 bool check_move(char **map,int x,int y);
 vector2 random_pos(t_program program);
+void procedural_map(t_program program);
 
 #endif

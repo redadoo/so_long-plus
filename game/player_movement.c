@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:26:25 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 16:27:21 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/03 09:46:32 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ bool check_move(char **map,int x,int y)
     y /=10;
     if(map[y][x] == '0')
     {
-        printf("\n%i %i\n",x,y);
         return (true);
     }
     return (false);

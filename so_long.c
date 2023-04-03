@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:56:38 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 16:26:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/03 10:23:30 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 void set_game(t_program program,int argc,char **argv)
 {
 
-	program.window = ft_new_window(program.mlx,  600, 400, "Rogue like Game");
+	program.window = ft_new_window(program.mlx,  500, 500, "Rogue like Game");
 
 	if(argc == 1)
 		program.map.matrix_map = generatemap(program);

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 16:46:01 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/03 10:03:01 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,8 @@ vector2 random_pos(t_program program)
     char        **map;
 
     map = program.map.matrix_map;
-    pos.x = random_int(0 , program.map.widht);
-    pos.y = random_int(0 , program.map.height);
-    printf("\n%i %i %c\n", pos.x ,pos.y,map[pos.x][pos.y]);
-    while (map[pos.x][pos.y] == '0')
-    {
-        printf("\n%i %i %c\n", pos.x ,pos.y,map[pos.x][pos.y]);
-        pos.x = random_int(0 , program.map.widht);
-        pos.y = random_int(0 , program.map.height);
-    }
+    pos.y = random_int(2 , program.map.widht - 2);
+    pos.x = random_int(7 , program.map.height - 10);
     return (pos);
     
 }
