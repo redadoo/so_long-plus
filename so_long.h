@@ -12,7 +12,7 @@
 # include <mlx.h>
 
 # ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 30
+#  define ANIMATION_FRAMES 12
 # endif
 
 # ifndef IMAGINE_SIZE
@@ -103,7 +103,7 @@ void insert_corner(t_program program);
 void insert_background(t_program program);
 int mouse_event(int button, int x, int y, void *param);
 void move(char c,int x,void *param);
-void special_action(char c,int keycode,void *param);
+void special_action(int keycode,void *param);
 vector2 obj_pos(char c,char **map);
 void spawn_enviroment(t_program program,char **map);
 void spawn_manage(t_program program,char **map);
@@ -111,5 +111,8 @@ void spawn_collectable(t_program program,char **map);
 bool check_move(char **map,int x,int y);
 vector2 random_pos(t_program program);
 void procedural_map(t_program program);
+
+
+
 
 #endif

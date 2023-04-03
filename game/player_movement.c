@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:26:25 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 09:46:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/03 11:36:29 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void move(char c,int x,void *param)
     }
 }
 
-void special_action(char c,int keycode,void *param)
+void special_action(int keycode,void *param)
 {
     if(keycode == 53)
         exit(0);
