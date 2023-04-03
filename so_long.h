@@ -71,33 +71,22 @@ int	ft_update (void *param);
 screen    ft_new_window(void *mlx, int widht, int height, char *name);
 char **readmap(t_program program ,char *file);
 char **generatemap(t_program program);
-void test(t_program program);
 t_player set_player(t_program program,char **map);
 void map(int n,char **argv,t_program program);
 int	key_hook(int keycode, void *param);
 int	ft_update (void *param);
 void place_background(t_program program);
 char **CreateCubeMap(int ysize,int xsize,t_program program);
-char *FillMatrix(bool wall, char *row,int size,t_program program);
+char *assign_rows(bool wall, char *row,int size,t_program program);
 void PrintMatrix(char **Matrix);
 int Random01();
 int RandomMax(int max);
-char    **spawn(char **map,int lenghtmatrix,int colum,int row,t_program program);
-char    **MapPlace(char **map,int lenghtmatrix,int colum,int row);
+char    **spawn_obj(char **map,int lenghtmatrix,int colum,int row,t_program program);
 int random_int(int min, int max);
-void PlaceSmallWall(char **map,int x,int j,int colum,int row,t_program program);
-void LongWall(char **map,int x,int j,int xmax,int ymax);
 int Distance(int x1,int x2,int y1,int y2);
 void set_game(t_program program,int argc,char **argv);
-char	*get_next_line(int fd);
-char	*ft_statstr(int fd, char *statstr);
-size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char *backup, char *buff);
-char	*ft_strchr(const char *str, int ch);
-char	*ft_backup(char *backup);
-char	*ft_get_line(char *backup);
 void insert_wall(t_program program);
-void wall_manage(t_program program);
+void background_instance(t_program program);
 void insert_lateral(t_program program);
 void insert_corner(t_program program);
 void insert_background(t_program program);
@@ -110,9 +99,9 @@ void spawn_manage(t_program program,char **map);
 void spawn_collectable(t_program program,char **map);
 bool check_move(char **map,int x,int y);
 vector2 random_pos(t_program program);
-void procedural_map(t_program program);
-
-
+char **procedural_map(char **map);
+vector2 Lerp(vector2 a,vector2 b,int x);
+void attack(void *param);
 
 
 #endif

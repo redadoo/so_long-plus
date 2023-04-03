@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 11:03:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/03 13:13:09 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,19 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 		if(!Map)
 			return (NULL);
 		if((width >= 0 && width <=5) || (width >=  xsize - 9 && width <= xsize - 1))
-			Map[width] = FillMatrix(true,Map[width],ysize,program);
+			Map[width] = assign_rows(true,Map[width],ysize,program);
 		else
-			Map[width] = FillMatrix(false,Map[width],ysize,program);
+			Map[width] = assign_rows(false,Map[width],ysize,program);
 	}
-	wall_manage(program);
-	Map = spawn(Map,xsize * ysize,ysize,xsize,program);
-	procedural_map(program);
+	background_instance(program);
+	Map = spawn_obj(Map,xsize * ysize,ysize,xsize,program);
+	Map = procedural_map(Map);
+
+	PrintMatrix(Map);
 	return (Map);
 }
 
-char *FillMatrix(bool wall, char *row,int size,t_program program)
+char *assign_rows(bool wall, char *row,int size,t_program program)
 {
 	int x;
 	int i;
@@ -58,12 +60,7 @@ char *FillMatrix(bool wall, char *row,int size,t_program program)
 	return (row);
 }
 
-char    **MapPlace(char **map,int lenghtmatrix,int colum,int row)
-{
-	return (map);
-}
-
-char    **spawn(char **map,int lenghtmatrix,int colum,int row,t_program program)
+char    **spawn_obj(char **map,int lenghtmatrix,int colum,int row,t_program program)
 {
 	vector2 pos;
 
@@ -76,7 +73,8 @@ char    **spawn(char **map,int lenghtmatrix,int colum,int row,t_program program)
 	spawn_manage(program,map);
 	return(map);
 }
-void wall_manage(t_program program)
+
+void background_instance(t_program program)
 {
     insert_background(program);
     insert_wall(program);

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 10:03:01 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/03 12:54:17 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int random_int(int min, int max)
 void PrintMatrix(char **Matrix)
 {
     char *str;
+    if(!Matrix)
+        return ;
     while (*Matrix)
     {
         str = *Matrix;
