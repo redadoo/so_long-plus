@@ -21,12 +21,14 @@ typedef struct    s_vector
 }                vector2;
 
 typedef struct    s_data {
-	void       *img;
-	char       *addr;
-	int        bits_per_pixel;
-	int        line_length;
-	int        endian;
-	void       *reference;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
+	void		*reference;
 }                t_data;
 
 typedef struct    s_window {
