@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 13:13:09 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:36:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 		Map[width] = (char *)malloc((ysize + 1) * (sizeof(char)));
 		if(!Map)
 			return (NULL);
-		if((width >= 0 && width <=5) || (width >=  xsize - 9 && width <= xsize - 1))
+		if((width >= 0 && width <=6) || (width >= xsize - 9 && width <= xsize - 1))
 			Map[width] = assign_rows(true,Map[width],ysize,program);
 		else
 			Map[width] = assign_rows(false,Map[width],ysize,program);

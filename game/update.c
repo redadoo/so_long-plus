@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/05 16:46:26 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:33:44 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,22 @@ int	ft_update (void *param)
 {
 	t_program	*program = (t_program *)param;
 	static int	frame;
+	vector2 dart_pos;
+	t_data background;
 	frame++;
+	if(program->man.attack_gameobject.exist == 1)
+	{
+		background.img = mlx_xpm_file_to_image(program->mlx, "Asset/player/dart_background.xpm", &background.width, &background.height);
+		mlx_put_image_to_window(program->mlx, program->window.reference, background.img, program->man.attack_gameobject.pos.x, program->man.attack_gameobject.pos.y);
+		if( program->man.dir == RIGHT_DIR && check_attack(param) != 0)
+			mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img, program->man.attack_gameobject.pos.x += 2, program->man.attack_gameobject.pos.y);
+		else if( program->man.dir == LEFT_DIR && check_attack(param) != 0)
+			mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img, program->man.attack_gameobject.pos.x -= 2, program->man.attack_gameobject.pos.y);
+		else if( program->man.dir == UP_DIR && check_attack(param) != 0)
+			mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img, program->man.attack_gameobject.pos.x , program->man.attack_gameobject.pos.y -=2);
+		else if( program->man.dir == DOWN_DIR && check_attack(param) != 0)	
+			mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img, program->man.attack_gameobject.pos.x , program->man.attack_gameobject.pos.y +=2);	
+	}
 	if(frame >= 30)
 		frame = 0;
 	return (0);
@@ -69,5 +84,20 @@ int special_key_hook(int keycode,void *param)
 
 	if(keycode == 49)
 		attack(param);
+	return (0);
+}
+
+int check_attack(void *param)
+{
+	t_program	*program = (t_program *)param;
+	vector2 	dart_pos;
+	char 		**map;
+
+	dart_pos = program->man.attack_gameobject.pos;
+	map = program->map.matrix_map;
+	if(map && map[dart_pos.y / 10][dart_pos.x / 10] == '0')
+	{
+		return (1);
+	}
 	return (0);
 }

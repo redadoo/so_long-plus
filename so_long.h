@@ -117,5 +117,6 @@ vector2 Lerp(vector2 a,vector2 b,float x);
 void change_sprite_player(void *param,vector2 old_pos,vector2 new_pos);
 int special_key_hook(int keycode,void *param);
 void attack(void *param);
+int check_attack(void *param);
 
 #endif
