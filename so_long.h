@@ -1,7 +1,6 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdbool.h>
 # include <float.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -9,9 +8,26 @@
 # include <stdlib.h>
 # include <time.h>
 # include <mlx.h>
+# include <stdbool.h>
 
 # ifndef ANIMATION_FRAMES
 #  define ANIMATION_FRAMES 12
+# endif
+
+# ifndef UP_DIR
+#  define UP_DIR 13
+# endif
+
+# ifndef DOWN_DIR
+#  define DOWN_DIR 1
+# endif
+
+# ifndef LEFT_DIR
+#  define LEFT_DIR 0
+# endif
+
+# ifndef RIGHT_DIR
+#  define RIGHT_DIR 2
 # endif
 
 typedef struct    s_vector
@@ -23,9 +39,6 @@ typedef struct    s_vector
 typedef struct    s_data {
 	void		*img;
 	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
 	int			width;
 	int			height;
 	void		*reference;
@@ -38,7 +51,7 @@ typedef struct    s_window {
  
 typedef struct  s_gameobject 
 {
-				bool instatiete;
+				int exist;
 				void *reference;
 				vector2 pos;
 				t_data sprite;
@@ -51,6 +64,7 @@ typedef struct  s_player
 	int             life;
 	vector2         pos;
 	gameobject		attack_gameobject;
+	int				dir;
 }               t_player;
 
 typedef struct s_map{
@@ -101,5 +115,7 @@ vector2 random_pos(t_program program);
 char **procedural_map(char **map);
 vector2 Lerp(vector2 a,vector2 b,float x);
 void change_sprite_player(void *param,vector2 old_pos,vector2 new_pos);
+int special_key_hook(int keycode,void *param);
+void attack(void *param);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/05 15:46:03 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:59:53 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,49 @@ void change_sprite_player(void *param,vector2 old_pos,vector2 new_pos)
 
 	if(old_pos.x > new_pos.x)
 	{
-		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player1.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player1.xpm", &program->man.sprite.width, &program->man.sprite.height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
 	}
 	else if(old_pos.x < new_pos.x)
 	{
-		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player2.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player2.xpm", &program->man.sprite.width, &program->man.sprite.height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
 	}
 	else if(old_pos.y < new_pos.y)
 	{
-		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player0.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player0.xpm", &program->man.sprite.width, &program->man.sprite.height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
 	}
 	else if(old_pos.y > new_pos.y)
 	{
-		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player3.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player3.xpm", &program->man.sprite.width, &program->man.sprite.height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
 	}
+}
+
+vector2 Lerp(vector2 a,vector2 b,float x)
+{
+	vector2 c;
+	
+ 	c.x = a.x + (b.x - a.x) * x;
+	c.y = a.y + (b.y - a.y) * x;
+	return (c);
+}
+
+void attack(void *param)
+{
+	int width;
+	int height;
+
+	t_program *program = (t_program *)param;
+	program->man.attack_gameobject.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/dart.xpm", &width, &height);
+	if(program->man.dir == UP_DIR)
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img , program->man.pos.x + 5, program->man.pos.y - 13);
+	if(program->man.dir == DOWN_DIR)
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img, program->man.pos.x + 5, program->man.pos.y + 52);
+	if(program->man.dir == LEFT_DIR)
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img , program->man.pos.x - 15, program->man.pos.y + 10);
+	if(program->man.dir == RIGHT_DIR)
+		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.attack_gameobject.sprite.img , program->man.pos.x + 25, program->man.pos.y + 10);
+
 }
