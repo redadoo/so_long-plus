@@ -25,46 +25,55 @@
 
 typedef struct    s_vector
 {
-    int    x;
-    int    y;
+	int    x;
+	int    y;
 }                vector2;
 
 typedef struct    s_data {
-    void       *img;
-    char       *addr;
-    int        bits_per_pixel;
-    int        line_length;
-    int        endian;
-    void       *reference;
+	void       *img;
+	char       *addr;
+	int        bits_per_pixel;
+	int        line_length;
+	int        endian;
+	void       *reference;
 }                t_data;
 
 typedef struct    s_window {
-    void        *reference;
-    vector2      size;
+	void        *reference;
+	vector2      size;
 }                screen;
+
+typedef struct  s_gameobject 
+{
+				void *reference;
+				vector2 pos;
+				t_data sprite;
+				bool instatiete;
+}				gameobject;
 
 typedef struct  s_player 
 {
-    void            *reference;
-    t_data          sprite;
-    int             life;
-    vector2          pos;
+	void            *reference;
+	t_data          sprite;
+	int             life;
+	vector2         pos;
+	gameobject		attack_gameobject;
 }               t_player;
 
 typedef struct s_map{
 
-    char        **matrix_map;
-    int         widht;
-    int         height;
+	char        **matrix_map;
+	int         widht;
+	int         height;
 
 }             t_map;
 
 typedef struct    s_program {
-    void           *reference;
-    void           *mlx;
-    screen         window;
-    t_player       man;
-    t_map          map;
+	void           *reference;
+	void           *mlx;
+	screen         window;
+	t_player       man;
+	t_map          map;
 }                  t_program;
 
 int	ft_update (void *param);

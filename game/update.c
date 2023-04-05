@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 13:59:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:09:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_update (void *param)
 	t_program	*program = (t_program *)param;
 	static int	frame;
 	frame++;
+	if(program->man.attack_gameobject)
+		printf("test");
 	if(frame >= 30)
 		frame = 0;
 	return (0);
