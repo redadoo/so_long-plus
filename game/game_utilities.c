@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 15:13:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:46:03 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,59 @@
 
 vector2 obj_pos(char c,char **map)
 {
-    char *str;
-    vector2 pos;
-    int x;
-    int j;
+	char	*str;
+	vector2 pos;
+	int		x;
+	int		j;
 
-    x = 0;
-    j = 0;
-    while (*map)
-    {
-        str = *map;
-        while (*str)
-        {
-            if(*str == c)
-            {
-                //pos = malloc(sizeof(*vector2));
-                pos.x = x;
-                pos.y = j;
-                return (pos);
-            }
-            j++;
-            str++;
-        }
-        j = 0;
-        x++;
-        map++;
-    }
-    return (pos);
+	x = 0;
+	j = 0;
+	while (*map)
+	{
+		str = *map;
+		while (*str)
+		{
+			if(*str == c)
+			{
+				pos.x = x;
+				pos.y = j;
+				return (pos);
+			}
+			j++;
+			str++;
+		}
+		j = 0;
+		x++;
+		map++;
+	}
+	return (pos);
+}
+
+void change_sprite_player(void *param,vector2 old_pos,vector2 new_pos)
+{
+	t_program *program = (t_program *)param;
+	t_data spirte;
+	int	img_width;
+	int img_height;
+
+	if(old_pos.x > new_pos.x)
+	{
+		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player1.xpm", &img_width, &img_height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+	}
+	else if(old_pos.x < new_pos.x)
+	{
+		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player2.xpm", &img_width, &img_height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+	}
+	else if(old_pos.y < new_pos.y)
+	{
+		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player0.xpm", &img_width, &img_height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+	}
+	else if(old_pos.y > new_pos.y)
+	{
+		spirte.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player3.xpm", &img_width, &img_height);
+		mlx_put_image_to_window(program->mlx, program->window.reference,  spirte.img , new_pos.x, new_pos.y);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:57:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 14:40:14 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:46:58 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_player set_player(t_program program,char **map)
 {
 	t_player 	player;
-    int		 	img_width = 30;
-	int		 	img_height = 30;
+    int		 	img_width;
+	int		 	img_height;
 	vector2 	Player_start_pos;
 
 	Player_start_pos = obj_pos('P',map);
