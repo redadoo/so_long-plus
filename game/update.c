@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/11 16:26:51 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:45:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 int	ft_update_tears (void *param)
 {
-	t_program	*program = (t_program *)param;
-	gameobject tear;
+	t_program	*program;
+	gameobject	tear;
+
+	program = (t_program *)param;
 	tear = program->man.attack_gameobject;
 	if(tear.exist == 2)
 	{
 		tear.pos = move_toward(tear.dir,tear.pos,2);
 		if(check_out_of_screen(param,tear) != 0)
-		{
-			mlx_put_image_to_window(program->mlx, program->window.reference, tear.sprite.background_img, program->man.attack_gameobject.pos.x, program->man.attack_gameobject.pos.y);
-			mlx_put_image_to_window(program->mlx, program->window.reference, tear.sprite.img, tear.pos.x , tear.pos.y);	
-		}
+			put_background_sprite(param, program->man.attack_gameobject.pos,tear.pos, tear.sprite);
 		else
 		{
-			mlx_put_image_to_window(program->mlx, program->window.reference, tear.sprite.background_img, program->man.attack_gameobject.pos.x, program->man.attack_gameobject.pos.y);
+			put_sprite(param, program->man.attack_gameobject.pos, tear.sprite.background_img);
 			tear.exist = 0;
 		}
 		program->man.attack_gameobject = tear;
@@ -35,15 +34,11 @@ int	ft_update_tears (void *param)
 	else if(tear.exist == 1)
 	{
 		tear.pos = move_toward(tear.dir,tear.pos,2);
-		if(check_out_of_screen(param,tear) != 0)
-		{
-			put_sprite(param, program->man.attack_gameobject.pos, tear.sprite.background_img);
-			put_sprite(param, tear.pos, tear.sprite.img);
-		}
+		if(check_out_of_screen(param,tear) != 0)		
+			put_background_sprite(param, program->man.attack_gameobject.pos, tear.pos, tear.sprite);
 		tear.exist = 2; 
 		tear.dir = program->man.dir;
 		program->man.attack_gameobject = tear;
-		return (0);
 	}
 	return (0);
 }
@@ -97,14 +92,3 @@ int	special_key_hook(int keycode, void *param)
 	return (0);
 }
 
-int	check_out_of_screen(void *param, gameobject game)
-{
-	t_program	*program;
-	char		**map;
-
-	program = (t_program *)param;
-	map = program->map.matrix_map;
-	if (map && map[game.pos.y / 10][game.pos.x / 10] == '0')
-		return (1);
-	return (0);
-}

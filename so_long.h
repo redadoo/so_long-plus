@@ -30,6 +30,14 @@
 #  define RIGHT_DIR 2
 # endif
 
+# ifndef TEAR_PATH
+#  define TEAR_PATH "Asset/player/tear.xpm"
+# endif
+
+# ifndef TEAR_BACKGROUND_PATH
+#  define TEAR_BACKGROUND_PATH "Asset/player/tear_background.xpm"
+# endif
+
 typedef struct    s_vector
 {
 	int    x;
@@ -124,6 +132,7 @@ vector2 move_toward(int dir,vector2 pos,int dist);
 void attack_exist(void *param);
 vector2 pos_near_player(void *param);
 int put_sprite(void *param,vector2 pos,void *img_ptr);
+int put_background_sprite(void *param,vector2 pos_b,vector2 pos_s,t_data sprite);
 
 
 #endif

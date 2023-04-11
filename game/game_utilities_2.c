@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:40:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/11 16:21:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:45:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@ vector2 move_toward(int dir,vector2 pos,int dist)
     else if(dir == LEFT_DIR)
         pos.x -= dist;
     return (pos);
-}
-
-void attack_exist(void *param)
-{
-    t_program *program = (t_program *)param;
-    gameobject tear;
-    tear = program->man.attack_gameobject;
-    tear.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/tear.xpm", &tear.sprite.width, &tear.sprite.height);
-    tear.pos = pos_near_player(param);
-    mlx_put_image_to_window(program->mlx, program->window.reference,  tear.sprite.img ,tear.pos.x, tear.pos.y);
 }
 
 vector2 pos_near_player(void *param)
@@ -69,5 +59,14 @@ int put_sprite(void *param,vector2 pos,void *img_ptr)
     
     program = (t_program *)param;
     mlx_put_image_to_window(program->mlx, program->window.reference, img_ptr, pos.x, pos.y);
+    return (0);
+}
+int put_background_sprite(void *param,vector2 pos_b,vector2 pos_s,t_data sprite)
+{
+    t_program	*program;
+    
+    program = (t_program *)param;
+    mlx_put_image_to_window(program->mlx, program->window.reference, sprite.background_img, pos_b.x, pos_b.y);
+    mlx_put_image_to_window(program->mlx, program->window.reference, sprite.img, pos_s.x, pos_s.y);
     return (0);
 }

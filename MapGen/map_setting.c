@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/05 17:36:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:40:57 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char *assign_rows(bool wall, char *row,int size,t_program program)
 	while (size)
 	{
 		size--;
-		if(size == 0 || size == x || wall)
+		if(size == 0 || size == x || wall|| size == x - 1)
 			row[size] = '1';
 		else 
 			row[size] = '0';
