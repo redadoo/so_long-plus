@@ -6,13 +6,13 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:30:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/22 12:44:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:01:44 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int ft_close ()
+int	ft_close(void)
 {
 	exit(0);
 }

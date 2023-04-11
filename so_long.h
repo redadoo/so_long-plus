@@ -38,6 +38,7 @@ typedef struct    s_vector
 
 typedef struct    s_data {
 	void		*img;
+	void		*background_img;
 	char		*addr;
 	int			width;
 	int			height;
@@ -54,6 +55,7 @@ typedef struct  s_gameobject
 				int exist;
 				void *reference;
 				vector2 pos;
+				int	dir;
 				t_data sprite;
 }				gameobject;
 
@@ -90,7 +92,7 @@ char **generatemap(t_program program);
 t_player set_player(t_program program,char **map);
 void map(int n,char **argv,t_program program);
 int	key_hook(int keycode, void *param);
-int	ft_update (void *param);
+int	ft_update_tears (void *param);
 void place_background(t_program program);
 char **CreateCubeMap(int ysize,int xsize,t_program program);
 char *assign_rows(bool wall, char *row,int size,t_program program);
@@ -117,6 +119,11 @@ vector2 Lerp(vector2 a,vector2 b,float x);
 void change_sprite_player(void *param,vector2 old_pos,vector2 new_pos);
 int special_key_hook(int keycode,void *param);
 void attack(void *param);
-int check_attack(void *param);
+int check_out_of_screen(void *param,gameobject game);
+vector2 move_toward(int dir,vector2 pos,int dist);
+void attack_exist(void *param);
+vector2 pos_near_player(void *param);
+int put_sprite(void *param,vector2 pos,void *img_ptr);
+
 
 #endif

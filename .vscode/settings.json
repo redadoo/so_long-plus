@@ -1,7 +1,11 @@
 {
     "files.associations": {
         "so_long.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "__config": "c",
+        "locale": "c",
+        "complex": "c",
+        "ios": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
