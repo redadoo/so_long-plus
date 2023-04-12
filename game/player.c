@@ -12,24 +12,22 @@
 
 #include "../so_long.h"
 
-t_player set_player(t_program program,char **map)
+t_player	set_player(t_program program, char **map)
 {
-	t_player 	player;
-    int		 	img_width;
-	int		 	img_height;
-	vector2 	Player_start_pos;
+	t_player	player;
+	int			img_width;
+	int			img_height;
+	vector2		player_start_pos;
 	t_data		enemy;
 
-	Player_start_pos = obj_pos('P',map);
-    player.sprite.img = mlx_xpm_file_to_image(program.mlx, "Asset/player/player1.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(program.mlx, program.window.reference,  player.sprite.img ,Player_start_pos.y * 10,Player_start_pos.x * 10);
+	player_start_pos = obj_pos('P', map);
+	player.sprite.img = mlx_xpm_file_to_image(program.mlx, "Asset/player/player1.xpm", &img_width, &img_height);
+	mlx_put_image_to_window(program.mlx, program.window.reference, player.sprite.img, player_start_pos.y * 10, player_start_pos.x * 10);
 	player.sprite.background_img = mlx_xpm_file_to_image(program.mlx, "Asset/player/grass.xpm", &player.sprite.width, &player.sprite.height);
-
 	program.man.attack_gameobject.sprite.background_img = mlx_xpm_file_to_image(program.mlx, TEAR_BACKGROUND_PATH, &img_width, &img_height);
-	program.man.attack_gameobject.sprite.img =  mlx_xpm_file_to_image(program.mlx, TEAR_PATH, &img_width, &img_height);
-
-	player.pos.x = Player_start_pos.y  * 10;
-	player.pos.y = Player_start_pos.x * 10;
+	program.man.attack_gameobject.sprite.img = mlx_xpm_file_to_image(program.mlx, TEAR_PATH, &img_width, &img_height);
+	player.pos.x = player_start_pos.y * 10;
+	player.pos.y = player_start_pos.x * 10;
 	program.man = player;
 	return (player);
 }

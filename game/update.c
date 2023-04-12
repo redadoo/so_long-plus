@@ -12,18 +12,18 @@
 
 #include "../so_long.h"
 
-int	ft_update_tears (void *param)
+int	ft_update_tears(void *param)
 {
 	t_program	*program;
 	gameobject	tear;
 
 	program = (t_program *)param;
 	tear = program->man.attack_gameobject;
-	if(tear.exist == 2)
+	if (tear.exist == 2)
 	{
-		tear.pos = move_toward(tear.dir,tear.pos,2);
-		if(check_out_of_screen(param,tear) != 0)
-			put_background_sprite(param, program->man.attack_gameobject.pos,tear.pos, tear.sprite);
+		tear.pos = move_toward(tear.dir, tear.pos, 2);
+		if (check_out_of_screen(param, tear) != 0)
+			put_background_sprite(param, program->man.attack_gameobject.pos, tear.pos, tear.sprite);
 		else
 		{
 			put_sprite(param, program->man.attack_gameobject.pos, tear.sprite.background_img);
@@ -31,12 +31,12 @@ int	ft_update_tears (void *param)
 		}
 		program->man.attack_gameobject = tear;
 	}
-	else if(tear.exist == 1)
+	else if (tear.exist == 1)
 	{
-		tear.pos = move_toward(tear.dir,tear.pos,2);
-		if(check_out_of_screen(param,tear) != 0)		
+		tear.pos = move_toward(tear.dir, tear.pos, 2);
+		if (check_out_of_screen(param, tear) != 0)
 			put_background_sprite(param, program->man.attack_gameobject.pos, tear.pos, tear.sprite);
-		tear.exist = 2; 
+		tear.exist = 2;
 		tear.dir = program->man.dir;
 		program->man.attack_gameobject = tear;
 	}
@@ -52,13 +52,13 @@ int	key_hook(int keycode, void *param)
 	program = (t_program *)param;
 	player = program->man;
 	startpos = program->man.pos;
-	if (keycode == 0 && check_move(program->map.matrix_map, program->man.pos.x - 3, program->man.pos.y))
+	if (keycode == 0 && check_move(param, player.pos.x - 3, player.pos.y))
 		program->man.pos.x -= 3;
-	if (keycode == 1 && check_move(program->map.matrix_map, program->man.pos.x, program->man.pos.y + 3))
+	if (keycode == 1 && check_move(param, player.pos.x, player.pos.y + 3))
 		program->man.pos.y += 3;
-	if (keycode == 2 && check_move(program->map.matrix_map, program->man.pos.x + 3, program->man.pos.y))
+	if (keycode == 2 && check_move(param, player.pos.x + 3, player.pos.y))
 		program->man.pos.x += 3;
-	if (keycode == 13 && check_move(program->map.matrix_map, program->man.pos.x, program->man.pos.y - 3))
+	if (keycode == 13 && check_move(param, player.pos.x, player.pos.y - 3))
 		program->man.pos.y -= 3;
 	special_key_hook(keycode, param);
 	if (startpos.y != program->man.pos.y || startpos.x != program->man.pos.x)
@@ -91,4 +91,3 @@ int	special_key_hook(int keycode, void *param)
 		attack(param);
 	return (0);
 }
-
