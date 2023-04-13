@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:57:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/11 16:58:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:42:43 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_player set_player(t_program program,char **map)
 
 	program.man.attack_gameobject.sprite.background_img = mlx_xpm_file_to_image(program.mlx, TEAR_BACKGROUND_PATH, &img_width, &img_height);
 	program.man.attack_gameobject.sprite.img =  mlx_xpm_file_to_image(program.mlx, TEAR_PATH, &img_width, &img_height);
+	program.man.attack_gameobject.next = NULL;
 
 	player.pos.x = Player_start_pos.y  * 10;
 	player.pos.y = Player_start_pos.x * 10;

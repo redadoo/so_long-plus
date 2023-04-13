@@ -61,10 +61,12 @@ typedef struct    s_window {
 typedef struct  s_gameobject 
 {
 				int exist;
-				void *reference;
-				vector2 pos;
 				int	dir;
+				vector2 pos;
+				vector2 b_pos;
 				t_data sprite;
+				void *reference;
+				struct s_gameobject *next;
 }				gameobject;
 
 typedef struct  s_player 
@@ -133,6 +135,11 @@ void attack_exist(void *param);
 vector2 pos_near_player(void *param);
 int put_sprite(void *param,vector2 pos,void *img_ptr);
 int put_background_sprite(void *param,vector2 pos_b,vector2 pos_s,t_data sprite);
-
+void move_tear(void *param,gameobject *tear);
+gameobject new_tear(void *param);
+void manage_attack(void *param);
+size_t	ft_lstsize(gameobject *lst);
+gameobject	*ft_lstnew(void *param,void *content);
+gameobject  *ft_lstlast(gameobject *lst);
 
 #endif

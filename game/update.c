@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/11 16:45:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:35:01 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,9 @@
 int	ft_update_tears (void *param)
 {
 	t_program	*program;
-	gameobject	tear;
 
 	program = (t_program *)param;
-	tear = program->man.attack_gameobject;
-	if(tear.exist == 2)
-	{
-		tear.pos = move_toward(tear.dir,tear.pos,2);
-		if(check_out_of_screen(param,tear) != 0)
-			put_background_sprite(param, program->man.attack_gameobject.pos,tear.pos, tear.sprite);
-		else
-		{
-			put_sprite(param, program->man.attack_gameobject.pos, tear.sprite.background_img);
-			tear.exist = 0;
-		}
-		program->man.attack_gameobject = tear;
-	}
-	else if(tear.exist == 1)
-	{
-		tear.pos = move_toward(tear.dir,tear.pos,2);
-		if(check_out_of_screen(param,tear) != 0)		
-			put_background_sprite(param, program->man.attack_gameobject.pos, tear.pos, tear.sprite);
-		tear.exist = 2; 
-		tear.dir = program->man.dir;
-		program->man.attack_gameobject = tear;
-	}
+	manage_attack(param);
 	return (0);
 }
 
