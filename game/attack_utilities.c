@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/14 14:47:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:42:41 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,36 @@ void attack(void *param)
 {
 	gameobject	*tear;
 	t_program	*program;
-
+	gameobject	*current;
 	program = (t_program *)param;
 
-	push(&program->man.attack_gameobject, param, 1);
-	push(&program->man.attack_gameobject, param, 2);
-	push(&program->man.attack_gameobject, param, 3);
-
-	ft_lstlast(program->man.attack_gameobject);
-
-	//printf("\n%i\n",tear->exist);
-
+	current = program->man.tear_gameobject;
+	if(!program->man.tear_gameobject)
+	{
+		program->man.tear_gameobject = NULL;
+		program->man.tear_gameobject = malloc(sizeof(gameobject *));
+		if(!program->man.tear_gameobject)
+			return ;
+		program->man.tear_gameobject->next = NULL;
+		new_tear(param,program->man.tear_gameobject);
+		tear = program->man.tear_gameobject;
+	}
+	else
+	{
+		tear = malloc(sizeof(gameobject *));
+		if(!tear)
+			return ;
+		new_tear(param,tear);
+		tear->next = NULL;
+		last_node(&current,tear);
+		size_list(&program->man.tear_gameobject);
+	}
+	
 	mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.img, tear->pos.x, tear->pos.y);
-
-	//tear = ft_lstlast(tear);
 
 }
 
-/* void move_tear(void *param, gameobject *tear)
+void move_tear(void *param, gameobject *tear)
 {
 	t_program 	*program;
 
@@ -49,7 +61,7 @@ void attack(void *param)
 			put_sprite(param, tear->b_pos, tear->sprite.background_img);
 			tear->exist = 0;
 		}
-		program->man.attack_gameobject = *tear;
+		program->man.tear_gameobject = tear;
 	}
 	else if (tear->exist == 1)
 	{
@@ -58,19 +70,35 @@ void attack(void *param)
 			put_background_sprite(param, tear->b_pos, tear->pos, tear->sprite);
 		tear->exist = 2; 
 		tear->dir = program->man.dir;
-		program->man.attack_gameobject = *tear;
+		program->man.tear_gameobject = tear;
 	}   
-} */
+}
 
 void manage_attack(void *param)
 {
-	t_program 	*program;
+	size_t N_tears;
+	t_program	*program;
+	gameobject	*tear;
+	gameobject	*current;
 
 	program = (t_program *)param;
-	gameobject *tear;
+	N_tears = 0;
+	current = program->man.tear_gameobject;
+	while (N_tears < size_list(&program->man.tear_gameobject))
+	{
+		current = find_node(&program->man.tear_gameobject,N_tears);
+		move_tear(param,current); 
+		N_tears++;
+	}
+}
 
-/* 	tear = &program->man.attack_gameobject;
-	
-	move_tear(param,tear);  */
+void new_tear(void *param, gameobject *tear)
+{
+	t_program *program;
 
+	program = (t_program *)param;
+	tear->sprite.background_img = mlx_xpm_file_to_image(program->mlx, TEAR_BACKGROUND_PATH, &tear->sprite.width, &tear->sprite.height);
+	tear->sprite.img =  mlx_xpm_file_to_image(program->mlx, TEAR_PATH, &tear->sprite.width, &tear->sprite.height);
+	tear->pos = pos_near_player(param);
+	tear->exist = 1;
 }

@@ -66,18 +66,18 @@ typedef struct  s_gameobject
 				vector2 b_pos;
 				t_data sprite;
 				void *reference;
-				struct s_gameobject* next;
+				struct s_gameobject *next;
 }				gameobject;
 
-typedef struct  s_player 
+typedef struct		s_player 
 {
-	void            *reference;
-	t_data          sprite;
-	int             life;
-	vector2         pos;
-	gameobject		*attack_gameobject;
-	int				dir;
-}               t_player;
+	void				*reference;
+	int					life;
+	int					dir;
+	vector2				pos;
+	t_data				sprite;
+	gameobject			*tear_gameobject;
+}					t_player;
 
 typedef struct s_map{
 
@@ -135,12 +135,12 @@ vector2		pos_near_player(void *param);
 int 		put_sprite(void *param,vector2 pos,void *img_ptr);
 int			put_background_sprite(void *param,vector2 pos_b,vector2 pos_s,t_data sprite);
 void		move_tear(void *param,gameobject *tear);
-void 		new_tear(void *param, gameobject *tear,int n);
+void 		new_tear(void *param, gameobject *tear);
 void		manage_attack(void *param);
-size_t		ft_lstsize(gameobject *lst);
-gameobject	*ft_lstnew(void *param,void *content);
-gameobject  *ft_lstlast(gameobject *lst);
-void 		push(gameobject** head_ref,void *param,int n);
-void		printNthFromLast(gameobject* head);
+void		add_node(gameobject *head,gameobject *node);
+size_t		size_list(gameobject **head_ref);
+void		last_node(gameobject **head_ref, gameobject *node);
+gameobject	*find_node(gameobject **head_ref,size_t i);
+
 
 #endif
