@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/14 17:56:45 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:16:05 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ void move_tear(void *param, gameobject *tear)
 		{
 			put_sprite(param, tear->b_pos, tear->sprite.background_img);
 			tear->exist = 0;
-			free_node(tear);
+			printf("\n%i\n",(int)size_list(&program->man.tear_gameobject));
+			free_node_(&program->man.tear_gameobject,tear);
+			printf("\n%i\n",(int)size_list(&program->man.tear_gameobject));
 		}
 	}
 	else if (tear->exist == 1)
@@ -70,7 +72,11 @@ void move_tear(void *param, gameobject *tear)
 		if(check_out_of_screen(param, tear) != 0)		
 			put_background_sprite(param, tear->b_pos, tear->pos, tear->sprite);
 		else
-			free_node(tear);
+		{
+			printf("\n%i\n",(int)size_list(&program->man.tear_gameobject));
+			free_node_(&program->man.tear_gameobject,tear);
+			printf("\n%i\n",(int)size_list(&program->man.tear_gameobject));
+		}
 		tear->exist = 2; 
 		tear->dir = program->man.dir;
 	}   

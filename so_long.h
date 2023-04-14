@@ -141,6 +141,7 @@ void		add_node(gameobject *head,gameobject *node);
 size_t		size_list(gameobject **head_ref);
 void		last_node(gameobject **head_ref, gameobject *node);
 gameobject	*find_node(gameobject **head_ref,size_t i);
-void		free_node(gameobject *node);
+void		free_node_(gameobject **head_ref, gameobject *node);
+gameobject	*find_prev_node(gameobject **head_ref,gameobject *node);
 
 #endif
