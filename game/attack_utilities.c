@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/13 18:10:17 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:47:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,31 @@
 
 void attack(void *param)
 {
-	gameobject tear;
-	t_program *program;
-    int		 	img_width;
-	int		 	img_height;
+	gameobject	*tear;
+	t_program	*program;
 
-    program = (t_program *)param;
-	tear = new_tear(param);
-	mlx_put_image_to_window(program->mlx, program->window.reference, tear.sprite.img, tear.pos.x, tear.pos.y);
-	tear.exist = 1;
-	program->man.attack_gameobject = tear;
+	program = (t_program *)param;
+
+	push(&program->man.attack_gameobject, param, 1);
+	push(&program->man.attack_gameobject, param, 2);
+	push(&program->man.attack_gameobject, param, 3);
+
+	ft_lstlast(program->man.attack_gameobject);
+
+	//printf("\n%i\n",tear->exist);
+
+	mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.img, tear->pos.x, tear->pos.y);
+
+	//tear = ft_lstlast(tear);
+
 }
 
-void move_tear(void *param, gameobject *tear)
+/* void move_tear(void *param, gameobject *tear)
 {
 	t_program 	*program;
 
 	program = (t_program *)param;
-    tear->b_pos = tear->pos;
+	tear->b_pos = tear->pos;
 	if (tear->exist == 2)
 	{
 		tear->pos = move_toward(tear->dir,tear->pos,6);
@@ -53,19 +60,7 @@ void move_tear(void *param, gameobject *tear)
 		tear->dir = program->man.dir;
 		program->man.attack_gameobject = *tear;
 	}   
-}
-
-gameobject new_tear(void *param)
-{
-    t_program *program;
-    gameobject tear;
-
-    program = (t_program *)param;
-    tear.sprite.background_img = mlx_xpm_file_to_image(program->mlx, TEAR_BACKGROUND_PATH, &tear.sprite.width, &tear.sprite.height);
-	tear.sprite.img =  mlx_xpm_file_to_image(program->mlx, TEAR_PATH, &tear.sprite.width, &tear.sprite.height);
-    tear.pos = pos_near_player(param);
-    return (tear);
-}
+} */
 
 void manage_attack(void *param)
 {
@@ -74,8 +69,8 @@ void manage_attack(void *param)
 	program = (t_program *)param;
 	gameobject *tear;
 
-	tear = &program->man.attack_gameobject;
+/* 	tear = &program->man.attack_gameobject;
 	
-	move_tear(param,tear); 
+	move_tear(param,tear);  */
 
 }

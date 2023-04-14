@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:57:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/13 18:11:11 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:25:51 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_player	set_player(t_program program, char **map)
 	player.sprite.img = mlx_xpm_file_to_image(program.mlx, "Asset/player/player1.xpm", &img_width, &img_height);
 	mlx_put_image_to_window(program.mlx, program.window.reference, player.sprite.img, player_start_pos.y * 10, player_start_pos.x * 10);
 	player.sprite.background_img = mlx_xpm_file_to_image(program.mlx, "Asset/player/grass.xpm", &player.sprite.width, &player.sprite.height);
-	program.man.attack_gameobject.sprite.background_img = mlx_xpm_file_to_image(program.mlx, TEAR_BACKGROUND_PATH, &img_width, &img_height);
-	program.man.attack_gameobject.sprite.img = mlx_xpm_file_to_image(program.mlx, TEAR_PATH, &img_width, &img_height);
 	player.pos.x = player_start_pos.y * 10;
 	player.pos.y = player_start_pos.x * 10;
 	program.man = player;
