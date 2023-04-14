@@ -122,7 +122,7 @@ vector2 obj_pos(char c,char **map);
 void spawn_enviroment(t_program program,char **map);
 void spawn_manage(t_program program,char **map);
 void spawn_collectable(t_program program,char **map);
-bool check_move(char **map,int x,int y);
+bool check_move(void *param,int x,int y)
 vector2 random_pos(t_program program);
 char **procedural_map(char **map);
 vector2 Lerp(vector2 a,vector2 b,float x);
