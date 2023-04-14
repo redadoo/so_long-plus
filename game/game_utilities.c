@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/11 16:45:45 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:52:07 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ vector2 Lerp(vector2 a,vector2 b,float x)
 	return (c);
 }
 
-int	check_out_of_screen(void *param, gameobject game)
+int	check_out_of_screen(void *param, gameobject *game)
 {
 	t_program	*program;
 	char		**map;
 
 	program = (t_program *)param;
 	map = program->map.matrix_map;
-	if (map && map[game.pos.y / 10][game.pos.x / 10] == '0')
+	if (map && map[game->pos.y / 10][game->pos.x / 10] == '0')
 		return (1);
 	return (0);
 }

@@ -128,7 +128,7 @@ vector2		Lerp(vector2 a,vector2 b,float x);
 void		change_sprite_player(void *param,vector2 old_pos,vector2 new_pos);
 int			special_key_hook(int keycode,void *param);
 void		attack(void *param);
-int			check_out_of_screen(void *param,gameobject game);
+int			check_out_of_screen(void *param,gameobject *game);
 vector2		move_toward(int dir,vector2 pos,int dist);
 void		attack_exist(void *param);
 vector2		pos_near_player(void *param);
@@ -141,6 +141,6 @@ void		add_node(gameobject *head,gameobject *node);
 size_t		size_list(gameobject **head_ref);
 void		last_node(gameobject **head_ref, gameobject *node);
 gameobject	*find_node(gameobject **head_ref,size_t i);
-
+void		free_node(gameobject *node);
 
 #endif

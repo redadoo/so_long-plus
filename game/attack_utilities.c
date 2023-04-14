@@ -6,12 +6,13 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/14 17:46:15 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:56:45 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+//need fix
 void attack(void *param)
 {
 	gameobject	*tear;
@@ -38,13 +39,13 @@ void attack(void *param)
 		new_tear(param,tear);
 		tear->next = NULL;
 		last_node(&current,tear);
-		size_list(&program->man.tear_gameobject);
 	}
 	
 	mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.img, tear->pos.x, tear->pos.y);
 
 }
 
+//ok
 void move_tear(void *param, gameobject *tear)
 {
 	t_program 	*program;
@@ -54,19 +55,22 @@ void move_tear(void *param, gameobject *tear)
 	if (tear->exist == 2)
 	{
 		tear->pos = move_toward(tear->dir,tear->pos,6);
-		if(check_out_of_screen(param, *tear) != 0)
+		if(check_out_of_screen(param, tear) != 0)
 			put_background_sprite(param, tear->b_pos, tear->pos, tear->sprite);
 		else
 		{
 			put_sprite(param, tear->b_pos, tear->sprite.background_img);
 			tear->exist = 0;
+			free_node(tear);
 		}
 	}
 	else if (tear->exist == 1)
 	{
 		tear->pos = move_toward(tear->dir,tear->pos,0);
-		if(check_out_of_screen(param, *tear) != 0)		
+		if(check_out_of_screen(param, tear) != 0)		
 			put_background_sprite(param, tear->b_pos, tear->pos, tear->sprite);
+		else
+			free_node(tear);
 		tear->exist = 2; 
 		tear->dir = program->man.dir;
 	}   

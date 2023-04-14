@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:05:14 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/14 17:39:27 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:55:46 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,10 @@ gameobject *find_node(gameobject **head_ref,size_t i)
         current = current->next;
     }
     return (current);
+}
+
+void free_node(gameobject *node)
+{
+    node = NULL;
+    free(node);
 }
