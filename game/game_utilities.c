@@ -6,78 +6,63 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 16:36:33 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:23:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-vector2 obj_pos(char c, char **map)
+vector2	obj_pos(char c, char **map)
 {
 	char	*str;
 	vector2	pos;
-	int		x;
-	int		j;
 
-	x = 0;
-	j = 0;
+	pos.x = 0;
+	pos.y = 0;	
 	while (*map)
 	{
 		str = *map;
 		while (*str)
 		{
 			if (*str == c)
-			{
-				pos.x = x;
-				pos.y = j;
 				return (pos);
-			}
-			j++;
+			pos.y++;
 			str++;
 		}
-		j = 0;
-		x++;
+		pos.y = 0;
+		pos.x++;
 		map++;
 	}
 	return (pos);
 }
 
-void change_sprite_player(void *param, vector2 old_pos, vector2 new_pos)
+void	change_sprite_player(void *param, vector2 old_pos, vector2 new_pos)
 {
-	t_program	*program = (t_program *)param;
-	t_data		spirte;
+	t_program	*program;
 	int			img_width;
 	int			img_height;
 
+	program = (t_program *)param;
 	if (old_pos.x > new_pos.x)
 	{
-		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player1.xpm", &program->man.sprite.width, &program->man.sprite.height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
+		program->man.sprite.img = give_sprite(param, SPRITE1);
+		put_sprite(param, new_pos, program->man.sprite.img);
 	}
 	else if (old_pos.x < new_pos.x)
 	{
-		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player2.xpm", &program->man.sprite.width, &program->man.sprite.height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
+		program->man.sprite.img = give_sprite(param, SPRITE2);
+		put_sprite(param, new_pos, program->man.sprite.img);
 	}
 	else if (old_pos.y < new_pos.y)
 	{
-		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player0.xpm", &program->man.sprite.width, &program->man.sprite.height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
+		program->man.sprite.img = give_sprite(param, SPRITE0);
+		put_sprite(param, new_pos, program->man.sprite.img);
 	}
 	else if (old_pos.y > new_pos.y)
 	{
-		program->man.sprite.img =  mlx_xpm_file_to_image(program->mlx, "Asset/player/player3.xpm", &program->man.sprite.width, &program->man.sprite.height);
-		mlx_put_image_to_window(program->mlx, program->window.reference,  program->man.sprite.img , new_pos.x, new_pos.y);
+		program->man.sprite.img = give_sprite(param, SPRITE3);
+		put_sprite(param, new_pos, program->man.sprite.img);
 	}
-}
-
-vector2 Lerp(vector2 a, vector2 b, float x)
-{
-	vector2 c;
-	
- 	c.x = a.x + (b.x - a.x) * x;
-	c.y = a.y + (b.y - a.y) * x;
-	return (c);
 }
 
 int	check_out_of_screen(void *param, gameobject *game)
@@ -90,4 +75,14 @@ int	check_out_of_screen(void *param, gameobject *game)
 	if (map && map[game->pos.y / 10][game->pos.x / 10] == '0')
 		return (1);
 	return (0);
+}
+
+void	*give_sprite(void *param, char *path)
+{
+	t_program	*program;
+	int			img_width;
+	int			img_height;
+
+	program = (t_program *)param;
+	return (mlx_xpm_file_to_image(program->mlx, path, &img_width, &img_height));
 }

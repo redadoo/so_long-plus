@@ -10,33 +10,17 @@
 # include <mlx.h>
 # include <stdbool.h>
 
-# ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 12
-# endif
-
-# ifndef UP_DIR
-#  define UP_DIR 13
-# endif
-
-# ifndef DOWN_DIR
-#  define DOWN_DIR 1
-# endif
-
-# ifndef LEFT_DIR
-#  define LEFT_DIR 0
-# endif
-
-# ifndef RIGHT_DIR
-#  define RIGHT_DIR 2
-# endif
-
-# ifndef TEAR_PATH
-#  define TEAR_PATH "Asset/player/tear.xpm"
-# endif
-
-# ifndef TEAR_BACKGROUND_PATH
-#  define TEAR_BACKGROUND_PATH "Asset/player/tear_background.xpm"
-# endif
+# define ANIMATION_FRAMES 12
+# define UP_DIR 13
+# define DOWN_DIR 1
+# define LEFT_DIR 0
+# define RIGHT_DIR 2
+# define TEAR_PATH "Asset/player/tear.xpm"
+# define TEAR_BACKGROUND_PATH "Asset/player/tear_background.xpm"
+# define SPRITE0 "Asset/player/player0.xpm"
+# define SPRITE1 "Asset/player/player1.xpm"
+# define SPRITE2 "Asset/player/player2.xpm"
+# define SPRITE3 "Asset/player/player3.xpm"
 
 typedef struct    s_vector
 {
@@ -99,10 +83,8 @@ screen		ft_new_window(void *mlx, int widht, int height, char *name);
 char		**readmap(t_program program, char *file);
 char		**generatemap(t_program program);
 t_player 	set_player(t_program program, char **map);
-void		map(int n,char **argv, t_program program);
 int			key_hook(int keycode, void *param);
 int			ft_update (void *param);
-void		place_background(t_program program);
 char		**CreateCubeMap(int ysize, int xsize, t_program program);
 char		*assign_rows(bool wall, char *row, int size, t_program program);
 void		PrintMatrix(char **Matrix);
@@ -124,24 +106,23 @@ void		spawn_collectable(t_program program, char **map);
 bool		check_move(void *param, int x, int y);
 vector2		random_pos(t_program program);
 char		**procedural_map(char **map);
-vector2		Lerp(vector2 a, vector2 b, float x);
 void		change_sprite_player(void *param, vector2 old_pos, vector2 new_pos);
 int			special_key_hook(int keycode, void *param);
 void		attack(void *param);
 int			check_out_of_screen(void *param, gameobject *game);
 vector2		move_toward(int dir, vector2 pos, int dist);
-void		attack_exist(void *param);
 vector2		pos_near_player(void *param);
 int 		put_sprite(void *param,vector2 pos,void *img_ptr);
 int			put_background_sprite(void *param, vector2 pos_b,vector2 pos_s, t_data sprite);
 void		move_tear(void *param, gameobject *tear);
 void 		new_tear(void *param, gameobject *tear);
 void		manage_attack(void *param);
-void		add_node(gameobject *head, gameobject *node);
 size_t		size_list(gameobject **head_ref);
 void		last_node(gameobject **head_ref, gameobject *node);
 gameobject	*find_node(gameobject **head_ref, size_t i);
 void		free_node_(gameobject **head_ref, gameobject *node);
 gameobject	*find_prev_node(gameobject **head_ref, gameobject *node);
 int			ft_close(void);
+void		*give_sprite(void *param, char *path);
+
 #endif
