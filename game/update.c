@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/14 17:35:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:53:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	key_hook(int keycode, void *param)
 		program->man.pos.x += 3;
 	if (keycode == 13 && check_move(param, player.pos.x, player.pos.y - 3))
 		program->man.pos.y -= 3;
-	special_key_hook(keycode, param);
 	if (startpos.y != program->man.pos.y || startpos.x != program->man.pos.x)
 	{
 		program->man.dir = keycode;
 		put_sprite(param, startpos, player.sprite.background_img);
 		change_sprite_player(param, startpos, program->man.pos);
 	}
+	special_key_hook(keycode, param);
 	return (0);
 }
 

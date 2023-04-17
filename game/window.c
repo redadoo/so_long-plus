@@ -6,16 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:30:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/11 16:01:44 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:49:37 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-int	ft_close(void)
-{
-	exit(0);
-}
 
 screen	ft_new_window(void *mlx, int widht, int height, char *name)
 {
@@ -26,4 +21,9 @@ screen	ft_new_window(void *mlx, int widht, int height, char *name)
 	window.size.y = height;
 	mlx_hook(window.reference, 17, 0, ft_close, 0);
 	return (window);
+}
+
+int	ft_close(void)
+{
+	exit(0);
 }
