@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 13:58:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:04:59 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void attack(void *param)
 	gameobject	*tear;
 	t_program	*program;
 	gameobject	*current;
-	program = (t_program *)param;
 
+	program = (t_program *)param;
 	current = program->man.tear_gameobject;
 	if(!program->man.tear_gameobject)
 	{
@@ -40,9 +40,7 @@ void attack(void *param)
 		tear->next = NULL;
 		last_node(&current,tear);
 	}
-	
 	mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.img, tear->pos.x, tear->pos.y);
-
 }
 
 //ok

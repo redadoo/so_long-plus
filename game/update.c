@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 13:53:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:02:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	special_key_hook(int keycode, void *param)
 	int			img_height;
 
 	program = (t_program *)param;
+	if (keycode == 53)
+		ft_close();
 	if (keycode == 49)
 		attack(param);
 	return (0);
