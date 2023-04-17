@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:56:38 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/14 16:35:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:25:51 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void set_game(t_program program,int argc,char **argv)
 		program.map.matrix_map = readmap(program,argv[1]);
 	program.man = set_player(program,program.map.matrix_map);
 	mlx_hook(program.window.reference,2,1L << 1, *key_hook, &program);
+	printf("mlx_hook ok");
 	mlx_loop_hook(program.mlx,ft_update,&program);
+	printf("mlx_loop_hook ok");
 	mlx_loop(program.mlx);
 }
 
