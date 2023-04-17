@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 14:02:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:01:38 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	key_hook(int keycode, void *param)
 	if (startpos.y != program->man.pos.y || startpos.x != program->man.pos.x)
 	{
 		program->man.dir = keycode;
-		put_sprite(param, startpos, player.sprite.background_img);
+		put_sprite(param, startpos, player.sprite.b_img);
 		change_sprite_player(param, startpos, program->man.pos);
 	}
 	special_key_hook(keycode, param);
@@ -68,6 +68,8 @@ int	special_key_hook(int keycode, void *param)
 	if (keycode == 53)
 		ft_close();
 	if (keycode == 49)
-		attack(param);
+	{
+		cooldown(1,param);
+	}
 	return (0);
 }

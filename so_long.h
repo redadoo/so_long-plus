@@ -30,7 +30,7 @@ typedef struct    s_vector
 
 typedef struct    s_data {
 	void		*img;
-	void		*background_img;
+	void		*b_img;
 	char		*addr;
 	int			width;
 	int			height;
@@ -124,5 +124,6 @@ void		free_node_(gameobject **head_ref, gameobject *node);
 gameobject	*find_prev_node(gameobject **head_ref, gameobject *node);
 int			ft_close(void);
 void		*give_sprite(void *param, char *path);
+void		cooldown(int seconds, void (*f));
 
 #endif

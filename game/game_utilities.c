@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 17:23:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:01:48 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ vector2	obj_pos(char c, char **map)
 	vector2	pos;
 
 	pos.x = 0;
-	pos.y = 0;	
+	pos.y = 0;
 	while (*map)
 	{
 		str = *map;
@@ -85,4 +85,18 @@ void	*give_sprite(void *param, char *path)
 
 	program = (t_program *)param;
 	return (mlx_xpm_file_to_image(program->mlx, path, &img_width, &img_height));
+}
+
+void cooldown(int seconds, void *param)
+{
+	clock_t 	start = clock();
+	clock_t 	period = seconds * CLOCKS_PER_SEC;
+	clock_t 	elapsed;
+	t_program	*program;
+
+	program = (t_program *)param;
+	do {
+		elapsed = clock() - start;
+	} while(elapsed < period);
+	attack(param);
 }

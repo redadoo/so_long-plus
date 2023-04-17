@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 16:36:05 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:53:08 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void move_tear(void *param, gameobject *tear)
 			put_background_sprite(param, tear->b_pos, tear->pos, tear->sprite);
 		else
 		{
-			put_sprite(param, tear->b_pos, tear->sprite.background_img);
+			put_sprite(param, tear->b_pos, tear->sprite.b_img);
 			free_node_(&program->man.tear_gameobject,tear);
 			return ;
 		}
@@ -76,14 +76,16 @@ void move_tear(void *param, gameobject *tear)
 
 void manage_attack(void *param)
 {
-	size_t N_tears;
+	size_t		len_list;
+	size_t		N_tears;
 	t_program	*program;
 	gameobject	*tear;
 	gameobject	*current;
 
 	program = (t_program *)param;
+	len_list = size_list(&program->man.tear_gameobject);
 	N_tears = 0;
-	while (N_tears < size_list(&program->man.tear_gameobject))
+	while (len_list != 0 && N_tears < len_list)
 	{
 		current = find_node(&program->man.tear_gameobject,N_tears);
 		move_tear(param,current); 
@@ -96,7 +98,7 @@ void new_tear(void *param, gameobject *tear)
 	t_program *program;
 
 	program = (t_program *)param;
-	tear->sprite.background_img = mlx_xpm_file_to_image(program->mlx, TEAR_BACKGROUND_PATH, &tear->sprite.width, &tear->sprite.height);
+	tear->sprite.b_img = mlx_xpm_file_to_image(program->mlx, TEAR_BACKGROUND_PATH, &tear->sprite.width, &tear->sprite.height);
 	tear->sprite.img =  mlx_xpm_file_to_image(program->mlx, TEAR_PATH, &tear->sprite.width, &tear->sprite.height);
 	tear->pos = pos_near_player(param);
 	tear->exist = 1;
