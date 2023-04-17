@@ -124,6 +124,7 @@ void		free_node_(gameobject **head_ref, gameobject *node);
 gameobject	*find_prev_node(gameobject **head_ref, gameobject *node);
 int			ft_close(void);
 void		*give_sprite(void *param, char *path);
-void		cooldown(int seconds, void (*f));
+int			check_out_of_screen_vector(void *param, vector2 pos);
+int			check_attack(void *param);
 
 #endif

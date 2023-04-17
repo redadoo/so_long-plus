@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 18:01:38 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:14:03 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ int	special_key_hook(int keycode, void *param)
 	if (keycode == 53)
 		ft_close();
 	if (keycode == 49)
-	{
-		cooldown(1,param);
-	}
+		attack(param);
 	return (0);
 }

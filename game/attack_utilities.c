@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 17:53:08 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:14:47 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,29 @@ void attack(void *param)
 
 	program = (t_program *)param;
 	current = program->man.tear_gameobject;
-	if(!program->man.tear_gameobject)
+	if (check_attack(param) == 1)
 	{
-		program->man.tear_gameobject = NULL;
-		program->man.tear_gameobject = malloc(sizeof(gameobject *));
-		if(!program->man.tear_gameobject)
-			return ;
-		program->man.tear_gameobject->next = NULL;
-		new_tear(param,program->man.tear_gameobject);
-		tear = program->man.tear_gameobject;
+		if (!program->man.tear_gameobject)
+		{
+			program->man.tear_gameobject = NULL;
+			program->man.tear_gameobject = malloc(sizeof(gameobject *));
+			if(!program->man.tear_gameobject)
+				return ;
+			program->man.tear_gameobject->next = NULL;
+			new_tear(param,program->man.tear_gameobject);
+			tear = program->man.tear_gameobject;
+		}
+		else
+		{
+			tear = malloc(sizeof(gameobject *));
+			if(!tear)
+				return ;
+			new_tear(param,tear);
+			tear->next = NULL;
+			last_node(&current,tear);
+		}
+		mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.img, tear->pos.x, tear->pos.y);	
 	}
-	else
-	{
-		tear = malloc(sizeof(gameobject *));
-		if(!tear)
-			return ;
-		new_tear(param,tear);
-		tear->next = NULL;
-		last_node(&current,tear);
-	}
-	mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.img, tear->pos.x, tear->pos.y);
 }
 
 void move_tear(void *param, gameobject *tear)
@@ -102,4 +105,20 @@ void new_tear(void *param, gameobject *tear)
 	tear->sprite.img =  mlx_xpm_file_to_image(program->mlx, TEAR_PATH, &tear->sprite.width, &tear->sprite.height);
 	tear->pos = pos_near_player(param);
 	tear->exist = 1;
+}
+
+int check_attack(void *param)
+{
+	t_program	*program;
+	size_t		len_list;
+	vector2		pos;
+
+	program = (t_program *)param;
+	pos = pos_near_player(param);
+	len_list = size_list(&program->man.tear_gameobject);
+	if (len_list >3)
+		return (0);
+	if (check_out_of_screen_vector(param,pos) == 0)
+		return (0);
+	return (1);
 }
