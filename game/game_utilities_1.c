@@ -14,7 +14,7 @@
 
 t_vector2	obj_pos(char c, char **map)
 {
-	char	*str;
+	char		*str;
 	t_vector2	pos;
 
 	pos.x = 0;

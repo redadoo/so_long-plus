@@ -24,7 +24,7 @@ void	special_action(int keycode, void *param)
 bool	check_move(void *param, int x, int y)
 {
 	t_program	*program;
-	char **map;
+	char		**map;
 
 	program = (t_program *)param;
 	map = program->map.matrix_map;

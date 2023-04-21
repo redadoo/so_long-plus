@@ -27,7 +27,7 @@ t_vector2	move_toward(int dir, t_vector2 pos, int dist)
 
 t_vector2	pos_near_player(void *param)
 {
-	t_program	*program;
+	t_program		*program;
 	t_vector2		pos;
 
 	program = (t_program *)param;
@@ -56,7 +56,7 @@ t_vector2	pos_near_player(void *param)
 
 int	put_sprite(void *param, t_vector2 p, void *i)
 {
-	t_program	*program;
+	t_program		*program;
 	t_screen		window;
 
 	program = (t_program *)param;

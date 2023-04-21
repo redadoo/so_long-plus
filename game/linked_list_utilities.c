@@ -26,7 +26,7 @@ void	last_node(t_gameobject **head_ref, t_gameobject *node)
 size_t	size_list(t_gameobject **head_ref)
 {
 	t_gameobject	*current;
-	size_t		i;
+	size_t			i;
 
 	i = 0;
 	current = (*head_ref);
@@ -41,7 +41,7 @@ size_t	size_list(t_gameobject **head_ref)
 t_gameobject	*find_node(t_gameobject **head_ref, size_t i)
 {
 	t_gameobject	*current;
-	size_t		x;
+	size_t			x;
 
 	x = 0;
 	current = (*head_ref);
