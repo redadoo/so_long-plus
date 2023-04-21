@@ -57,7 +57,7 @@ t_vector2	pos_near_player(void *param)
 int	put_sprite(void *param, t_vector2 p, void *i)
 {
 	t_program	*program;
-	screen		window;
+	t_screen		window;
 
 	program = (t_program *)param;
 	window = program->window;
@@ -65,7 +65,7 @@ int	put_sprite(void *param, t_vector2 p, void *i)
 	return (0);
 }
 
-int	put_background_sprite(void *param, t_vector2 posb, t_vector2 pos, t_data s)
+int	back_sprite(void *param, t_vector2 posb, t_vector2 pos, t_data s)
 {
 	t_program	*program;
 

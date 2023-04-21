@@ -36,7 +36,7 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 			Map[width] = assign_rows(false,Map[width],ysize,program);
 	}
 	background_instance(program);
-	Map = spawn_obj(Map,xsize * ysize,ysize,xsize,program);
+	Map = spawn_obj(Map, ysize, xsize, program);
 	Map = procedural_map(Map);
 
 	PrintMatrix(Map);
@@ -60,7 +60,7 @@ char *assign_rows(bool wall, char *row,int size,t_program program)
 	return (row);
 }
 
-char    **spawn_obj(char **map,int lenghtmatrix,int colum,int row,t_program program)
+char    **spawn_obj(char **map, int colum, int row, t_program program)
 {
 	vector2 pos;
 

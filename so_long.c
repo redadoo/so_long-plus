@@ -10,29 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "so_long.h"
 
-void set_game(t_program program,int argc,char **argv)
+void	set_game(t_program program, int argc, char **argv)
 {
-	program.window = ft_new_window(program.mlx,  1040, 740, "Rogue like Game");
-	if(argc == 1)
+	program.window = ft_new_window(program.mlx, 1040, 740, "Rogue like Game");
+	if (argc == 1)
 		program.map.matrix_map = generatemap(program);
-	else if(argc == 2)
-		program.map.matrix_map = readmap(program,argv[1]);
-	program.man = set_player(program,program.map.matrix_map);
-	mlx_hook(program.window.reference,2,1L << 1, *key_hook, &program);
+	else if (argc == 2)
+		program.map.matrix_map = readmap(program, argv[1]);
+	program.man = set_player(program, program.map.matrix_map);
+	mlx_hook(program.window.reference, 2, 1L << 1, *key_hook, &program);
 	printf("mlx_hook ok");
-	mlx_loop_hook(program.mlx,ft_update,&program);
+	mlx_loop_hook(program.mlx, ft_update, &program);
 	printf("mlx_loop_hook ok");
 	mlx_loop(program.mlx);
 }
 
 int	main(int argc, char **argv)
 {
-	t_program 	program;
+	t_program	program;
 
 	program.mlx = mlx_init();
 	srand((unsigned)time(NULL));
-	set_game(program,argc,argv);
+	set_game(program, argc, argv);
 }

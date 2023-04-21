@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-int Random01()
+int Random01(void)
 {
     int i = rand() % 2;
     

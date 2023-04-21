@@ -12,9 +12,9 @@
 
 #include "../so_long.h"
 
-void	last_node(gameobject **head_ref, gameobject *node)
+void	last_node(t_gameobject **head_ref, t_gameobject *node)
 {
-	gameobject	*current;
+	t_gameobject	*current;
 
 	current = (*head_ref);
 	while (current->next != NULL)
@@ -23,9 +23,9 @@ void	last_node(gameobject **head_ref, gameobject *node)
 	(*head_ref) = current;
 }
 
-size_t	size_list(gameobject **head_ref)
+size_t	size_list(t_gameobject **head_ref)
 {
-	gameobject	*current;
+	t_gameobject	*current;
 	size_t		i;
 
 	i = 0;
@@ -38,9 +38,9 @@ size_t	size_list(gameobject **head_ref)
 	return (i);
 }
 
-gameobject	*find_node(gameobject **head_ref, size_t i)
+t_gameobject	*find_node(t_gameobject **head_ref, size_t i)
 {
-	gameobject	*current;
+	t_gameobject	*current;
 	size_t		x;
 
 	x = 0;
@@ -55,11 +55,11 @@ gameobject	*find_node(gameobject **head_ref, size_t i)
 	return (current);
 }
 
-void	free_node_(gameobject **head_ref, gameobject *node)
+void	free_node_(t_gameobject **head_ref, t_gameobject *node)
 {
-	gameobject	*current;
-	gameobject	*previus_node;
-	gameobject	*next_node;
+	t_gameobject	*current;
+	t_gameobject	*previus_node;
+	t_gameobject	*next_node;
 
 	current = node;
 	previus_node = find_prev_node(head_ref, current);
@@ -78,9 +78,9 @@ void	free_node_(gameobject **head_ref, gameobject *node)
 	}	
 }
 
-gameobject	*find_prev_node(gameobject **head_ref, gameobject *node)
+t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node)
 {
-	gameobject	*current;
+	t_gameobject	*current;
 
 	current = (*head_ref);
 	if (node == NULL)

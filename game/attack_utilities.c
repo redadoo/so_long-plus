@@ -14,27 +14,27 @@
 
 void attack(void *param)
 {
-	gameobject	*tear;
+	t_gameobject	*tear;
 	t_program	*program;
-	gameobject	*current;
+	t_gameobject	*current;
 
 	program = (t_program *)param;
-	current = program->man.tear_gameobject;
+	current = program->man.tear_t_gameobject;
 	if (check_attack(param) == 1)
 	{
-		if (!program->man.tear_gameobject)
+		if (!program->man.tear_t_gameobject)
 		{
-			program->man.tear_gameobject = NULL;
-			program->man.tear_gameobject = malloc(sizeof(gameobject *));
-			if(!program->man.tear_gameobject)
+			program->man.tear_t_gameobject = NULL;
+			program->man.tear_t_gameobject = malloc(sizeof(t_gameobject *));
+			if(!program->man.tear_t_gameobject)
 				return ;
-			program->man.tear_gameobject->next = NULL;
-			new_tear(param,program->man.tear_gameobject);
-			tear = program->man.tear_gameobject;
+			program->man.tear_t_gameobject->next = NULL;
+			new_tear(param,program->man.tear_t_gameobject);
+			tear = program->man.tear_t_gameobject;
 		}
 		else
 		{
-			tear = malloc(sizeof(gameobject *));
+			tear = malloc(sizeof(t_gameobject *));
 			if(!tear)
 				return ;
 			new_tear(param,tear);
@@ -45,7 +45,7 @@ void attack(void *param)
 	}
 }
 
-void move_tear(void *param, gameobject *tear)
+void move_tear(void *param, t_gameobject *tear)
 {
 	t_program 	*program;
 
@@ -55,11 +55,11 @@ void move_tear(void *param, gameobject *tear)
 	{
 		tear->pos = move_toward(tear->dir,tear->pos,6);
 		if (check_out_of_screen(param, tear) != 0)
-			put_background_sprite(param, tear->b_pos, tear->pos, tear->sprite);
+			back_sprite(param, tear->b_pos, tear->pos, tear->sprite);
 		else
 		{
 			put_sprite(param, tear->b_pos, tear->sprite.b_img);
-			free_node_(&program->man.tear_gameobject,tear);
+			free_node_(&program->man.tear_t_gameobject,tear);
 			return ;
 		}
 	}
@@ -68,12 +68,12 @@ void move_tear(void *param, gameobject *tear)
 		tear->pos = move_toward(tear->dir,tear->pos,0);
 		if (check_out_of_screen(param, tear) != 0)
 		{
-			put_background_sprite(param, tear->b_pos, tear->pos, tear->sprite);
+			back_sprite(param, tear->b_pos, tear->pos, tear->sprite);
 			tear->exist = 2;
 			tear->dir = program->man.dir;
 		}
 		else
-			free_node_(&program->man.tear_gameobject,tear);
+			free_node_(&program->man.tear_t_gameobject,tear);
 	}   
 }
 
@@ -82,21 +82,21 @@ void manage_attack(void *param)
 	size_t		len_list;
 	size_t		N_tears;
 	t_program	*program;
-	gameobject	*tear;
-	gameobject	*current;
+	t_gameobject	*tear;
+	t_gameobject	*current;
 
 	program = (t_program *)param;
-	len_list = size_list(&program->man.tear_gameobject);
+	len_list = size_list(&program->man.tear_t_gameobject);
 	N_tears = 0;
 	while (len_list != 0 && N_tears < len_list)
 	{
-		current = find_node(&program->man.tear_gameobject,N_tears);
+		current = find_node(&program->man.tear_t_gameobject,N_tears);
 		move_tear(param,current); 
 		N_tears++;
 	}
 }
 
-void new_tear(void *param, gameobject *tear)
+void new_tear(void *param, t_gameobject *tear)
 {
 	t_program *program;
 
@@ -115,7 +115,7 @@ int check_attack(void *param)
 
 	program = (t_program *)param;
 	pos = pos_near_player(param);
-	len_list = size_list(&program->man.tear_gameobject);
+	len_list = size_list(&program->man.tear_t_gameobject);
 	if (len_list >3)
 		return (0);
 	if (check_out_of_screen_vector(param,pos) == 0)
