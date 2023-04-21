@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-vector2	move_toward(int dir, vector2 pos, int dist)
+t_vector2	move_toward(int dir, t_vector2 pos, int dist)
 {
 	if (dir == UP_DIR)
 		pos.y -= dist;
@@ -25,10 +25,10 @@ vector2	move_toward(int dir, vector2 pos, int dist)
 	return (pos);
 }
 
-vector2	pos_near_player(void *param)
+t_vector2	pos_near_player(void *param)
 {
 	t_program	*program;
-	vector2		pos;
+	t_vector2		pos;
 
 	program = (t_program *)param;
 	if (program->man.dir == UP_DIR)
@@ -54,7 +54,7 @@ vector2	pos_near_player(void *param)
 	return (pos);
 }
 
-int	put_sprite(void *param, vector2 p, void *i)
+int	put_sprite(void *param, t_vector2 p, void *i)
 {
 	t_program	*program;
 	screen		window;
@@ -65,7 +65,7 @@ int	put_sprite(void *param, vector2 p, void *i)
 	return (0);
 }
 
-int	put_background_sprite(void *param, vector2 posb, vector2 pos, t_data s)
+int	put_background_sprite(void *param, t_vector2 posb, t_vector2 pos, t_data s)
 {
 	t_program	*program;
 

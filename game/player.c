@@ -17,7 +17,7 @@ t_player	set_player(t_program program, char **map)
 	t_player	player;
 	int			img_width;
 	int			img_height;
-	vector2		player_start_pos;
+	t_vector2	player_start_pos;
 	t_data		enemy;
 
 	player_start_pos = obj_pos('P', map);

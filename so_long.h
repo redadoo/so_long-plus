@@ -1,5 +1,5 @@
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include <float.h>
 # include <unistd.h>
@@ -26,7 +26,7 @@ typedef struct    s_vector
 {
 	int    x;
 	int    y;
-}                vector2;
+}                t_vector2;
 
 typedef struct    s_data {
 	void		*img;
@@ -39,28 +39,28 @@ typedef struct    s_data {
 
 typedef struct    s_window {
 	void        *reference;
-	vector2      size;
-}                screen;
+	t_vector2      size;
+}                t_screen;
  
-typedef struct  s_gameobject 
+typedef struct  s_t_gameobject 
 {
 				int exist;
 				int	dir;
-				vector2 pos;
-				vector2 b_pos;
+				t_vector2 pos;
+				t_vector2 b_pos;
 				t_data sprite;
 				void *reference;
-				struct s_gameobject *next;
-}				gameobject;
+				struct s_t_gameobject *next;
+}				t_gameobject;
 
 typedef struct		s_player 
 {
 	void				*reference;
 	int					life;
 	int					dir;
-	vector2				pos;
+	t_vector2			pos;
 	t_data				sprite;
-	gameobject			*tear_gameobject;
+	t_gameobject		*tear_gameobject;
 }					t_player;
 
 typedef struct s_map{
@@ -74,12 +74,12 @@ typedef struct s_map{
 typedef struct    s_program {
 	void           *reference;
 	void           *mlx;
-	screen         window;
+	t_screen         window;
 	t_player       man;
 	t_map          map;
 }                  t_program;
 
-screen		ft_new_window(void *mlx, int widht, int height, char *name);
+t_screen		ft_new_window(void *mlx, int widht, int height, char *name);
 char		**readmap(t_program program, char *file);
 char		**generatemap(t_program program);
 t_player 	set_player(t_program program, char **map);
@@ -99,32 +99,32 @@ void		insert_corner(t_program program);
 void		insert_background(t_program program);
 int			mouse_event(int button, int x, int y, void *param);
 void		special_action(int keycode, void *param);
-vector2		obj_pos(char c, char **map);
+t_vector2		obj_pos(char c, char **map);
 void		spawn_enviroment(t_program program, char **map);
 void		spawn_manage(t_program program, char **map);
 void		spawn_collectable(t_program program, char **map);
 bool		check_move(void *param, int x, int y);
-vector2		random_pos(t_program program);
+t_vector2		random_pos(t_program program);
 char		**procedural_map(char **map);
-void		change_sprite_player(void *param, vector2 old_pos, vector2 new_pos);
+void		change_sprite_player(void *param, t_vector2 old_pos, t_vector2 new_pos);
 int			special_key_hook(int keycode, void *param);
 void		attack(void *param);
-int			check_out_of_screen(void *param, gameobject *game);
-vector2		move_toward(int dir, vector2 pos, int dist);
-vector2		pos_near_player(void *param);
-int 		put_sprite(void *param,vector2 pos,void *img_ptr);
-int			put_background_sprite(void *param, vector2 pos_b,vector2 pos_s, t_data sprite);
-void		move_tear(void *param, gameobject *tear);
-void 		new_tear(void *param, gameobject *tear);
+int			check_out_of_t_screen(void *param, t_gameobject *game);
+t_vector2		move_toward(int dir, t_vector2 pos, int dist);
+t_vector2		pos_near_player(void *param);
+int 		put_sprite(void *param,t_vector2 pos,void *img_ptr);
+int			put_background_sprite(void *param, t_vector2 pos_b, t_vector2 pos_s, t_data sprite);
+void		move_tear(void *param, t_gameobject *tear);
+void		new_tear(void *param, t_gameobject *tear);
 void		manage_attack(void *param);
-size_t		size_list(gameobject **head_ref);
-void		last_node(gameobject **head_ref, gameobject *node);
-gameobject	*find_node(gameobject **head_ref, size_t i);
-void		free_node_(gameobject **head_ref, gameobject *node);
-gameobject	*find_prev_node(gameobject **head_ref, gameobject *node);
+size_t		size_list(t_gameobject **head_ref);
+void		last_node(t_gameobject **head_ref, t_gameobject *node);
+t_gameobject	*find_node(t_gameobject **head_ref, size_t i);
+void		free_node_(t_gameobject **head_ref, t_gameobject *node);
+t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node);
 int			ft_close(void);
 void		*give_sprite(void *param, char *path);
-int			check_out_of_screen_vector(void *param, vector2 pos);
+int			check_out_of_t_screen_vector(void *param, t_vector2 pos);
 int			check_attack(void *param);
 
 #endif

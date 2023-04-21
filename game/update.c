@@ -24,7 +24,7 @@ int	ft_update(void *param)
 int	key_hook(int keycode, void *param)
 {
 	t_program	*program;
-	vector2		startpos;
+	t_vector2	startpos;
 	t_player	player;
 
 	program = (t_program *)param;

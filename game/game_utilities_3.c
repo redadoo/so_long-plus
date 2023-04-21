@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-int	check_out_of_screen_vector(void *param, vector2 pos)
+int	check_out_of_screen_vector(void *param, t_vector2 pos)
 {
 	t_program	*program;
 	char		**map;

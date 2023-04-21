@@ -12,10 +12,10 @@
 
 #include "../so_long.h"
 
-vector2	obj_pos(char c, char **map)
+t_vector2	obj_pos(char c, char **map)
 {
 	char	*str;
-	vector2	pos;
+	t_vector2	pos;
 
 	pos.x = 0;
 	pos.y = 0;
@@ -36,7 +36,7 @@ vector2	obj_pos(char c, char **map)
 	return (pos);
 }
 
-void	change_sprite_player(void *param, vector2 old_pos, vector2 new_pos)
+void	change_sprite_player(void *param, t_vector2 old_pos, t_vector2 new_pos)
 {
 	t_program	*program;
 	int			img_width;
