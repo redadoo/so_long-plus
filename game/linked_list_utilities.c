@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:05:14 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 16:37:59 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:22:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	last_node(t_gameobject **head_ref, t_gameobject *node)
 
 	current = (*head_ref);
 	while (current->next != NULL)
+	{
 		current = current->next;
+	}
 	current->next = node;
 	(*head_ref) = current;
 }

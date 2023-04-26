@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 09:27:36 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:46:32 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_vector2	obj_pos(char c, char **map)
 
 void	change_sprite_player(void *param, t_vector2 old_pos, t_vector2 new_pos)
 {
-	t_program	*program;
 	int			img_width;
 	int			img_height;
+	t_program	*program;
 
 	program = (t_program *)param;
 	if (old_pos.x > new_pos.x)

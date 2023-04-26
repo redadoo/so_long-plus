@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 09:25:16 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:34:43 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 	Map = spawn_obj(Map, ysize, xsize, program);
 	Map = procedural_map(Map);
 
-	PrintMatrix(Map);
+	//PrintMatrix(Map);
 	return (Map);
 }
 

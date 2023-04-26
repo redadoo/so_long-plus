@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 09:32:13 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:31:35 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,7 @@ int				check_out_of_t_screen(void *param, t_gameobject *game);
 t_vector2		move_toward(int dir, t_vector2 pos, int dist);
 t_vector2		pos_near_player(void *param);
 int				put_sprite(void *param, t_vector2 pos, void *img_ptr);
-int				back_sprite(void *param, t_vector2 pb, t_vector2 ps, t_data s);
-void			move_tear(void *param, t_gameobject *tear);
-void			new_tear(void *param, t_gameobject *tear);
-void			manage_attack(void *param);
+void			back_sprite(void *param, t_vector2 pos, t_data i);
 size_t			size_list(t_gameobject **head_ref);
 void			last_node(t_gameobject **head_ref, t_gameobject *node);
 t_gameobject	*find_node(t_gameobject **head_ref, size_t i);
@@ -136,5 +133,8 @@ t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node);
 int				ft_close(void);
 void			*give_sprite(void *param, char *path);
 int				check_out_of_screen_vector(void *param, t_vector2 pos);
-int				check_attack(void *param);
+void			spawn_tear(void *param);
+void			manage_attack(void *param);
+int				check_out_of_screen(void *param, t_gameobject *game);
+void			move_tear(void *param,t_gameobject *tear);
 #endif

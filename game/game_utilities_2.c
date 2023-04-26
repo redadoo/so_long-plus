@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:40:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 17:47:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:33:43 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_vector2	move_toward(int dir, t_vector2 pos, int dist)
 		pos.y += dist;
 	else if (dir == RIGHT_DIR)
 		pos.x += dist;
-	else if (dir == LEFT_DIR)
+	else if (dir== LEFT_DIR)
 		pos.x -= dist;
 	return (pos);
 }
@@ -36,17 +36,17 @@ t_vector2	pos_near_player(void *param)
 		pos.x = program->man.pos.x + 5;
 		pos.y = program->man.pos.y - 13;
 	}
-	if (program->man.dir == DOWN_DIR)
+	else if (program->man.dir == DOWN_DIR)
 	{
 		pos.x = program->man.pos.x + 5;
 		pos.y = program->man.pos.y + 52;
 	}
-	if (program->man.dir == LEFT_DIR)
+	else if (program->man.dir == LEFT_DIR)
 	{
 		pos.x = program->man.pos.x - 15;
 		pos.y = program->man.pos.y + 10;
 	}
-	if (program->man.dir == RIGHT_DIR)
+	else if (program->man.dir == RIGHT_DIR)
 	{
 		pos.x = program->man.pos.x + 25;
 		pos.y = program->man.pos.y + 10;
@@ -65,12 +65,11 @@ int	put_sprite(void *param, t_vector2 p, void *i)
 	return (0);
 }
 
-int	back_sprite(void *param, t_vector2 posb, t_vector2 pos, t_data s)
+void	back_sprite(void *param, t_vector2 pos, t_data i)
 {
 	t_program	*program;
 
 	program = (t_program *)param;
-	put_sprite(param, posb, s.b_img);
-	put_sprite(param, pos, s.img);
-	return (0);
+	put_sprite(param, pos, i.b_img);
+	put_sprite(param, pos, i.img);
 }
