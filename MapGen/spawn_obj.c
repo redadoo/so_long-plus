@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:15:30 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 15:49:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:26:13 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void spawn_manage(t_program program,char **map)
 void spawn_collectable(t_program program,char **map)
 {
     t_data      env;
-    vector2     env_pos;
+    t_vector2     env_pos;
     int		 	img_width;
 	int		 	img_height;
  
@@ -33,7 +33,7 @@ void spawn_collectable(t_program program,char **map)
 void spawn_enviroment(t_program program,char **map)
 {
     t_data      env;
-    vector2     env_pos;
+    t_vector2     env_pos;
     int		 	img_width;
 	int		 	img_height;
  

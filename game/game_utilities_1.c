@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 18:10:49 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:27:36 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	change_sprite_player(void *param, t_vector2 old_pos, t_vector2 new_pos)
 	}
 }
 
-int	check_out_of_screen(void *param, gameobject *game)
+int	check_out_of_screen(void *param, t_gameobject *game)
 {
 	t_program	*program;
 	char		**map;

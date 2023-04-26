@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/11 16:40:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:25:16 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char *assign_rows(bool wall, char *row,int size,t_program program)
 
 char    **spawn_obj(char **map, int colum, int row, t_program program)
 {
-	vector2 pos;
+	t_vector2 pos;
 
 	program.map.matrix_map = map;
 	pos = random_pos(program);

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 10:48:15 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 13:57:41 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:25:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char **procedural_map(char **map)
 {
-    vector2 player_pos;
-    vector2 seeker_pos;
+    t_vector2 player_pos;
+    t_vector2 seeker_pos;
     int     time;
     int     dir;
     player_pos = obj_pos('P',map);

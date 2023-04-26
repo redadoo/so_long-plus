@@ -6,15 +6,15 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:30:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 14:03:12 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:26:43 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-screen	ft_new_window(void *mlx, int widht, int height, char *name)
+t_screen	ft_new_window(void *mlx, int widht, int height, char *name)
 {
-	screen	window;
+	t_screen	window;
 
 	window.reference = mlx_new_window(mlx, widht, height, name);
 	window.size.x = widht;

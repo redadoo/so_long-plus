@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/21 12:16:20 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:32:13 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,6 @@ void			free_node_(t_gameobject **head_ref, t_gameobject *node);
 t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node);
 int				ft_close(void);
 void			*give_sprite(void *param, char *path);
-int				check_out_of_t_screen_vector(void *param, t_vector2 pos);
+int				check_out_of_screen_vector(void *param, t_vector2 pos);
 int				check_attack(void *param);
 #endif

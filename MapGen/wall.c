@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:07:12 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 16:21:45 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:26:21 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void PlaceSmallWall(char **map,int x,int j,int colum,int row,t_program program)
     }
     img_width = 65;
     img_height = 100;
-/*     wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/colonna.xpm", &img_width, &img_height); 
-    mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, x * 10, j * 10); */
     return;
 }
 

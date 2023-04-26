@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/03 12:54:17 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:25:55 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void PrintMatrix(char **Matrix)
     return;
 }
 
-vector2 random_pos(t_program program)
+t_vector2 random_pos(t_program program)
 {
-    vector2     pos;
+    t_vector2     pos;
     char        **map;
 
     map = program.map.matrix_map;
