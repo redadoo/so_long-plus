@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/31 16:22:16 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:12:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void insert_background(t_program program)
     int     len;
     t_data  wall;
 
-    img_height = 124;
-    img_width = 129;
     space = 0;
     len = 0;
     while (len <program.window.size.y)

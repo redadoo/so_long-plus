@@ -6,13 +6,14 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 11:31:35 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:17:52 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "gnl/get_next_line.h"
 # include <float.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -91,7 +92,7 @@ typedef struct s_program {
 }	t_program;
 
 t_screen		ft_new_window(void *mlx, int widht, int height, char *name);
-char			**readmap(t_program program, char *file);
+char			**readmap(void *param, char *file);
 char			**generatemap(t_program program);
 t_player		set_player(t_program program, char **map);
 int				key_hook(int keycode, void *param);
@@ -137,4 +138,10 @@ void			spawn_tear(void *param);
 void			manage_attack(void *param);
 int				check_out_of_screen(void *param, t_gameobject *game);
 void			move_tear(void *param,t_gameobject *tear);
+void			print_warning(char *message);
+void			*null_error(char *message);
+int				error(char *message);
+int				file_linecount(char *file);
+void			make_file_map(void *param, char **map);
+void			place_background(void *param);
 #endif

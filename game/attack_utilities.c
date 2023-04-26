@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 13:24:27 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:39:23 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,12 @@ void spawn_tear(void *param)
 	tear->dir = program->man.dir;
 	tear->exist = 1;
 	if (!program->man.tear_gameobject)
-	{
 		program->man.tear_gameobject = tear;
-	}
 	else
 	{
 		last = program->man.tear_gameobject;
 		while (last->next != NULL)
-		{
 			last = last->next;
-		}
 		last->next = tear;
 	}
 }
@@ -77,7 +73,6 @@ void move_tear(void *param,t_gameobject *tear)
 	pos_t = tear->pos;
  	if (check_out_of_screen(param,tear) == 0)
 	{
-		//printf("\n%i\n",(int)size_list(&program->man.tear_gameobject));
 		mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.b_img, pos_t.x, pos_t.y);
 		return ;
 	} 
