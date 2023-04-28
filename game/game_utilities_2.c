@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:40:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 13:27:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:05:57 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,38 @@ t_vector2	move_toward(int dir, t_vector2 pos, int dist)
 
 t_vector2	pos_near_player(void *param)
 {
-	t_program		*program;
+	t_vector2		player_pos;
 	t_vector2		pos;
+	t_program		*program;
 
 	program = (t_program *)param;
+	player_pos = program->man.pos;
 	if (program->man.dir == UP_DIR)
 	{
-		pos.x = program->man.pos.x + 5;
-		pos.y = program->man.pos.y - 13;
+		pos.x = player_pos.x + 5;
+		pos.y = player_pos.y - 13;
 	}
 	else if (program->man.dir == DOWN_DIR)
 	{
-		pos.x = program->man.pos.x + 5;
-		pos.y = program->man.pos.y + 52;
+		pos.x = player_pos.x + 5;
+		pos.y = player_pos.y + 52;
 	}
 	else if (program->man.dir == LEFT_DIR)
 	{
-		pos.x = program->man.pos.x - 15;
-		pos.y = program->man.pos.y + 10;
+		pos.x = player_pos.x - 15;
+		pos.y = player_pos.y + 10;
 	}
 	else if (program->man.dir == RIGHT_DIR)
 	{
-		pos.x = program->man.pos.x + 25;
-		pos.y = program->man.pos.y + 10;
+		pos.x = player_pos.x + 25;
+		pos.y = player_pos.y + 10;
 	}
 	return (pos);
 }
 
 void	back_sprite(void *param, t_vector2 pos, t_data i)
 {
-	t_program	*program;
+	t_program		*program;
 
 	program = (t_program *)param;
 	put_sprite(param, pos, i.b_img);

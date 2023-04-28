@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 13:10:29 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:07:47 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,12 @@ int	mouse_event(int button, int x, int y, void *param)
 
 int	special_key_hook(int keycode, void *param)
 {
-	t_program	*program;
 	t_data		spirte;
 	int			img_width;
 	int			img_height;
 
-	program = (t_program *)param;
 	if (keycode == 53)
-		ft_close();
+		ft_close(param);
 	if (keycode == 49)
 		attack(param);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:28:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 12:48:35 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:11:24 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void check(t_program program)
 	j = program.map.widht;
 
 	if (i > j || !map)
-		ft_close();
+		ft_close(program.reference);
 	i = 0;
 	j = 0;
 	check_env('P', program);
@@ -45,12 +45,12 @@ void check_wall(char c, int i, int j,t_program program)
 	if (((i == 0) || (i == program.map.height - 1)) && (j < program.map.widht - 1))
 	{
 		if (c != '1')
-			null_error("the map is not surrounded by walls");
+			null_error("the map is not surrounded by walls",program.reference);
 	}
 	if ((j == 0) || (j == program.map.widht - 2))
 	{
 		if (c != '1')
-			null_error("the map is not surrounded by walls");
+			null_error("the map is not surrounded by walls",program.reference);
 	}
 }
 void check_env(char c,t_program program)
@@ -76,5 +76,5 @@ void check_env(char c,t_program program)
 		i++;
 	} 
 	if (count < 1)
-		null_error("The map does not contain at least 1 exit, 1 collectible and 1 starting location.");
+		null_error("The map does not contain at least 1 exit, 1 collectible and 1 starting location.", program.reference);
 }

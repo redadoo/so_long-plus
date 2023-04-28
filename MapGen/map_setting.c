@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 13:37:12 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:08:23 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 		else
 			Map[width] = assign_rows(false,Map[width],ysize,program);
 	}
-	background_instance(program);
+	background_instance(program, 0);
 	return (Map);
 }
 
@@ -56,12 +56,13 @@ char *assign_rows(bool wall, char *row,int size,t_program program)
 	return (row);
 }
 
-void background_instance(t_program program)
+void background_instance(t_program program,int i)
 {
     insert_background(program);
     insert_wall(program);
     insert_lateral(program);
     insert_corner(program);
-	insert_wall_enviroment(program);
+	if (i == 1)
+		insert_wall_enviroment(program);
     return ;
 }

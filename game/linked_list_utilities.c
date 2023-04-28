@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:05:14 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 13:22:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:02:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,17 @@ t_gameobject	*find_node(t_gameobject **head_ref, size_t i)
 	return (current);
 }
 
-void	free_node_(t_gameobject **head_ref, t_gameobject *node)
+void	free_list(t_gameobject **head_ref)
 {
 	t_gameobject	*current;
-	t_gameobject	*previus_node;
-	t_gameobject	*next_node;
+	t_gameobject	*tmp;
 
-	current = node;
-	previus_node = find_prev_node(head_ref, current);
-	if (current->next != NULL)
+	while ((*head_ref) != NULL)
 	{
-		next_node = current->next;
-		previus_node->next = next_node;
-		current = NULL;
-		free(current);
+		tmp = current;
+		(*head_ref) = (*head_ref)->next;
+		free(tmp);
 	}
-	else
-	{
-		previus_node->next = NULL;
-		current = NULL;
-		free(current);
-	}	
 }
 
 t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node)

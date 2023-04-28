@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:10:17 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 13:33:55 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:12:38 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ int	check_out_of_screen_vector(void *param, t_vector2 pos)
 int	put_sprite(void *param, t_vector2 p, void *i)
 {
 	t_program		*program;
-	t_screen		window;
 
 	program = (t_program *)param;
-	window = program->window;
-	mlx_put_image_to_window(program->mlx, window.reference, i, p.x, p.y);
+
+	mlx_put_image_to_window(program->mlx, program->window.reference, i, p.x, p.y);
 	return (0);
 }
-int	put_comp_sprite(void *param, t_vector2 p, void *i)
+int	put_comp_sprite(void *param, t_vector2 p, void *i,  t_vector2 o)
 {
 	t_program		*program;
 	t_screen		window;
@@ -43,4 +42,13 @@ int	put_comp_sprite(void *param, t_vector2 p, void *i)
 	window = program->window;
 	mlx_put_image_to_window(program->mlx, window.reference, i, p.x, p.y);
 	return (0);
+}
+int	ft_close(void *param)
+{
+	t_program		*program;
+
+	program = (t_program *)param;
+	free_list(&program->man.tear_gameobject);
+	free(program->map.matrix_map);
+	exit(0);
 }

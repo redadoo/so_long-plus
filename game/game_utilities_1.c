@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 12:46:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:24:52 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,22 @@ void	change_sprite_player(void *param, t_vector2 old_pos, t_vector2 new_pos)
 	if (old_pos.x > new_pos.x)
 	{
 		program->man.sprite.img = give_sprite(param, SPRITE1);
-		put_sprite(param, new_pos, program->man.sprite.img);
+		put_sprite(program, new_pos, program->man.sprite.img);
 	}
 	else if (old_pos.x < new_pos.x)
 	{
 		program->man.sprite.img = give_sprite(param, SPRITE2);
-		put_sprite(param, new_pos, program->man.sprite.img);
+		put_sprite(program, new_pos, program->man.sprite.img);
 	}
 	else if (old_pos.y < new_pos.y)
 	{
 		program->man.sprite.img = give_sprite(param, SPRITE0);
-		put_sprite(param, new_pos, program->man.sprite.img);
+		put_sprite(program, new_pos, program->man.sprite.img);
 	}
 	else if (old_pos.y > new_pos.y)
 	{
 		program->man.sprite.img = give_sprite(param, SPRITE3);
-		put_sprite(param, new_pos, program->man.sprite.img);
+		put_sprite(program, new_pos, program->man.sprite.img);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 13:40:00 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:09:32 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_program {
 	t_map			map;
 }	t_program;
 
-t_screen		ft_new_window(void *mlx, int widht, int height, char *name);
+t_screen		ft_new_window(t_program program, int widht, int height, char *name);
 char			**readmap(void *param, char *file);
 char			**generatemap(t_program program);
 t_player		set_player(t_program program, char **map);
@@ -104,7 +104,7 @@ int				Random01(void);
 int				random_int(int min, int max);
 void			set_game(t_program program, int argc, char **argv);
 void			insert_wall(t_program program);
-void			background_instance(t_program program);
+void			background_instance(t_program program, int i);
 void			insert_lateral(t_program program);
 void			insert_corner(t_program program);
 void			insert_background(t_program program);
@@ -113,7 +113,7 @@ void			special_action(int keycode, void *param);
 t_vector2		obj_pos(char c, char **map);
 bool			check_move(void *param, int x, int y);
 void			change_sprite_player(void *param, t_vector2 op, t_vector2 np);
-int				special_key_hook(int keycode, void *param);
+int				special_key_hook(int keycode,void *program);
 void			attack(void *param);
 t_vector2		move_toward(int dir, t_vector2 pos, int dist);
 t_vector2		pos_near_player(void *param);
@@ -122,9 +122,9 @@ void			back_sprite(void *param, t_vector2 pos, t_data i);
 size_t			size_list(t_gameobject **head_ref);
 void			last_node(t_gameobject **head_ref, t_gameobject *node);
 t_gameobject	*find_node(t_gameobject **head_ref, size_t i);
-void			free_node_(t_gameobject **head_ref, t_gameobject *node);
+void			free_list(t_gameobject **head_ref);
 t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node);
-int				ft_close(void);
+int				ft_close(void *program);
 void			*give_sprite(void *param, char *path);
 int				check_out_of_screen_vector(void *param, t_vector2 pos);
 void			spawn_tear(void *param);
@@ -132,7 +132,7 @@ void			manage_attack(void *param);
 int				check_out_of_screen(void *param, t_gameobject *game);
 void			move_tear(void *param,t_gameobject *tear);
 void			print_warning(char *message);
-void			null_error(char *message);
+void			null_error(char *message, void *program);
 int				error(char *message);
 int				file_linecount(char *file);
 void			make_file_map(t_program program, char **map);
@@ -140,4 +140,5 @@ void			insert_wall_enviroment(t_program program);
 void			check(t_program program);
 void			check_wall(char c, int i, int j,t_program program);
 void			check_env(char c,t_program program);
+int				close_w(void);
 #endif

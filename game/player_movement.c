@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:26:25 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 12:29:15 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:22:23 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ bool	check_move(void *param, int x, int y)
 
 	program = (t_program *)param;
 	map = program->map.matrix_map;
-	x /= 10;
-	y /= 10;
+	x /= 50;
+	y /= 100;
 	if (map[y][x] == '0')
 		return (true);
 	return (false);
