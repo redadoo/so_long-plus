@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 10:56:30 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:25:19 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void insert_wall_enviroment(t_program program)
 	j = 0;
 	matrix = program.map.matrix_map;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/wall_e.xpm", &img_width, &img_height); 
-	wall.b_img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/colonna.xpm", &img_width, &img_height); 
+	wall.b_img = mlx_xpm_file_to_image(program.mlx, "Asset/Enviroment/colonna.xpm", &img_width, &img_height); 
 	while (i < program.map.height)
 	{
 		while (j < program.map.widht)

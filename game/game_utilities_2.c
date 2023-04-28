@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:40:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 12:33:43 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:27:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,6 @@ t_vector2	pos_near_player(void *param)
 		pos.y = program->man.pos.y + 10;
 	}
 	return (pos);
-}
-
-int	put_sprite(void *param, t_vector2 p, void *i)
-{
-	t_program		*program;
-	t_screen		window;
-
-	program = (t_program *)param;
-	window = program->window;
-	mlx_put_image_to_window(program->mlx, window.reference, i, p.x, p.y);
-	return (0);
 }
 
 void	back_sprite(void *param, t_vector2 pos, t_data i)

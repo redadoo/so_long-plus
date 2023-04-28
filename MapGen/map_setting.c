@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 10:56:45 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:37:12 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ char **CreateCubeMap(int ysize,int xsize,t_program program)
 			Map[width] = assign_rows(false,Map[width],ysize,program);
 	}
 	background_instance(program);
-	Map = spawn_obj(Map, ysize, xsize, program);
-	Map = procedural_map(Map);
-
-	//PrintMatrix(Map);
 	return (Map);
 }
 
@@ -58,20 +54,6 @@ char *assign_rows(bool wall, char *row,int size,t_program program)
 			row[size] = '0';
 	}
 	return (row);
-}
-
-char    **spawn_obj(char **map, int colum, int row, t_program program)
-{
-	t_vector2 pos;
-
-	program.map.matrix_map = map;
-	pos = random_pos(program);
-	map[pos.x][pos.y] = 'P';
-	
-	pos = random_pos(program);
-	map[pos.x][pos.y] = 'E';
-	spawn_manage(program,map);
-	return(map);
 }
 
 void background_instance(t_program program)

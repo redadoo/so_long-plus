@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 12:45:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:40:00 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,6 @@ typedef struct s_program {
 	t_map			map;
 }	t_program;
 
-enum id
-{
-	PLAYER = 80,
-	EXIT = 69,
-	WALL = 59,
-	COIN = 67
-} 	env_id;
-
 t_screen		ft_new_window(void *mlx, int widht, int height, char *name);
 char			**readmap(void *param, char *file);
 char			**generatemap(t_program program);
@@ -109,7 +101,6 @@ char			**CreateCubeMap(int ysize, int xsize, t_program program);
 char			*assign_rows(bool wall, char *row, int size, t_program program);
 void			PrintMatrix(char **Matrix);
 int				Random01(void);
-char			**spawn_obj(char **map, int colum, int row, t_program program);
 int				random_int(int min, int max);
 void			set_game(t_program program, int argc, char **argv);
 void			insert_wall(t_program program);
@@ -120,16 +111,10 @@ void			insert_background(t_program program);
 int				mouse_event(int button, int x, int y, void *param);
 void			special_action(int keycode, void *param);
 t_vector2		obj_pos(char c, char **map);
-void			spawn_enviroment(t_program program, char **map);
-void			spawn_manage(t_program program, char **map);
-void			spawn_collectable(t_program program, char **map);
 bool			check_move(void *param, int x, int y);
-t_vector2		random_pos(t_program program);
-char			**procedural_map(char **map);
 void			change_sprite_player(void *param, t_vector2 op, t_vector2 np);
 int				special_key_hook(int keycode, void *param);
 void			attack(void *param);
-int				check_out_of_t_screen(void *param, t_gameobject *game);
 t_vector2		move_toward(int dir, t_vector2 pos, int dist);
 t_vector2		pos_near_player(void *param);
 int				put_sprite(void *param, t_vector2 pos, void *img_ptr);
@@ -151,7 +136,6 @@ void			null_error(char *message);
 int				error(char *message);
 int				file_linecount(char *file);
 void			make_file_map(t_program program, char **map);
-void			place_background(t_program program);
 void			insert_wall_enviroment(t_program program);
 void			check(t_program program);
 void			check_wall(char c, int i, int j,t_program program);

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:10:17 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/17 18:11:24 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:33:55 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,26 @@ int	check_out_of_screen_vector(void *param, t_vector2 pos)
 	map = program->map.matrix_map;
 	if (map && map[pos.y / 10][pos.x / 10] == '0')
 		return (1);
+	return (0);
+}
+
+int	put_sprite(void *param, t_vector2 p, void *i)
+{
+	t_program		*program;
+	t_screen		window;
+
+	program = (t_program *)param;
+	window = program->window;
+	mlx_put_image_to_window(program->mlx, window.reference, i, p.x, p.y);
+	return (0);
+}
+int	put_comp_sprite(void *param, t_vector2 p, void *i)
+{
+	t_program		*program;
+	t_screen		window;
+
+	program = (t_program *)param;
+	window = program->window;
+	mlx_put_image_to_window(program->mlx, window.reference, i, p.x, p.y);
 	return (0);
 }
