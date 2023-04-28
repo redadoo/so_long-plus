@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 15:24:52 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:17:31 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_out_of_screen(void *param, t_gameobject *game)
 
 	program = (t_program *)param;
 	map = program->map.matrix_map;
-	if (map && map[game->pos.y / 10][game->pos.x / 10] == '0')
+	if (map && map[game->pos.y / 100][game->pos.x / 50] == '0')
 		return (1);
 	return (0);
 }

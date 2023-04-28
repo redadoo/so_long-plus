@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:10:17 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 16:12:38 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:15:53 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_out_of_screen_vector(void *param, t_vector2 pos)
 
 	program = (t_program *)param;
 	map = program->map.matrix_map;
-	if (map && map[pos.y / 10][pos.x / 10] == '0')
+	if (map && map[pos.y / 100][pos.x / 50] == '0')
 		return (1);
 	return (0);
 }
