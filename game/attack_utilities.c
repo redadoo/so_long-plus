@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 14:39:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:13:44 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 void attack(void *param)
 {
-	t_program	*program;
-
-	program = (t_program *)param;
 	spawn_tear(param);
 }
 
 void spawn_tear(void *param)
 {
+	t_program		*program;
 	int				w;
 	int				h;
-	t_program		*program;
 	t_gameobject	*tear;
 	t_gameobject	*last;
 
@@ -33,7 +30,7 @@ void spawn_tear(void *param)
 	tear->next = NULL;
 	tear->sprite.img = mlx_xpm_file_to_image(program->mlx, TEAR_PATH, &w, &h);
 	tear->sprite.b_img = mlx_xpm_file_to_image(program->mlx, TEAR_BACKGROUND_PATH	, &w, &h);
-	back_sprite(param, pos_near_player(param), tear->sprite);
+	back_sprite(program, pos_near_player(param), tear->sprite);
 	tear->pos = pos_near_player(param);
 	tear->dir = program->man.dir;
 	tear->exist = 1;
@@ -63,12 +60,12 @@ void manage_attack(void *param)
 		}
 	}	
 }
-
 void move_tear(void *param,t_gameobject *tear)
 {
 	t_program		*program;
 	t_vector2		pos_t;
 	int				dir;
+
 	program = (t_program *)param;
 	pos_t = tear->pos;
  	if (check_out_of_screen(param,tear) == 0)
@@ -78,7 +75,7 @@ void move_tear(void *param,t_gameobject *tear)
 	} 
 	mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.b_img, pos_t.x, pos_t.y);
 	pos_t = move_toward(tear->dir, pos_t, 6);
-	put_sprite(param, pos_t, tear->sprite.img);
+	mlx_put_image_to_window(program->mlx, program->window.reference,  tear->sprite.img, pos_t.x, pos_t.y);
 	tear->pos = pos_t;
 }
 
