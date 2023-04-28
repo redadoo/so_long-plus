@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 15:54:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 12:29:03 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,4 @@ int	file_linecount(char *file)
 	close(fd);
 	return (linecount);
 }
+

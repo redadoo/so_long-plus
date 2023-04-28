@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 16:17:52 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 12:45:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,14 @@ typedef struct s_program {
 	t_map			map;
 }	t_program;
 
+enum id
+{
+	PLAYER = 80,
+	EXIT = 69,
+	WALL = 59,
+	COIN = 67
+} 	env_id;
+
 t_screen		ft_new_window(void *mlx, int widht, int height, char *name);
 char			**readmap(void *param, char *file);
 char			**generatemap(t_program program);
@@ -139,9 +147,13 @@ void			manage_attack(void *param);
 int				check_out_of_screen(void *param, t_gameobject *game);
 void			move_tear(void *param,t_gameobject *tear);
 void			print_warning(char *message);
-void			*null_error(char *message);
+void			null_error(char *message);
 int				error(char *message);
 int				file_linecount(char *file);
-void			make_file_map(void *param, char **map);
-void			place_background(void *param);
+void			make_file_map(t_program program, char **map);
+void			place_background(t_program program);
+void			insert_wall_enviroment(t_program program);
+void			check(t_program program);
+void			check_wall(char c, int i, int j,t_program program);
+void			check_env(char c,t_program program);
 #endif

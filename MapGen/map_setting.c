@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/26 16:09:01 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:56:45 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void background_instance(t_program program)
     insert_wall(program);
     insert_lateral(program);
     insert_corner(program);
+	insert_wall_enviroment(program);
     return ;
 }
