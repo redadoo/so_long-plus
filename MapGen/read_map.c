@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 15:08:20 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:05:27 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,18 @@ int	file_linecount(char *file)
 void make_file_map(t_program program, char **map)
 {
 	background_instance(program, 1);
+}
+int check_type_wall(char **m,int x,int y,t_program program)
+{
+
+		printf("\n x : %i | y : %i\n",x,y);
+		if (m[x][y - 1] == '0' && m[x][y + 1] == '0')
+			return (1);
+		else if (m[x][y - 1] == '1' && m[x][y + 1] == '0')
+			return (4);
+		else if (m[x][y - 1] == '1' && m[x][y + 1]== '1')
+			return (3);	
+		else if (m[x][y - 1] == '0' && m[x][y + 1]== '1')
+			return (2);
+	return (0);
 }

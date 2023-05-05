@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 15:16:53 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:19:46 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,12 @@ void PrintMatrix(char **Matrix)
     }
     printf("\n");
     return;
+}
+
+void    put_wall_env(int x, int y, t_program program)
+{
+    t_vector2 pos;
+
+    pos.x = x;
+    pos.y = y;
 }

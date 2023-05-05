@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 13:25:19 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:00:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,22 +114,22 @@ void insert_wall_enviroment(t_program program)
 	int		j;
 	int		img_width; 
 	int		img_height;
-	char	**matrix;
+	char	**ma;
 	t_data  wall;
 
 	i = 0;
 	j = 0;
-	matrix = program.map.matrix_map;
+	ma = program.map.matrix_map;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/wall_e.xpm", &img_width, &img_height); 
 	wall.b_img = mlx_xpm_file_to_image(program.mlx, "Asset/Enviroment/colonna.xpm", &img_width, &img_height); 
 	while (i < program.map.height)
 	{
 		while (j < program.map.widht)
 		{
-			if ((matrix[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j != program.map.widht - 2) && ((matrix[i][j + 1] == '1') || (matrix[i][j - 1] == '1')))
-				mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, j * 50, i * 100);
-			else if((matrix[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j != program.map.widht - 2) && (matrix[i][j + 1] != '1'))
-				mlx_put_image_to_window(program.mlx,program.window.reference, wall.b_img, j * 60, i * 70);
+			if ((ma[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j < program.map.widht - 2))
+			{
+				printf("\n valore : %i \n",check_type_wall(ma,i,j,program));
+			}
 			j++;
 		}
 		j = 0;
