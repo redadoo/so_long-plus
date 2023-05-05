@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/04/28 13:39:05 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/05 14:59:10 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ exe: all
 	@echo "\n     - Done -"
 
 play: all
-	@./$(NAME) Map/map_0.ber
+	@./$(NAME) Map/map_1.ber
 
 norm:
 	@echo $(GRAY) ""

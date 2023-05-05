@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 13:48:20 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:16:53 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void PrintMatrix(char **Matrix)
             printf("%c",*str);
             str++;
         }
-        printf("\n");
         Matrix++;
     }
+    printf("\n");
     return;
 }

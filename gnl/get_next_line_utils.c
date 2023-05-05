@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:16:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/03/10 11:11:05 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:06:02 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *str)
 	int	count;
 
 	count = 0;
-	while (str[count])
+	while (str[count] != '\0')
 		count++;
 	return (count);
 }

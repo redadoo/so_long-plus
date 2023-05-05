@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:26:25 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 14:22:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:35:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ void	special_action(int keycode, void *param)
 		exit(0);
 }
 
-bool	check_move(void *param, int x, int y)
+bool	check_move(char **map, t_vector2 pos)
 {
-	t_program	*program;
-	char		**map;
+	int x;
+	int y;
 
-	program = (t_program *)param;
-	map = program->map.matrix_map;
-	x /= 50;
-	y /= 100;
-	if (map[y][x] == '0')
-		return (true);
-	return (false);
+	x = pos.x;
+	y = pos.y;
+
+
+	printf("\n%i %i\n",x, y);
+
+	printf("%c",map[y / 100][x / 50]);
+	return (true);
 }

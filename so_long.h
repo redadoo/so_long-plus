@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 16:09:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:57:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_program {
 }	t_program;
 
 t_screen		ft_new_window(t_program program, int widht, int height, char *name);
-char			**readmap(void *param, char *file);
+t_map			readmap(void *param, char *file);
 char			**generatemap(t_program program);
 t_player		set_player(t_program program, char **map);
 int				key_hook(int keycode, void *param);
@@ -111,7 +111,7 @@ void			insert_background(t_program program);
 int				mouse_event(int button, int x, int y, void *param);
 void			special_action(int keycode, void *param);
 t_vector2		obj_pos(char c, char **map);
-bool			check_move(void *param, int x, int y);
+bool			check_move(char **map, t_vector2 pos);
 void			change_sprite_player(void *param, t_vector2 op, t_vector2 np);
 int				special_key_hook(int keycode,void *program);
 void			attack(void *param);
