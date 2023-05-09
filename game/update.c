@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 14:36:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:01:07 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_update(void *param)
 
 	program = (t_program *)param;
 	manage_attack(param);
+	coin_anim(param);
 	return (0);
 }
 
@@ -32,14 +33,14 @@ int	key_hook(int keycode, void *param)
 	player = program->man;
 	startpos = program->man.pos;
 	special_key_hook(keycode, param);
-	if (keycode == 0 && check_move(program->map.matrix_map, player.pos))
-		program->man.pos.x -= 9;
-	if (keycode == 1 && check_move(program->map.matrix_map, player.pos))
-		program->man.pos.y += 9;
-	if (keycode == 2 && check_move(program->map.matrix_map, player.pos))
-		program->man.pos.x += 9;
-	if (keycode == 13 &&check_move(program->map.matrix_map, player.pos))
-		program->man.pos.y -= 9;
+	if (keycode == 0 && check_move(program, player.pos,keycode))
+		program->man.pos.x -= 6;
+	else if (keycode == 1 && check_move(program, player.pos,keycode))
+		program->man.pos.y += 6;
+	else if (keycode == 2 && check_move(program, player.pos,keycode))
+		program->man.pos.x += 6;
+	else if (keycode == 13 &&check_move(program, player.pos,keycode))
+		program->man.pos.y -= 6;
 	if (startpos.y != program->man.pos.y || startpos.x != program->man.pos.x)
 	{
 		put_sprite(param, startpos, player.sprite.b_img);

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 16:29:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:33:57 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@
 # define SPRITE1 "Asset/player/player1.xpm"
 # define SPRITE2 "Asset/player/player2.xpm"
 # define SPRITE3 "Asset/player/player3.xpm"
+# define COIN0 "Asset/Enviroment/coinSprite/coin_sprite_0.xpm"
+# define COIN1 "Asset/Enviroment/coinSprite/coin_sprite_1.xpm"
+# define COIN2 "Asset/Enviroment/coinSprite/coin_sprite_2.xpm"
+# define COIN3 "Asset/Enviroment/coinSprite/coin_sprite_3.xpm"
+# define COIN4 "Asset/Enviroment/coinSprite/coin_sprite_4.xpm"
+# define COIN5 "Asset/Enviroment/coinSprite/coin_sprite_5.xpm"
+# define COIN6 "Asset/Enviroment/coinSprite/coin_sprite_6.xpm"
+# define COIN7 "Asset/Enviroment/coinSprite/coin_sprite_7.xpm"
+# define COIN8 "Asset/Enviroment/coinSprite/coin_sprite_8.xpm"
+
 
 typedef struct s_vector
 {
@@ -48,6 +58,7 @@ typedef struct s_data {
 	int			width;
 	int			height;
 	void		*reference;
+	struct s_data	*next;
 }	t_data;
 
 typedef struct s_window {
@@ -86,10 +97,17 @@ typedef struct s_map
 typedef struct s_program {
 	void			*reference;
 	void			*mlx;
+	t_env 			env;
 	t_screen		window;
 	t_player		man;
 	t_map			map;
 }	t_program;
+
+typedef struct s_env
+{
+	t_gameobject 	*coin;
+	t_gameobject 	enemy;
+}	t_env;
 
 t_screen		ft_new_window(t_program program, int widht, int height, char *name);
 t_map			readmap(void *param, char *file);
@@ -111,7 +129,7 @@ void			insert_background(t_program program);
 int				mouse_event(int button, int x, int y, void *param);
 void			special_action(int keycode, void *param);
 t_vector2		obj_pos(char c, char **map);
-bool			check_move(char **map, t_vector2 pos);
+bool			check_move(t_program *program, t_vector2 pos,int dir);
 void			change_sprite_player(void *param, t_vector2 op, t_vector2 np);
 int				special_key_hook(int keycode,void *program);
 void			attack(void *param);
@@ -135,7 +153,7 @@ void			print_warning(char *message);
 void			null_error(char *message, void *program);
 int				error(char *message);
 int				file_linecount(char *file);
-void			make_file_map(t_program program, char **map);
+void			make_file_map(t_program program);
 void			insert_wall_enviroment(t_program program);
 void			check(t_program program);
 void			check_wall(char c, int i, int j,t_program program);
@@ -143,4 +161,9 @@ void			check_env(char c,t_program program);
 int				close_w(void);
 void			put_wall_env(int x, int y, t_program program);
 int				check_type_wall(char **m,int x,int y,t_program program);
+void			coin(t_program program);
+int				coin_anim (void *param);
+t_gameobject	*spawn_coin(t_program program,t_vector2 pos);
+void			add_coin(t_program program,t_vector2 pos);
+
 #endif

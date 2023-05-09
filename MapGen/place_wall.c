@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 17:00:06 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:35:19 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void insert_wall_enviroment(t_program program)
 		{
 			if ((ma[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j < program.map.widht - 2))
 			{
-				printf("\n valore : %i \n",check_type_wall(ma,i,j,program));
+				//printf("\n valore : %i \n",check_type_wall(ma,i,j,program));
 			}
 			j++;
 		}
