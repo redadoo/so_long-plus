@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:00:08 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 14:57:39 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:30:53 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ t_coin set_sprite_coin(t_program program,t_coin coins)
 {
 	int			img_width;
 	int			img_height;
+
+	coins.sprite0.b_img = mlx_xpm_file_to_image(program.mlx, GRASSCOIN, &img_width, &img_height);
 	coins.sprite0.img = mlx_xpm_file_to_image(program.mlx, COIN0, &img_width, &img_height);
 	coins.sprite1.img = mlx_xpm_file_to_image(program.mlx, COIN1, &img_width, &img_height);
 	coins.sprite2.img = mlx_xpm_file_to_image(program.mlx, COIN2, &img_width, &img_height);

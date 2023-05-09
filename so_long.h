@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 15:08:46 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:29:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define COIN6 "Asset/Enviroment/coinSprite/coin_sprite_6.xpm"
 # define COIN7 "Asset/Enviroment/coinSprite/coin_sprite_7.xpm"
 # define COIN8 "Asset/Enviroment/coinSprite/coin_sprite_8.xpm"
+# define GRASSCOIN "Asset/Enviroment/coinSprite/grass_coin.xpm"
 
 
 typedef struct s_vector
