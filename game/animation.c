@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 15:18:50 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:25:44 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,19 @@ int	coin_anim (void *param)
 		coins = program->env.coins.coin;
 		while (coins != NULL)
 		{
-			if (frame == ANIMATION_FRAMES)
+			if (frame == 60)
 			{
-				change_sprite_coin(param,coins,frame);
+				printf("\n count prima : %i ", count);
+				change_sprite_coin(param,coins,count);
+				count++;
+				printf("\n count dopo : %i ", count);
 			}
-			if (frame ==  ANIMATION_FRAMES * 1)
+			if (frame ==  60 * 9)
+			{
 				frame = 0;
+			}
+			if (count >= 8)
+				count = 0;
 			coins = coins->next;
 		}
 	}
@@ -63,6 +70,5 @@ void change_sprite_coin(void *param,t_gameobject *coin ,int count)
 		coin->sprite = program->env.coins.sprite8;
 
 	mlx_put_image_to_window(program->mlx, program->window.reference, coin->sprite.img , coin->pos.y * 50, coin->pos.x * 100);
-	printf("\n %i qua vado", count);
 
 }
