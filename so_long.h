@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 13:33:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:38:27 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ typedef struct s_map
 	int		height;
 }	t_map;
 
+typedef struct s_env {
+	t_gameobject 	*coin;
+	t_gameobject 	enemy;
+}	t_env;
+
 typedef struct s_program {
 	void			*reference;
 	void			*mlx;
@@ -103,11 +108,6 @@ typedef struct s_program {
 	t_map			map;
 }	t_program;
 
-typedef struct s_env
-{
-	t_gameobject 	*coin;
-	t_gameobject 	enemy;
-}	t_env;
 
 t_screen		ft_new_window(t_program program, int widht, int height, char *name);
 t_map			readmap(void *param, char *file);

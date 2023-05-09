@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 12:39:51 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:39:13 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	coin_anim (void *param)
 	static int	frame;
 
 	frame++;
-	if (program->coin != NULL)
+	if (program->env.coin != NULL)
 	{
 		printf("ev");
 	}

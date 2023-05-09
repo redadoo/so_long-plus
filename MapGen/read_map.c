@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 13:06:35 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:38:57 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	file_linecount(char *file)
 
 void make_file_map(t_program program)
 {
-	program.coin = NULL;
 	background_instance(program, 1);
 	coin(program);
 }
