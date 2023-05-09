@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:00:08 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 13:32:37 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:35:19 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void add_coin(t_program program,t_vector2 pos)
 	int				img_height;
 	t_gameobject	*last;
 	t_gameobject	*coins;
-
+	t_env			env;
 	coins = (t_gameobject *)malloc(sizeof(t_gameobject));
 	if (!coins)
 		return ;
