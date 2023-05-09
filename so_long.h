@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 13:38:27 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:08:46 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_data {
 	int			width;
 	int			height;
 	void		*reference;
-	struct s_data	*next;
 }	t_data;
 
 typedef struct s_window {
@@ -87,6 +86,19 @@ typedef struct s_player
 	t_gameobject		*tear_gameobject;
 }	t_player;
 
+typedef struct s_coin {
+	t_gameobject 	*coin;
+	t_data			sprite0;
+	t_data			sprite1;
+	t_data			sprite2;
+	t_data			sprite3;
+	t_data			sprite4;
+	t_data			sprite5;
+	t_data			sprite6;
+	t_data			sprite7;
+	t_data			sprite8;
+}	t_coin;
+
 typedef struct s_map
 {
 	char	**matrix_map;
@@ -95,7 +107,7 @@ typedef struct s_map
 }	t_map;
 
 typedef struct s_env {
-	t_gameobject 	*coin;
+	t_coin 			coins;
 	t_gameobject 	enemy;
 }	t_env;
 
@@ -153,7 +165,7 @@ void			print_warning(char *message);
 void			null_error(char *message, void *program);
 int				error(char *message);
 int				file_linecount(char *file);
-void			make_file_map(t_program program);
+t_env		make_file_map(t_program program);
 void			insert_wall_enviroment(t_program program);
 void			check(t_program program);
 void			check_wall(char c, int i, int j,t_program program);
@@ -161,9 +173,12 @@ void			check_env(char c,t_program program);
 int				close_w(void);
 void			put_wall_env(int x, int y, t_program program);
 int				check_type_wall(char **m,int x,int y,t_program program);
-void			coin(t_program program);
+t_env		coin(t_program program);
 int				coin_anim (void *param);
 t_gameobject	*spawn_coin(t_program program,t_vector2 pos);
-void			add_coin(t_program program,t_vector2 pos);
+t_env			add_coin(t_program program,t_vector2 pos,t_env env);
+void			change_sprite_coin(void *param,t_gameobject *coin,int count);
+t_coin			set_sprite_coin(t_program program,t_coin coins);
+
 
 #endif

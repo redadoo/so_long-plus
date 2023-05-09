@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 13:38:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:19:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ int	file_linecount(char *file)
 	return (linecount);
 }
 
-void make_file_map(t_program program)
+t_env make_file_map(t_program program)
 {
 	background_instance(program, 1);
-	coin(program);
+	return (coin(program));
 }
 int check_type_wall(char **m,int x,int y,t_program program)
 {
