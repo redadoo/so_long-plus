@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:11:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:43:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ typedef struct s_vector
 	int	y;
 }	t_vector2;
 
+typedef struct s_Rect
+{
+	t_vector2 X1;
+	t_vector2 X2;
+	t_vector2 Y1;
+	t_vector2 Y2;
+}	t_Rect;
+
 typedef struct s_data {
 	void		*img;
 	void		*b_img;
@@ -74,6 +82,7 @@ typedef struct s_gameobject
 	t_data				sprite;
 	t_vector2			pos;
 	t_vector2			b_pos;
+	t_Rect				collider;
 	void				*reference;
 	struct s_gameobject	*next;
 }	t_gameobject;
