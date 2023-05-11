@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../so_long.h"
 
 
 /* Returns NULL printing <message> in red */

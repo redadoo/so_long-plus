@@ -6,14 +6,14 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/09 09:18:33 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/11 14:45:49 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long.out
 
 
-SRC = $(MAIN_SRC) $(SRC_MAP) $(SRC_GAME) $(GNL_SRC) 
+SRC = $(MAIN_SRC) $(SRC_MAP) $(SRC_GAME) $(GNL_SRC) $(UTILIS_SRC)
 
 
 MAIN_SRC = *.c
@@ -23,6 +23,8 @@ SRC_GAME = game/*.c
 SRC_MAP = MapGen/*.c
 
 GNL_SRC = gnl/*.c
+
+UTILIS_SRC = utils/*.c
 
 OBJ = *.o
 

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:10:17 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 16:15:53 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:20:58 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_close(void *param)
 	t_program		*program;
 
 	program = (t_program *)param;
-	free_list(&program->man.tear_gameobject);
+	//free_list(&program->man.tear_gameobject);
 	free(program->map.matrix_map);
 	exit(0);
 }

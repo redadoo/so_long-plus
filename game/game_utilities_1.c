@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:31:33 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 16:17:31 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:22:41 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,17 @@ int	check_out_of_screen(void *param, t_gameobject *game)
 {
 	t_program	*program;
 	char		**map;
+	int			x;
+	int			y;
+
+	x = game->pos.x;
+	y = game->pos.y;
 
 	program = (t_program *)param;
 	map = program->map.matrix_map;
-	if (map && map[game->pos.y / 100][game->pos.x / 50] == '0')
-		return (1);
-	return (0);
+	if (y < 65 || y > program->window.size.y - 84 || x < 10 || x > program->window.size.x - 25)
+		return (0);
+	return (1);
 }
 
 void	*give_sprite(void *param, char *path)

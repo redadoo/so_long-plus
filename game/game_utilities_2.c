@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:40:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 15:47:14 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:00:13 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,12 @@ void	back_sprite(void *param, t_vector2 pos, t_data i)
 	program = (t_program *)param;
 	put_sprite(param, pos, i.b_img);
 	put_sprite(param, pos, i.img);
+}
+void print_step_onscreen(void *mlx,void *win,int step)
+{
+	char *str;
+
+	str = ft_itoa(step);
+	printf("%s",str);
+	mlx_string_put(mlx,win,170,100,0xccccff,str);
 }

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:00:08 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 15:30:53 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:20:30 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ t_env coin(t_program program)
 		{
 			if (*str == 'C')
 				env = add_coin(program, pos,env);
-			pos.y++;
+			pos.x++;
 			str++;
 		}
-		pos.y = 0;
-		pos.x++;
+		pos.x = 0;
+		pos.y++;
 		map++;
 	}
 	return (env);
@@ -51,7 +51,9 @@ t_env add_coin(t_program program,t_vector2 pos,t_env env)
 	
 	coins = malloc(sizeof(t_gameobject));
 	coins->sprite.img =  mlx_xpm_file_to_image(program.mlx, COIN0, &img_width, &img_height);
-	mlx_put_image_to_window(program.mlx, program.window.reference, coins->sprite.img , pos.y * 50, pos.x * 100);
+	pos.y *= 100;
+	pos.x *= 50;
+	mlx_put_image_to_window(program.mlx, program.window.reference, coins->sprite.img , pos.x, pos.y);
 	coins->pos = pos;
 	coins->next = NULL;
  	if (!env.coins.coin)
@@ -74,13 +76,5 @@ t_coin set_sprite_coin(t_program program,t_coin coins)
 
 	coins.sprite0.b_img = mlx_xpm_file_to_image(program.mlx, GRASSCOIN, &img_width, &img_height);
 	coins.sprite0.img = mlx_xpm_file_to_image(program.mlx, COIN0, &img_width, &img_height);
-	coins.sprite1.img = mlx_xpm_file_to_image(program.mlx, COIN1, &img_width, &img_height);
-	coins.sprite2.img = mlx_xpm_file_to_image(program.mlx, COIN2, &img_width, &img_height);
-	coins.sprite3.img = mlx_xpm_file_to_image(program.mlx, COIN3, &img_width, &img_height);
-	coins.sprite4.img = mlx_xpm_file_to_image(program.mlx, COIN4, &img_width, &img_height);
-	coins.sprite5.img = mlx_xpm_file_to_image(program.mlx, COIN5, &img_width, &img_height);
-	coins.sprite6.img = mlx_xpm_file_to_image(program.mlx, COIN6, &img_width, &img_height);
-	coins.sprite7.img = mlx_xpm_file_to_image(program.mlx, COIN7, &img_width, &img_height);
-	coins.sprite8.img = mlx_xpm_file_to_image(program.mlx, COIN8, &img_width, &img_height);
 	return (coins);
 }

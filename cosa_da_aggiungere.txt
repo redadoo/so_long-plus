@@ -1,0 +1,4 @@
+1) add function to check if a gameobject is overlapping with another gameobject
+2) add collection coin
+3) enemy 
+4) wall inside map

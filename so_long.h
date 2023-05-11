@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 15:29:06 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:31:03 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void			print_warning(char *message);
 void			null_error(char *message, void *program);
 int				error(char *message);
 int				file_linecount(char *file);
-t_env		make_file_map(t_program program);
+t_env			make_file_map(t_program program);
 void			insert_wall_enviroment(t_program program);
 void			check(t_program program);
 void			check_wall(char c, int i, int j,t_program program);
@@ -174,12 +174,14 @@ void			check_env(char c,t_program program);
 int				close_w(void);
 void			put_wall_env(int x, int y, t_program program);
 int				check_type_wall(char **m,int x,int y,t_program program);
-t_env		coin(t_program program);
+t_env			coin(t_program program);
 int				coin_anim (void *param);
 t_gameobject	*spawn_coin(t_program program,t_vector2 pos);
 t_env			add_coin(t_program program,t_vector2 pos,t_env env);
-void			change_sprite_coin(void *param,t_gameobject *coin,int count);
 t_coin			set_sprite_coin(t_program program,t_coin coins);
-
+void			print_step_onscreen(void *mlx,void *win,int step);
+char			*ft_itoa(int temp);
+void 			collect_coin(void *param);
+bool			check_collect(void *param,t_vector2 coin,t_vector2 player);
 
 #endif
