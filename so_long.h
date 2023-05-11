@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:43:39 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:46:22 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@
 # define SPRITE2 "Asset/player/player2.xpm"
 # define SPRITE3 "Asset/player/player3.xpm"
 # define COIN0 "Asset/Enviroment/coinSprite/coin_sprite_0.xpm"
-# define COIN1 "Asset/Enviroment/coinSprite/coin_sprite_1.xpm"
-# define COIN2 "Asset/Enviroment/coinSprite/coin_sprite_2.xpm"
-# define COIN3 "Asset/Enviroment/coinSprite/coin_sprite_3.xpm"
-# define COIN4 "Asset/Enviroment/coinSprite/coin_sprite_4.xpm"
-# define COIN5 "Asset/Enviroment/coinSprite/coin_sprite_5.xpm"
-# define COIN6 "Asset/Enviroment/coinSprite/coin_sprite_6.xpm"
-# define COIN7 "Asset/Enviroment/coinSprite/coin_sprite_7.xpm"
-# define COIN8 "Asset/Enviroment/coinSprite/coin_sprite_8.xpm"
 # define GRASSCOIN "Asset/Enviroment/coinSprite/grass_coin.xpm"
 
 
