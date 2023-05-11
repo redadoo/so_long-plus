@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 15:31:03 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:11:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <time.h>
 # include <mlx.h>
 # include <stdbool.h>
+# include <math.h>
 
 # define ANIMATION_FRAMES 12
 # define UP_DIR 13

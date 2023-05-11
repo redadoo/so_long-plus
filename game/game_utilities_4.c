@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:06:56 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:13:52 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,15 @@ void collect_coin(void *param)
 	}
 }
 
-bool check_collect(void *param,t_vector2 coin,t_vector2 player)
+bool check_overlap_square(void *param,t_gameobject obj1,t_gameobject obj2)
 {
-	
-	
+		
+}
+bool check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2)
+{
+		
+}
+bool check_overlap_circle_square(void *param,t_gameobject obj1,t_gameobject obj2)
+{
+		
 }
