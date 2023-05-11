@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:40:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:48:30 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ void collect_coin(void *param)
 
 bool check_overlap_rectangle(void *param,t_gameobject obj1,t_gameobject obj2)
 {
+	t_Rect RectA;
+	t_Rect RectB;
 
+	RectA = obj1.collider;
+	RectB = obj2.collider;
 	if (RectA.X1 < RectB.X2 && RectA.X2 > RectB.X1 && 
 			RectA.Y1 > RectB.Y2 && RectA.Y2 < RectB.Y1)		
 		return (false);
@@ -65,7 +69,4 @@ bool check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2)
 	return (false);
     
 }
-bool check_overlap_circle_square(void *param,t_gameobject obj1,t_gameobject obj2)
-{
-		
-}
+

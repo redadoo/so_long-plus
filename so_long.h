@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:46:22 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:47:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,6 @@ t_coin			set_sprite_coin(t_program program,t_coin coins);
 void			print_step_onscreen(void *mlx,void *win,int step);
 char			*ft_itoa(int temp);
 void 			collect_coin(void *param);
-bool			check_collect(void *param,t_vector2 coin,t_vector2 player);
-
+bool			check_overlap_rectangle(void *param,t_gameobject obj1,t_gameobject obj2);
+bool			check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2);
 #endif
