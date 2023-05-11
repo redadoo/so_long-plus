@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:57:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 15:51:30 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:56:41 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ t_player	set_player(t_program program, char **map)
 	player.pos.x = player_start_pos.y * 50;
 	player.pos.y = player_start_pos.x * 100;
 	player.dir = 0;
+	//assegnare gli angoli del collider 
 	return (player);
 }

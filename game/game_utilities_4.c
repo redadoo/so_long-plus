@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:48:30 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:04:32 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void collect_coin(void *param)
 		coins = program->env.coins.coin;
 		while (coins != NULL)
 		{
-			if (check_collect(param,coins->pos,program->man.pos))
+			if (check_overlap_rectangle(param,coins,program->man))
 			{
+				//remove coin sprite 
 				printf("\ncollect");
 			}
 			coins = coins->next;

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:00:08 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 15:20:30 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:58:29 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_env add_coin(t_program program,t_vector2 pos,t_env env)
 	mlx_put_image_to_window(program.mlx, program.window.reference, coins->sprite.img , pos.x, pos.y);
 	coins->pos = pos;
 	coins->next = NULL;
+	//assegnare il collider
  	if (!env.coins.coin)
 	{
 		env.coins.coin = coins;

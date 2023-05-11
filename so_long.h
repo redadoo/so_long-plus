@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:47:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:51:30 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ typedef struct s_player
 	void				*reference;
 	int					life;
 	int					dir;
-	t_vector2			pos;
 	t_data				sprite;
+	t_Rect				collider;
+	t_vector2			pos;
 	t_gameobject		*tear_gameobject;
 }	t_player;
 
