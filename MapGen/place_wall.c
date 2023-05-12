@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:02:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:21:10 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,18 +108,22 @@ void insert_wall_enviroment(t_program program)
 	int		img_height;
 	char	**ma;
 	t_data  wall;
+	t_vector2 temp;
 
 	i = 0;
 	j = 0;
 	ma = program.map.matrix_map;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/wall_e.xpm", &img_width, &img_height); 
 	wall.b_img = mlx_xpm_file_to_image(program.mlx, "Asset/Enviroment/colonna.xpm", &img_width, &img_height); 
-	while (i < program.map.height )
+	while (i < program.map.height)
 	{
 		while (j < program.map.widht)
 		{
 			if ((ma[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j < program.map.widht - 2))
 			{
+				temp.x = j * 50;
+				temp.y = i * 150; 
+				mlx_put_image_to_window(program.mlx, program.window.reference, wall.b_img, temp.x, temp.y);
 				//printf("\n valore : %i \n",check_type_wall(ma,i,j,program));
 			}
 			j++;
