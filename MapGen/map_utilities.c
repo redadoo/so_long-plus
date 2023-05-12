@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/05 16:19:46 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:07:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int random_int(int min, int max)
    return min + rand() % (max+1 - min);
 }
 
-void PrintMatrix(char **Matrix)
+void    PrintMatrix(char **Matrix)
 {
     char *str;
     if(!Matrix)
@@ -52,10 +52,7 @@ void PrintMatrix(char **Matrix)
     return;
 }
 
-void    put_wall_env(int x, int y, t_program program)
+void    put_wall_env(t_program program,int x, int y,char **map)
 {
-    t_vector2 pos;
-
-    pos.x = x;
-    pos.y = y;
+    
 }

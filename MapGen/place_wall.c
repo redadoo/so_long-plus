@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 17:41:24 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:01:02 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,32 +107,17 @@ void insert_wall_enviroment(t_program program)
 	int		img_width; 
 	int		img_height;
 	char	**ma;
-	t_data  wall;
-	t_vector2 temp;
 
 	i = 0;
 	j = 0;
 	ma = program.map.matrix_map;
-	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/wall_e.xpm", &img_width, &img_height); 
-	wall.b_img = mlx_xpm_file_to_image(program.mlx, "Asset/Enviroment/colonna.xpm", &img_width, &img_height); 
 	while (i < program.map.height)
 	{
 		while (j < program.map.widht)
 		{
 			if ((ma[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j < program.map.widht - 2))
 			{
-				temp.x = j * 50;
-				temp.y = i * 150;
-				if(ma[i][j + 1] != '1' && ((j + 1) < program.map.widht - 2))
-					mlx_put_image_to_window(program.mlx, program.window.reference, wall.b_img, temp.x, temp.y);
-				else
-				{
-					mlx_put_image_to_window(program.mlx, program.window.reference, wall.b_img, temp.x, temp.y);
-					while (ma[i][j] == '1')
-					{
-						j++;
-					}
-				}
+				put_wall_env(program,i,j);
 			}
 			j++;
 		}

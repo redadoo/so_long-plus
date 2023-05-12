@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 17:46:20 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:59:43 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void			check(t_program program);
 void			check_wall(char c, int i, int j,t_program program);
 void			check_env(char c,t_program program);
 int				close_w(void);
-void			put_wall_env(int x, int y, t_program program);
+void			put_wall_env(t_program program,int x, int y);
 int				check_type_wall(char **m,int x,int y,t_program program);
 t_env			coin(t_program program);
 int				coin_anim (void *param);
