@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:00:08 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 15:05:30 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:08:38 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_env add_coin(t_program program,t_vector2 pos,t_env env)
 	temp.x = (coins->pos.x + img_width / 2);
 	temp.y = (coins->pos.y + img_height / 2);
 	coins->collider.Y2 = temp;
+	coins->exist = 1;
  	if (!env.coins.coin)
 	{
 		env.coins.coin = coins;

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/09 11:35:19 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:02:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,13 @@ void insert_corner(t_program program)
 	int     space;
 	t_data  wall;
 
-	img_width =96;
-	img_height = 104;
 	space = 0;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/Up_left.xpm", &img_width, &img_height); 
 	mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, 0, 0);
-	img_width =96;
-	img_height = 127;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/left_down.xpm", &img_width, &img_height); 
 	mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, 0, program.window.size.y - img_height);
-	img_width =96;
-	img_height = 104;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/up_right.xpm", &img_width, &img_height); 
 	mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, program.window.size.x - img_width, 0);
-	img_width =85;
-	img_height = 126;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/down_right.xpm", &img_width, &img_height); 
 	mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, program.window.size.x - img_width, program.window.size.y - img_height);
 }
@@ -95,7 +87,7 @@ void insert_background(t_program program)
 
 	space = 0;
 	len = 0;
-	while (len <program.window.size.y)
+	while (len <program.window.size.y - 100)
 	{
 		while (space <= program.window.size.x)
 		{
@@ -122,7 +114,7 @@ void insert_wall_enviroment(t_program program)
 	ma = program.map.matrix_map;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/wall_e.xpm", &img_width, &img_height); 
 	wall.b_img = mlx_xpm_file_to_image(program.mlx, "Asset/Enviroment/colonna.xpm", &img_width, &img_height); 
-	while (i < program.map.height)
+	while (i < program.map.height )
 	{
 		while (j < program.map.widht)
 		{

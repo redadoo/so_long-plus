@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 15:00:21 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:16:24 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ int	ft_update(void *param)
 	t_vector2	pos_t;
 
 	program = (t_program *)param;
-	//manage_attack(param);
+	manage_attack(param);
 	collect_coin(param);
 	return (0);
 }
-
 int	key_hook(int keycode, void *param)
 {
 	static int	x;
@@ -51,7 +50,6 @@ int	key_hook(int keycode, void *param)
 	}
 	return (0);
 }
-
 int	mouse_event(int button, int x, int y, void *param)
 {
 	t_program	*program;
@@ -60,7 +58,6 @@ int	mouse_event(int button, int x, int y, void *param)
 	mlx_pixel_put(program->mlx, program->window.reference, x, y, 0xFFFFFF);
 	return (1);
 }
-
 int	special_key_hook(int keycode, void *param)
 {
 	t_data		spirte;

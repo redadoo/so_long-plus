@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 15:06:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:10:31 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,18 @@ typedef struct s_Rect
 	t_vector2 Y2;
 }	t_Rect;
 
+typedef struct s_Circle
+{
+	t_vector2 center;
+	int radius;
+}	t_Circle;
+
+typedef struct s_str
+{
+	t_vector2 	pos;
+	int			value;
+}	t_str;
+
 typedef struct s_data {
 	void		*img;
 	void		*b_img;
@@ -80,7 +92,8 @@ typedef struct s_gameobject
 typedef struct s_player
 {
 	void				*reference;
-	int					life;
+	t_str				coin;
+	t_str				step;
 	int					dir;
 	t_data				sprite;
 	t_Rect				collider;
@@ -178,4 +191,5 @@ void 			collect_coin(void *param);
 bool			check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2);
 bool			check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2);
 t_Rect			player_collider_updatate(void *param);
+void			set_hud(t_program program);
 #endif

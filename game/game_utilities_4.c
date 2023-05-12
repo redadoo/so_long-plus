@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 15:04:11 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:12:47 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void collect_coin(void *param)
 		coins = program->env.coins.coin;
 		while (coins != NULL)
 		{
-			if (!check_overlap_rectangle(param,coins->collider,program->man.collider))
+			if (!check_overlap_rectangle(param,coins->collider,program->man.collider) && coins->exist != 0)
 			{
 				//remove coin sprite 
 				//printf("\ncollect");
 				put_sprite(param,coins->pos,program->env.coins.sprite0.b_img);
+				coins->exist = 0;
 			}
 			coins = coins->next;
 		}
 	}
 }
-
 bool check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2)
 {
 	t_Rect RectA;
