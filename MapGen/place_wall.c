@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 17:21:10 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:41:24 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,17 @@ void insert_wall_enviroment(t_program program)
 			if ((ma[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j < program.map.widht - 2))
 			{
 				temp.x = j * 50;
-				temp.y = i * 150; 
-				mlx_put_image_to_window(program.mlx, program.window.reference, wall.b_img, temp.x, temp.y);
-				//printf("\n valore : %i \n",check_type_wall(ma,i,j,program));
+				temp.y = i * 150;
+				if(ma[i][j + 1] != '1' && ((j + 1) < program.map.widht - 2))
+					mlx_put_image_to_window(program.mlx, program.window.reference, wall.b_img, temp.x, temp.y);
+				else
+				{
+					mlx_put_image_to_window(program.mlx, program.window.reference, wall.b_img, temp.x, temp.y);
+					while (ma[i][j] == '1')
+					{
+						j++;
+					}
+				}
 			}
 			j++;
 		}

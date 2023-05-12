@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:34:20 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:46:20 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,19 @@ typedef struct s_coin {
 	t_data			sprite0;
 }	t_coin;
 
+typedef struct s_wall
+{
+	t_Rect 		collider;
+	t_vector2 	pos;
+	t_data  	sprite;
+}	t_wall;
+
 typedef struct s_map
 {
 	char	**matrix_map;
 	int		widht;
 	int		height;
+	t_wall	*env_wall;
 }	t_map;
 
 typedef struct s_env {
