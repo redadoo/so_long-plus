@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 16:51:30 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:06:32 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ typedef struct s_vector
 typedef struct s_Rect
 {
 	t_vector2 X1;
-	t_vector2 X2;
-	t_vector2 Y1;
 	t_vector2 Y2;
 }	t_Rect;
 
@@ -93,14 +91,6 @@ typedef struct s_player
 typedef struct s_coin {
 	t_gameobject 	*coin;
 	t_data			sprite0;
-	t_data			sprite1;
-	t_data			sprite2;
-	t_data			sprite3;
-	t_data			sprite4;
-	t_data			sprite5;
-	t_data			sprite6;
-	t_data			sprite7;
-	t_data			sprite8;
 }	t_coin;
 
 typedef struct s_map
@@ -185,6 +175,7 @@ t_coin			set_sprite_coin(t_program program,t_coin coins);
 void			print_step_onscreen(void *mlx,void *win,int step);
 char			*ft_itoa(int temp);
 void 			collect_coin(void *param);
-bool			check_overlap_rectangle(void *param,t_gameobject obj1,t_gameobject obj2);
+bool			check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2);
 bool			check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2);
+t_Rect			player_collider_updatate(void *param);
 #endif

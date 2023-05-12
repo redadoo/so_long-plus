@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 17:04:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:04:11 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,31 @@ void collect_coin(void *param)
 	t_gameobject 	*coins;
 
 	program = (t_program *)param;
-
+	program->man.collider = player_collider_updatate(param);
 	if (program->env.coins.coin != NULL)
 	{
 		coins = program->env.coins.coin;
 		while (coins != NULL)
 		{
-			if (check_overlap_rectangle(param,coins,program->man))
+			if (!check_overlap_rectangle(param,coins->collider,program->man.collider))
 			{
 				//remove coin sprite 
-				printf("\ncollect");
+				//printf("\ncollect");
+				put_sprite(param,coins->pos,program->env.coins.sprite0.b_img);
 			}
 			coins = coins->next;
 		}
 	}
 }
 
-bool check_overlap_rectangle(void *param,t_gameobject obj1,t_gameobject obj2)
+bool check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2)
 {
 	t_Rect RectA;
 	t_Rect RectB;
 
-	RectA = obj1.collider;
-	RectB = obj2.collider;
-	if (RectA.X1 < RectB.X2 && RectA.X2 > RectB.X1 && 
-			RectA.Y1 > RectB.Y2 && RectA.Y2 < RectB.Y1)		
+	RectA = obj1;
+	RectB = obj2;
+	if (  (  RectA.X1.x  <  RectB.Y2.x  )  &&  (   RectA.Y2.x   >  RectB.X1.x  )  && (  RectA.X1.y  <  RectB.Y2.y  )  && (  RectA.Y2.y  >  RectB.X1.y  )  )
 		return (false);
 	return (true);
 }

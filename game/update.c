@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/11 15:06:33 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:00:21 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_update(void *param)
 	t_vector2	pos_t;
 
 	program = (t_program *)param;
-	manage_attack(param);
+	//manage_attack(param);
 	collect_coin(param);
 	return (0);
 }
@@ -72,4 +72,26 @@ int	special_key_hook(int keycode, void *param)
 	if (keycode == 49)
 		attack(param);
 	return (0);
+}
+t_Rect player_collider_updatate(void *param)
+{
+	t_program	*program;
+	t_player	player;
+	t_vector2	temp;
+	int			img_width;
+	int			img_height;
+
+	program = (t_program *)param;
+	player = program->man;
+	img_width = player.sprite.width;
+	img_height = player.sprite.height;
+	temp.x = (player.pos.x - img_width / 2);
+	temp.y = (player.pos.y - img_height / 2);
+	player.collider.X1 = temp;
+	temp.x = (player.pos.x + img_width / 2);
+	temp.y = (player.pos.y + img_height / 2) + 10;
+	player.collider.Y2 = temp;
+	return (player.collider);
+/* 	printf("\n%i   ",player.collider.X1.x);
+	printf("   %i",player.collider.X1.y); */
 }
