@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:56:38 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:45:29 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:08:15 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_player set_hud(t_program program)
 	hud.step.value = 0;
 	hud.coin.pos.x = 95;
 	hud.coin.pos.y = program.window.size.y + 50;
-	hud.coin.value = 0;
 	mlx_string_put(program.mlx,program.window.reference, 95, program.window.size.y + 20,0xccccff,"step : ");
 	mlx_string_put(program.mlx,program.window.reference, 155,program.window.size.y + 20,0xccccff,"0");
 	mlx_string_put(program.mlx,program.window.reference, 95, program.window.size.y + 50,0xccccff,"coin : ");
@@ -40,6 +39,7 @@ void	set_game(t_program program, int argc, char **argv)
 	program.man = set_hud(program);
 	program.env = make_file_map(program);
 	program.man = set_player(program, program.map.matrix_map);
+	program.man.coin.value = 0;
 	set_hud(program);
 	mlx_hook(program.window.reference, 2, 1L << 1, *key_hook, &program);
 	mlx_loop_hook(program.mlx, ft_update, &program);

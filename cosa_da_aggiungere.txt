@@ -1,3 +1,2 @@
 1) enemy 
 2) wall inside map
-3) Step count on screen
