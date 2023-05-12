@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:56:38 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:43:44 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:45:29 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_player set_hud(t_program program)
 	hud.step.value = 0;
 	hud.coin.pos.x = 95;
 	hud.coin.pos.y = program.window.size.y + 50;
-	hud.step.coin = 0;
+	hud.coin.value = 0;
 	mlx_string_put(program.mlx,program.window.reference, 95, program.window.size.y + 20,0xccccff,"step : ");
 	mlx_string_put(program.mlx,program.window.reference, 155,program.window.size.y + 20,0xccccff,"0");
 	mlx_string_put(program.mlx,program.window.reference, 95, program.window.size.y + 50,0xccccff,"coin : ");

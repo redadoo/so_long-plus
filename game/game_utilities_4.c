@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:43:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:45:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ void hud_update(void *param)
 
 	mlx_put_image_to_window(program->mlx,program->window.reference,back.img,155,program->window.size.y + 20);
 	mlx_string_put(program->mlx,program->window.reference, 155,program->window.size.y + 20,0xccccff,str_step);
-	mlx_put_image_to_window(program->mlx,program->window.reference,back.img,155,program->window.size.y + 20);
+	mlx_put_image_to_window(program->mlx,program->window.reference,back.img,155,program->window.size.y + 50);
 	mlx_string_put(program->mlx,program->window.reference, 155,program->window.size.y + 50,0xccccff,str_step);
 }
