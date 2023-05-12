@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:10:31 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:34:20 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define SPRITE3 "Asset/player/player3.xpm"
 # define COIN0 "Asset/Enviroment/coinSprite/coin_sprite_0.xpm"
 # define GRASSCOIN "Asset/Enviroment/coinSprite/grass_coin.xpm"
+# define BLACKB "Asset/hud/black_background.xpm"
+
 
 
 typedef struct s_vector
@@ -191,5 +193,6 @@ void 			collect_coin(void *param);
 bool			check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2);
 bool			check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2);
 t_Rect			player_collider_updatate(void *param);
-void			set_hud(t_program program);
+t_player		set_hud(t_program program);
+void			hud_update(void *param);
 #endif

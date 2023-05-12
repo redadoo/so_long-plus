@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/11 14:45:49 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/12 16:13:54 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,9 @@ exe: all
 	@echo "     - Executing $(NAME)... \n"
 	@./$(NAME)
 	@echo "\n     - Done -"
+
+play3: all
+	@./$(NAME) Map/map_3.ber
 
 play2: all
 	@./$(NAME) Map/map_2.ber

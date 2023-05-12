@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 16:12:47 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:43:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void collect_coin(void *param)
 		{
 			if (!check_overlap_rectangle(param,coins->collider,program->man.collider) && coins->exist != 0)
 			{
-				//remove coin sprite 
-				//printf("\ncollect");
 				put_sprite(param,coins->pos,program->env.coins.sprite0.b_img);
 				coins->exist = 0;
 			}
@@ -70,4 +68,21 @@ bool check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2)
 	return (false);
     
 }
+void hud_update(void *param)
+{
+	int 			step_count;
+	char			*str_step;
+	char			*str_coin;
+	t_program		*program;
+	t_data			back;
 
+	program = (t_program *)param;
+	str_step = ft_itoa(program->man.step.value);
+	str_coin = ft_itoa(program->man.coin.value);
+	back.img = give_sprite(param,BLACKB);
+
+	mlx_put_image_to_window(program->mlx,program->window.reference,back.img,155,program->window.size.y + 20);
+	mlx_string_put(program->mlx,program->window.reference, 155,program->window.size.y + 20,0xccccff,str_step);
+	mlx_put_image_to_window(program->mlx,program->window.reference,back.img,155,program->window.size.y + 20);
+	mlx_string_put(program->mlx,program->window.reference, 155,program->window.size.y + 50,0xccccff,str_step);
+}

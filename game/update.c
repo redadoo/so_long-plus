@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 15:16:24 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:29:36 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	ft_update(void *param)
 	t_vector2	pos_t;
 
 	program = (t_program *)param;
-	manage_attack(param);
+	//manage_attack(param);
 	collect_coin(param);
+	hud_update(param);
 	return (0);
 }
 int	key_hook(int keycode, void *param)
@@ -43,7 +44,7 @@ int	key_hook(int keycode, void *param)
 		program->man.pos.y -= 6;
 	if (startpos.y != program->man.pos.y || startpos.x != program->man.pos.x)
 	{
-		x++;
+		program->man.step.value = ++x;
 		put_sprite(param, startpos, player.sprite.b_img);
 		change_sprite_player(param, startpos, program->man.pos);
 		program->man.dir = keycode;	
