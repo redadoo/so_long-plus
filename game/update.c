@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 17:03:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:33:12 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int	ft_update(void *param)
 {
 	t_program	*program;
 	t_vector2	pos_t;
+	t_gameobject 	*last;
 
 	program = (t_program *)param;
 	//manage_attack(param);
 	collect_coin(param);
 	hud_update(param);
+	check_collide_wall(param);
 	return (0);
 }
 int	key_hook(int keycode, void *param)
@@ -34,13 +36,13 @@ int	key_hook(int keycode, void *param)
 	player = program->man;
 	startpos = program->man.pos;
 	special_key_hook(keycode, param);
-	if (keycode == 0 && check_move(program, player.pos,keycode))
+	if (keycode == 0 && check_move(param, player.pos,keycode))
 		program->man.pos.x -= 6;
-	else if (keycode == 1 && check_move(program, player.pos,keycode))
+	else if (keycode == 1 && check_move(param, player.pos,keycode))
 		program->man.pos.y += 6;
-	else if (keycode == 2 && check_move(program, player.pos,keycode))
+	else if (keycode == 2 && check_move(param, player.pos,keycode))
 		program->man.pos.x += 6;
-	else if (keycode == 13 && check_move(program, player.pos,keycode))
+	else if (keycode == 13 && check_move(param, player.pos,keycode))
 		program->man.pos.y -= 6;
 	if (startpos.y != program->man.pos.y || startpos.x != program->man.pos.x)
 	{
@@ -90,6 +92,4 @@ t_Rect player_collider_updatate(void *param)
 	temp.y = (player.pos.y + img_height / 2) + 10;
 	player.collider.Y2 = temp;
 	return (player.collider);
-/* 	printf("\n%i   ",player.collider.X1.x);
-	printf("   %i",player.collider.X1.y); */
 }

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 17:08:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:25:52 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,7 @@ void collect_coin(void *param)
 }
 bool check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2)
 {
-	t_Rect RectA;
-	t_Rect RectB;
-
-	RectA = obj1;
-	RectB = obj2;
-	if (  (  RectA.X1.x  <  RectB.Y2.x  )  &&  (   RectA.Y2.x   >  RectB.X1.x  )  && (  RectA.X1.y  <  RectB.Y2.y  )  && (  RectA.Y2.y  >  RectB.X1.y  )  )
+	if ((  obj1.X1.x  <  obj2.Y2.x  )  &&  (   obj1.Y2.x   >  obj2.X1.x  )  && (  obj1.X1.y  <  obj2.Y2.y  )  && (  obj1.Y2.y  >  obj2.X1.y  ))
 		return (false);
 	return (true);
 }

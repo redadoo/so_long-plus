@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:48:05 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 14:08:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/15 11:10:45 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ char *assign_rows(bool wall, char *row,int size,t_program program)
 	return (row);
 }
 
-void background_instance(t_program program,int i)
+t_gameobject	*background_instance(t_program program,int i)
 {
     insert_background(program);
     insert_wall(program);
     insert_lateral(program);
     insert_corner(program);
 	if (i == 1)
-		insert_wall_enviroment(program);
-    return ;
+		return (insert_wall_enviroment(program));
+    return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 17:59:43 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:04:07 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define COIN0 "Asset/Enviroment/coinSprite/coin_sprite_0.xpm"
 # define GRASSCOIN "Asset/Enviroment/coinSprite/grass_coin.xpm"
 # define BLACKB "Asset/hud/black_background.xpm"
+# define COLONNA "Asset/Enviroment/colonna.xpm"
 
 
 
@@ -97,6 +98,7 @@ typedef struct s_player
 	t_str				coin;
 	t_str				step;
 	int					dir;
+	int					walk;
 	t_data				sprite;
 	t_Rect				collider;
 	t_vector2			pos;
@@ -108,19 +110,12 @@ typedef struct s_coin {
 	t_data			sprite0;
 }	t_coin;
 
-typedef struct s_wall
-{
-	t_Rect 		collider;
-	t_vector2 	pos;
-	t_data  	sprite;
-}	t_wall;
-
 typedef struct s_map
 {
-	char	**matrix_map;
-	int		widht;
-	int		height;
-	t_wall	*env_wall;
+	char				**matrix_map;
+	int					widht;
+	int					height;
+	t_gameobject		*wall;
 }	t_map;
 
 typedef struct s_env {
@@ -151,14 +146,14 @@ int				Random01(void);
 int				random_int(int min, int max);
 void			set_game(t_program program, int argc, char **argv);
 void			insert_wall(t_program program);
-void			background_instance(t_program program, int i);
+t_gameobject	*background_instance(t_program program, int i);
 void			insert_lateral(t_program program);
 void			insert_corner(t_program program);
 void			insert_background(t_program program);
 int				mouse_event(int button, int x, int y, void *param);
 void			special_action(int keycode, void *param);
 t_vector2		obj_pos(char c, char **map);
-bool			check_move(t_program *program, t_vector2 pos,int dir);
+bool			check_move(void *param, t_vector2 pos,int dir);
 void			change_sprite_player(void *param, t_vector2 op, t_vector2 np);
 int				special_key_hook(int keycode,void *program);
 void			attack(void *param);
@@ -182,13 +177,13 @@ void			print_warning(char *message);
 void			null_error(char *message, void *program);
 int				error(char *message);
 int				file_linecount(char *file);
-t_env			make_file_map(t_program program);
-void			insert_wall_enviroment(t_program program);
+t_env			spawn_env(t_program program);
+t_gameobject	*insert_wall_enviroment(t_program program);
 void			check(t_program program);
 void			check_wall(char c, int i, int j,t_program program);
 void			check_env(char c,t_program program);
 int				close_w(void);
-void			put_wall_env(t_program program,int x, int y);
+t_gameobject	*put_wall_env(t_program program,int x, int y,int type);
 int				check_type_wall(char **m,int x,int y,t_program program);
 t_env			coin(t_program program);
 int				coin_anim (void *param);
@@ -203,4 +198,5 @@ bool			check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2);
 t_Rect			player_collider_updatate(void *param);
 t_player		set_hud(t_program program);
 void			hud_update(void *param);
+void			check_collide_wall(void *param);
 #endif

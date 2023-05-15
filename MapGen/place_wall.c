@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 18:01:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:11:00 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,14 @@ void insert_background(t_program program)
 	}
 }
 
-void insert_wall_enviroment(t_program program)
+t_gameobject	*insert_wall_enviroment(t_program program)
 {
-	int		i;
-	int		j;
-	int		img_width; 
-	int		img_height;
-	char	**ma;
-
+	int				i;
+	int				j;
+	int				img_width;
+	int				img_height;
+	char			**ma;
+	t_gameobject 	*list;
 	i = 0;
 	j = 0;
 	ma = program.map.matrix_map;
@@ -115,13 +115,20 @@ void insert_wall_enviroment(t_program program)
 	{
 		while (j < program.map.widht)
 		{
-			if ((ma[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0)  && (j < program.map.widht - 2))
+			if ((ma[i][j] == '1') && (i > 0) && (i < program.map.height - 1) && (j > 0) && (j < program.map.widht - 2))
 			{
-				put_wall_env(program,i,j);
+				if (ma[i][j + 1]!= '1' && ma[i][j - 1]!= '1' && ma[i + 1][j] != '1')
+				{					
+					list = put_wall_env(program,j,i,0);
+/* 					printf("\n C11 %i %i",list->collider.X1.x,list->collider.X1.y);
+					printf("\n C22 %i %i",list->collider.Y2.x,list->collider.Y2.y); */
+					return (list);
+				}
 			}
 			j++;
 		}
 		j = 0;
 		i++;
-	} 
+	}
+	return (list);
 }
