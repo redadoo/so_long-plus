@@ -12,12 +12,12 @@
 
 # include "../so_long.h"
 
-void insert_wall(t_program program)
+void	insert_wall(t_program program)
 {
+	t_data	wall;
+	int		space;
 	int		img_width; 
 	int		img_height;
-	int     space;
-	t_data  wall;
 
 	space = 0;
 	while (space < program.window.size.x - img_width )
@@ -35,12 +35,12 @@ void insert_wall(t_program program)
 	}
 }
 
-void insert_lateral(t_program program)
+void	insert_lateral(t_program program)
 {   
 	int		img_width; 
 	int		img_height;
-	int     space;
-	t_data  wall;
+	int		space;
+	t_data	wall;
 
 	img_width = 8;
 	img_height = 96;
@@ -60,12 +60,12 @@ void insert_lateral(t_program program)
 	}
 }
 
-void insert_corner(t_program program)
+void	insert_corner(t_program program)
 {
+	t_data	wall;	
+	int		space;
 	int		img_width; 
 	int		img_height;
-	int     space;
-	t_data  wall;
 
 	space = 0;
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/Up_left.xpm", &img_width, &img_height); 
@@ -77,13 +77,14 @@ void insert_corner(t_program program)
 	wall.img = mlx_xpm_file_to_image(program.mlx, "Asset/Map/down_right.xpm", &img_width, &img_height); 
 	mlx_put_image_to_window(program.mlx,program.window.reference, wall.img, program.window.size.x - img_width, program.window.size.y - img_height);
 }
-void insert_background(t_program program)
+
+void	insert_background(t_program program)
 {
 	int		img_width; 
 	int		img_height;
-	int     space;
-	int     len;
-	t_data  wall;
+	int		space;
+	int		len;
+	t_data	wall;
 
 	space = 0;
 	len = 0;
@@ -108,6 +109,7 @@ t_gameobject	*insert_wall_enviroment(t_program program)
 	int				img_height;
 	char			**ma;
 	t_gameobject 	*list;
+
 	i = 0;
 	j = 0;
 	ma = program.map.matrix_map;
@@ -120,8 +122,6 @@ t_gameobject	*insert_wall_enviroment(t_program program)
 				if (ma[i][j + 1]!= '1' && ma[i][j - 1]!= '1' && ma[i + 1][j] != '1')
 				{					
 					list = put_wall_env(program,j,i,0);
-/* 					printf("\n C11 %i %i",list->collider.X1.x,list->collider.X1.y);
-					printf("\n C22 %i %i",list->collider.Y2.x,list->collider.Y2.y); */
 					return (list);
 				}
 			}

@@ -132,7 +132,6 @@ typedef struct s_program {
 
 t_screen		ft_new_window(t_program prog, int w, int h, char *str);
 t_map			readmap(void *param, char *file);
-char			**generatemap(t_program program);
 t_player		set_player(t_program program, char **map);
 int				key_hook(int keycode, void *param);
 int				ft_update(void *param);
