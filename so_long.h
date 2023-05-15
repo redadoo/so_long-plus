@@ -40,8 +40,6 @@
 # define BLACKB "Asset/hud/black_background.xpm"
 # define COLONNA "Asset/Enviroment/colonna.xpm"
 
-
-
 typedef struct s_vector
 {
 	int	x;
@@ -50,20 +48,20 @@ typedef struct s_vector
 
 typedef struct s_Rect
 {
-	t_vector2 X1;
-	t_vector2 Y2;
+	t_vector2	tl;
+	t_vector2	br;
 }	t_Rect;
 
 typedef struct s_Circle
 {
-	t_vector2 center;
-	int radius;
+	int			radius;
+	t_vector2	center;
 }	t_Circle;
 
 typedef struct s_str
 {
-	t_vector2 	pos;
 	int			value;
+	t_vector2	pos;
 }	t_str;
 
 typedef struct s_data {
@@ -106,7 +104,7 @@ typedef struct s_player
 }	t_player;
 
 typedef struct s_coin {
-	t_gameobject 	*coin;
+	t_gameobject	*coin;
 	t_data			sprite0;
 }	t_coin;
 
@@ -119,21 +117,20 @@ typedef struct s_map
 }	t_map;
 
 typedef struct s_env {
-	t_coin 			coins;
-	t_gameobject 	enemy;
+	t_coin			coins;
+	t_gameobject	enemy;
 }	t_env;
 
 typedef struct s_program {
 	void			*reference;
 	void			*mlx;
-	t_env 			env;
+	t_env			env;
 	t_screen		window;
 	t_player		man;
 	t_map			map;
 }	t_program;
 
-
-t_screen		ft_new_window(t_program program, int widht, int height, char *name);
+t_screen		ft_new_window(t_program prog, int w, int h, char *str);
 t_map			readmap(void *param, char *file);
 char			**generatemap(t_program program);
 t_player		set_player(t_program program, char **map);
@@ -153,9 +150,9 @@ void			insert_background(t_program program);
 int				mouse_event(int button, int x, int y, void *param);
 void			special_action(int keycode, void *param);
 t_vector2		obj_pos(char c, char **map);
-bool			check_move(void *param, t_vector2 pos,int dir);
+bool			check_move(void *param, t_vector2 pos, int dir);
 void			change_sprite_player(void *param, t_vector2 op, t_vector2 np);
-int				special_key_hook(int keycode,void *program);
+int				special_key_hook(int keycode, void *program);
 void			attack(void *param);
 t_vector2		move_toward(int dir, t_vector2 pos, int dist);
 t_vector2		pos_near_player(void *param);
@@ -172,7 +169,7 @@ int				check_out_of_screen_vector(void *param, t_vector2 pos);
 void			spawn_tear(void *param);
 void			manage_attack(void *param);
 int				check_out_of_screen(void *param, t_gameobject *game);
-void			move_tear(void *param,t_gameobject *tear);
+void			move_tear(void *param, t_gameobject *tear);
 void			print_warning(char *message);
 void			null_error(char *message, void *program);
 int				error(char *message);
@@ -180,23 +177,24 @@ int				file_linecount(char *file);
 t_env			spawn_env(t_program program);
 t_gameobject	*insert_wall_enviroment(t_program program);
 void			check(t_program program);
-void			check_wall(char c, int i, int j,t_program program);
-void			check_env(char c,t_program program);
+void			check_wall(char c, int i, int j, t_program program);
+void			check_env(char c, t_program program);
 int				close_w(void);
-t_gameobject	*put_wall_env(t_program program,int x, int y,int type);
-int				check_type_wall(char **m,int x,int y,t_program program);
+t_gameobject	*put_wall_env(t_program program, int x, int y, int type);
+int				check_type_wall(char **m, int x, int y, t_program program);
 t_env			coin(t_program program);
-int				coin_anim (void *param);
-t_gameobject	*spawn_coin(t_program program,t_vector2 pos);
-t_env			add_coin(t_program program,t_vector2 pos,t_env env);
-t_coin			set_sprite_coin(t_program program,t_coin coins);
-void			print_step_onscreen(void *mlx,void *win,int step);
+int				coin_anim(void *param);
+t_gameobject	*spawn_coin(t_program program, t_vector2 pos);
+t_env			add_coin(t_program program, t_vector2 pos, t_env env);
+t_coin			set_sprite_coin(t_program program, t_coin coins);
+void			print_step_onscreen(void *mlx, void *win, int step);
 char			*ft_itoa(int temp);
-void 			collect_coin(void *param);
-bool			check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2);
-bool			check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2);
+void			collect_coin(void *param);
+bool			check_overlap_rectangle(void *param, t_Rect obj1, t_Rect obj2);
 t_Rect			player_collider_updatate(void *param);
 t_player		set_hud(t_program program);
 void			hud_update(void *param);
 void			check_collide_wall(void *param);
+bool			check_overlap_circle(void *p, t_gameobject o1, t_gameobject o2);
+
 #endif

@@ -20,7 +20,7 @@ t_vector2	move_toward(int dir, t_vector2 pos, int dist)
 		pos.y += dist;
 	else if (dir == RIGHT_DIR)
 		pos.x += dist;
-	else if (dir== LEFT_DIR)
+	else if (dir == LEFT_DIR)
 		pos.x -= dist;
 	return (pos);
 }
@@ -64,11 +64,11 @@ void	back_sprite(void *param, t_vector2 pos, t_data i)
 	put_sprite(param, pos, i.b_img);
 	put_sprite(param, pos, i.img);
 }
-void print_step_onscreen(void *mlx,void *win,int step)
+
+void	print_step_onscreen(void *mlx, void *win, int step)
 {
-	char *str;
+	char	*str;
 
 	str = ft_itoa(step);
-	printf("%s",str);
-	mlx_string_put(mlx,win,170,100,0xccccff,str);
+	mlx_string_put(mlx, win, 170, 100, 0xccccff, str);
 }

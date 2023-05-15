@@ -18,7 +18,6 @@ t_player	set_player(t_program program, char **map)
 	int			img_width;
 	int			img_height;
 	t_vector2	player_start_pos;
-	t_data		enemy;
 	t_vector2	temp;
 
 	player_start_pos = obj_pos('P', map);
@@ -32,9 +31,9 @@ t_player	set_player(t_program program, char **map)
 	player.dir = 0;
 	temp.x = (player.pos.x - img_width / 2);
 	temp.y = (player.pos.y - img_height / 2);
-	player.collider.X1 = temp;
+	player.collider.tl = temp;
 	temp.x = (player.pos.x + img_width / 2);
 	temp.y = (player.pos.y + img_height / 2);
-	player.collider.Y2 = temp;
+	player.collider.br = temp;
 	return (player);
 }

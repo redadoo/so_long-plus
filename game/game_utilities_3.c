@@ -29,11 +29,12 @@ int	put_sprite(void *param, t_vector2 p, void *i)
 	t_program		*program;
 
 	program = (t_program *)param;
-
-	mlx_put_image_to_window(program->mlx, program->window.reference, i, p.x, p.y);
+	mlx_put_image_to_window(program->mlx,
+		program->window.reference, i, p.x, p.y);
 	return (0);
 }
-int	put_comp_sprite(void *param, t_vector2 p, void *i,  t_vector2 o)
+
+int	put_comp_sprite(void *param, t_vector2 p, void *i, t_vector2 o)
 {
 	t_program		*program;
 	t_screen		window;
@@ -43,12 +44,12 @@ int	put_comp_sprite(void *param, t_vector2 p, void *i,  t_vector2 o)
 	mlx_put_image_to_window(program->mlx, window.reference, i, p.x, p.y);
 	return (0);
 }
+
 int	ft_close(void *param)
 {
 	t_program		*program;
 
 	program = (t_program *)param;
-	//free_list(&program->man.tear_gameobject);
 	free(program->map.matrix_map);
 	exit(0);
 }

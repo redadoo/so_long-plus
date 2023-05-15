@@ -59,10 +59,10 @@ t_env add_coin(t_program program,t_vector2 pos,t_env env)
 	coins->next = NULL;
 	temp.x = (coins->pos.x - img_width / 2);
 	temp.y = (coins->pos.y - img_height / 2);
-	coins->collider.X1 = temp;
+	coins->collider.tl = temp;
 	temp.x = (coins->pos.x + img_width / 2);
 	temp.y = (coins->pos.y + img_height / 2);
-	coins->collider.Y2 = temp;
+	coins->collider.br = temp;
 	coins->exist = 1;
  	if (!env.coins.coin)
 	{

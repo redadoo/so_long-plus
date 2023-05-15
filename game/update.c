@@ -87,9 +87,9 @@ t_Rect player_collider_updatate(void *param)
 	img_height = player.sprite.height;
 	temp.x = (player.pos.x - img_width / 2);
 	temp.y = (player.pos.y - img_height / 2);
-	player.collider.X1 = temp;
+	player.collider.tl = temp;
 	temp.x = (player.pos.x + img_width / 2);
 	temp.y = (player.pos.y + img_height / 2) + 10;
-	player.collider.Y2 = temp;
+	player.collider.br = temp;
 	return (player.collider);
 }

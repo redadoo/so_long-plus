@@ -68,10 +68,10 @@ t_gameobject    *put_wall_env(t_program program,int x, int y,int type)
 		last->pos.x = x * 50;
 		temp.x = (last->pos.x - width / 2) + 19;
 		temp.y = (last->pos.y - height / 2);
-		last->collider.X1 = temp;
+		last->collider.tl = temp;
 		temp.x = (last->pos.x + width / 2)  + 23;
 		temp.y = (last->pos.y + height / 2) + 27;
-		last->collider.Y2 = temp;
+		last->collider.br = temp;
 		return (last);
 	}
 	return (NULL);
@@ -84,8 +84,8 @@ void check_collide_wall(void *param)
 	program = (t_program *)param;
 	program->man.collider = player_collider_updatate(param);
 	last = program->map.wall;
-	printf("\n player H%i ",program->man.collider.X1.x);
-	printf("\n wall H %i ",last->collider.Y2.x);
+	printf("\n player H%i ",program->man.collider.tl.x);
+	printf("\n wall H %i ",last->collider.br.x);
 	if(!check_overlap_rectangle(param,program->man.collider,last->collider))
 	{
 		program->man.walk = 42;
