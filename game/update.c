@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 15:25:52 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:50:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,3 @@ int	special_key_hook(int keycode, void *param)
 	return (0);
 }
 
-<<<<<<< HEAD
-=======
-	program = (t_program *)param;
-	player = program->man;
-	img_width = player.sprite.width;
-	img_height = player.sprite.height;
-	temp.x = (player.pos.x - img_width / 2);
-	temp.y = (player.pos.y - img_height / 2);
-	player.collider.tl = temp;
-	temp.x = (player.pos.x + img_width / 2);
-	temp.y = (player.pos.y + img_height / 2) + 10;
-	player.collider.br = temp;
-	return (player.collider);
-}
->>>>>>> 2be5e29a4f0290257215231d9ce1f7d550afffaa

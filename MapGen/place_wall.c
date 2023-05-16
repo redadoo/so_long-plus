@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 15:25:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:50:33 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,7 @@ t_gameobject	*insert_wall_enviroment(t_program program)
 	int				img_height;
 	char			**ma;
 	t_gameobject 	*list;
-<<<<<<< HEAD
 	t_gameobject 	*temp;
-=======
-
->>>>>>> 2be5e29a4f0290257215231d9ce1f7d550afffaa
 	i = 0;
 	j = 0;
 	list = NULL;
@@ -127,7 +123,6 @@ t_gameobject	*insert_wall_enviroment(t_program program)
 				if (list == NULL)
 				{
 					list = put_wall_env(program,j,i,0);
-<<<<<<< HEAD
 				}
 				else
 				{
@@ -135,9 +130,6 @@ t_gameobject	*insert_wall_enviroment(t_program program)
 					while (temp->next != NULL)
 						temp = temp->next;
 					temp->next =  put_wall_env(program,j,i,0);
-=======
-					return (list);
->>>>>>> 2be5e29a4f0290257215231d9ce1f7d550afffaa
 				}
 			}
 			j++;

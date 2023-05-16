@@ -6,17 +6,13 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 13:56:04 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:50:33 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../so_long.h"
 
-<<<<<<< HEAD
 t_map readmap(void *param, char *file)
-=======
-t_map	readmap(void *param, char *file)
->>>>>>> 2be5e29a4f0290257215231d9ce1f7d550afffaa
 {
 	int				i;
 	int				fd;
