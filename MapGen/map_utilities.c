@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:55:59 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:23:31 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ t_gameobject    *put_wall_env(t_program program,int x, int y,int type)
 		mlx_put_image_to_window(program.mlx, program.window.reference, last->sprite.img, x * 50,  y * 100);
 		last->pos.y = y * 100;
 		last->pos.x = x * 50;
-		temp.x = (last->pos.x - width / 2) + 19;
-		temp.y = (last->pos.y - height / 2);
+		temp.x = (last->pos.x - width / 2) + 17;
+		temp.y = (last->pos.y - height / 2) + 29;
 		last->collider.tl = temp;
-		temp.x = (last->pos.x + width / 2)  + 23;
-		temp.y = (last->pos.y + height / 2) + 27;
+		temp.x = (last->pos.x + width / 2)  + 29;
+		temp.y = (last->pos.y + height / 2) + 35;
 		last->collider.br = temp;
 		last->next = NULL;
 		return (last);
@@ -71,12 +71,13 @@ bool check_collide_wall(void *param,int x,int y)
 	program = (t_program *)param;
 	program->man.collider = fixed_player_collider_updatate(param,x,y);
 	last = program->map.wall;
-	if(!check_overlap_rectangle(param,program->man.collider,last->collider))
+	while (last != NULL)
 	{
 		if(!check_overlap_rectangle(param,program->man.collider,last->collider))
 			return (false);
 		last = last->next;
-	} 
+	}
+
 	return (true);
 }
 

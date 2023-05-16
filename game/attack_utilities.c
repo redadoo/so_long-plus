@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:31:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:52:54 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void	move_tear(void *param, t_gameobject *tear)
 
 	program = (t_program *)param;
 	pos_t = tear->pos;
- 	if (check_out_of_screen(param,tear) == 0 || !collide_wall_tears(param,tear))
+ 	if ((check_out_of_screen(param,tear) == 0 || !collide_wall_tears(param,tear)))
 	{
-		mlx_put_image_to_window(program->mlx,
-			program->window.reference, tear->sprite.b_img, pos_t.x, pos_t.y);
+		mlx_put_image_to_window(program->mlx,program->window.reference, tear->sprite.b_img, pos_t.x, pos_t.y);
+		tear->exist = 0;
 		return ;
 	}
 	put_sprite(param, pos_t, tear->sprite.b_img);
