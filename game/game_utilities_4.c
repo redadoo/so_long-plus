@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:29:51 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:54:11 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	collect_coin(void *param)
 
 bool	check_overlap_rectangle(void *param, t_Rect obj1, t_Rect obj2)
 {
-	if ((obj1.tl.x < obj2.Y2.x) && (obj1.br.x > obj2.tl.x)
+	if ((obj1.tl.x < obj2.br.x) && (obj1.br.x > obj2.tl.x)
 		&& (obj1.tl.y < obj2.br.y) && (obj1.br.y > obj2.tl.y))
 		return (false);
 	return (true);
@@ -100,16 +100,16 @@ bool overlap_circle_rectangle(t_Rect obj1,t_gameobject *obj2)
 	int distance;
 	tx = obj2->pos.x;
 	ty = obj2->pos.y;
-	if(obj2->pos.x < obj1.X1.x) 
-		tx = obj1.X1.x; 
-	else if(obj2->pos.x > obj1.Y2.x) 
-		tx =  obj1.Y2.x; 
+	if(obj2->pos.x < obj1.tl.x) 
+		tx = obj1.tl.x; 
+	else if(obj2->pos.x > obj1.br.x) 
+		tx =  obj1.br.x; 
 	else 
 		tx = obj2->pos.x; 
-	if(obj2->pos.y < obj1.X1.y) 
-		ty =  obj1.X1.y; 
-	else if(obj2->pos.y> obj1.Y2.y) 
-		ty = obj1.Y2.y; 
+	if(obj2->pos.y < obj1.tl.y) 
+		ty =  obj1.tl.y; 
+	else if(obj2->pos.y> obj1.br.y) 
+		ty = obj1.br.y; 
 	else 
 		ty = obj2->pos.y; 
 	disx = obj2->pos.x - tx;  

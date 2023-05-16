@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:31:42 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:55:59 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_gameobject    *put_wall_env(t_program program,int x, int y,int type)
 		temp.x = (last->pos.x + width / 2)  + 23;
 		temp.y = (last->pos.y + height / 2) + 27;
 		last->collider.br = temp;
+		last->next = NULL;
 		return (last);
 	}
 	return (NULL);
@@ -70,8 +71,6 @@ bool check_collide_wall(void *param,int x,int y)
 	program = (t_program *)param;
 	program->man.collider = fixed_player_collider_updatate(param,x,y);
 	last = program->map.wall;
-	printf("\n player H%i ",program->man.collider.tl.x);
-	printf("\n wall H %i ",last->collider.br.x);
 	if(!check_overlap_rectangle(param,program->man.collider,last->collider))
 	{
 		if(!check_overlap_rectangle(param,program->man.collider,last->collider))

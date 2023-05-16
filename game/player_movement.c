@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:26:25 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 14:44:49 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:52:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ t_Rect player_collider_updatate(void *param)
 	img_height = player.sprite.height;
 	temp.x = (player.pos.x - img_width / 2);
 	temp.y = (player.pos.y - img_height / 2);
-	player.collider.X1 = temp;
+	player.collider.tl = temp;
 	temp.x = (player.pos.x + img_width / 2);
 	temp.y = (player.pos.y + img_height / 2) + 10;
-	player.collider.Y2 = temp;
+	player.collider.br = temp;
 	return (player.collider);
 }
 
@@ -83,9 +83,9 @@ t_Rect fixed_player_collider_updatate(void *param,int x,int y)
 	img_height = player.sprite.height;
 	temp.x = (x - img_width / 2) + 12;
 	temp.y = (y - img_height / 2)+ 12;
-	player.collider.X1 = temp;
+	player.collider.tl = temp;
 	temp.x = (x + img_width / 2) - 12;
 	temp.y = (y + img_height / 2);
-	player.collider.Y2 = temp;
+	player.collider.br = temp;
 	return (player.collider);
 }

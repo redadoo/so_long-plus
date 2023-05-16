@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:47:21 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:51:21 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,6 @@ bool			check_collide_wall(void *param,int x,int y);
 t_Rect			fixed_player_collider_updatate(void *param,int x,int y);
 bool 			overlap_circle_rectangle(t_Rect obj1,t_gameobject *obj2);
 bool			collide_wall_tears(void *param,t_gameobject *tear);
-void			check_collide_wall(void *param);
 bool			check_overlap_circle(void *p, t_gameobject o1, t_gameobject o2);
 
 #endif
