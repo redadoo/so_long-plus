@@ -6,25 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:12:07 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/15 13:56:27 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:14:54 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-int Random01(void)
-{
-	int i = rand() % 2;
-	
-	if (i == 0)
-		return 0;    
-	else
-		return 1;
-}
-int random_int(int min, int max)
-{
-   return min + rand() % (max+1 - min);
-}
 
 void    PrintMatrix(char **Matrix)
 {
@@ -69,29 +55,43 @@ t_gameobject    *put_wall_env(t_program program,int x, int y,int type)
 		temp.x = (last->pos.x - width / 2) + 19;
 		temp.y = (last->pos.y - height / 2);
 		last->collider.X1 = temp;
-		temp.x = (last->pos.x + width / 2)  + 23;
+		temp.x = (last->pos.x + width / 2) + 23;
 		temp.y = (last->pos.y + height / 2) + 27;
 		last->collider.Y2 = temp;
+		last->next = NULL;
 		return (last);
 	}
 	return (NULL);
 }
-void check_collide_wall(void *param)
+bool check_collide_wall(void *param,int x,int y)
 {
 	t_program		*program;
 	t_gameobject 	*last;
-	
+
 	program = (t_program *)param;
-	program->man.collider = player_collider_updatate(param);
+	program->man.collider = fixed_player_collider_updatate(param,x,y);
 	last = program->map.wall;
-	printf("\n player H%i ",program->man.collider.X1.x);
-	printf("\n wall H %i ",last->collider.Y2.x);
-	if(!check_overlap_rectangle(param,program->man.collider,last->collider))
+ 	while (last != NULL)
 	{
-		program->man.walk = 42;
-	}
-	else 
+		if(!check_overlap_rectangle(param,program->man.collider,last->collider))
+			return (false);
+		last = last->next;
+	} 
+	return (true);
+}
+
+bool collide_wall_tears(void *param,t_gameobject *tear)
+{
+	t_program		*program;
+	t_gameobject 	*last;
+
+	program = (t_program *)param;
+	last = program->map.wall;
+ 	while (last != NULL)
 	{
-		program->man.walk = 0;
-	}
+		if(overlap_circle_rectangle(last->collider, tear))
+			return (false);
+		last = last->next;
+	} 
+	return (true);
 }

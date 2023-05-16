@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:57:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/12 14:53:01 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:28:20 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_player	set_player(t_program program, char **map)
 	temp.x = (player.pos.x + img_width / 2);
 	temp.y = (player.pos.y + img_height / 2);
 	player.collider.Y2 = temp;
+	player.tear_gameobject = NULL;
 	return (player);
 }

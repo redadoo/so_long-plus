@@ -6,21 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:43:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/15 11:10:05 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:56:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../so_long.h"
-
-char **generatemap(t_program program)
-{
-	char    **Matrix;
-	program.map.height = program.window.size.y / 10;
-	program.map.widht  = program.window.size.x / 10;
-	Matrix = CreateCubeMap(program.window.size.x / 10,program.window.size.y / 10,program);   
-	program.map.matrix_map = Matrix;
-	return (Matrix);
-}
 
 t_map readmap(void *param, char *file)
 {

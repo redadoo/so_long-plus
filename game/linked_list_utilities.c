@@ -6,24 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:05:14 by evocatur          #+#    #+#             */
-/*   Updated: 2023/04/28 14:02:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:36:10 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	last_node(t_gameobject **head_ref, t_gameobject *node)
-{
-	t_gameobject	*current;
-
-	current = (*head_ref);
-	while (current->next != NULL)
-	{
-		current = current->next;
-	}
-	current->next = node;
-	(*head_ref) = current;
-}
 
 size_t	size_list(t_gameobject **head_ref)
 {
@@ -70,14 +57,12 @@ void	free_list(t_gameobject **head_ref)
 	}
 }
 
-t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node)
+void	add_obj(t_gameobject **head, t_gameobject *node)
 {
 	t_gameobject	*current;
 
-	current = (*head_ref);
-	if (node == NULL)
-		return (NULL);
-	while (current->next != node && current->next != NULL)
+	current = (*head);
+	while (current->next != NULL)
 		current = current->next;
-	return (current);
+	current->next = node;
 }

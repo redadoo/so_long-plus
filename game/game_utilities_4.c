@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/15 13:25:52 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:23:30 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,7 @@ bool check_overlap_rectangle(void *param,t_Rect obj1,t_Rect obj2)
 		return (false);
 	return (true);
 }
-bool check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2)
-{
-	int			r1;
-	int			r2;
-	double		d;
-	t_vector2	pos1;
-	t_vector2	pos2;
 
-	pos1 = obj1.pos;
-	pos2 = obj2.pos;
-	r1 = obj1.sprite.width / 2;
-	r2 = obj2.sprite.width / 2;
-	d = sqrt((pos1.x - pos2.x) * (pos1.x - pos2.x) + (pos1.y - pos2.y) * (pos1.y - pos2.y));
-    if (d <= r1 - r2) 
-		return (true);
-    else if (d <= r2 - r1) 
-		return (true);
-    else if (d < r1 + r2) 
-		return (true);
-    else if (d == r1 + r2) 
-    	return (true);
-	return (false);
-    
-}
 void hud_update(void *param)
 {
 	int 			step_count;
@@ -76,9 +53,36 @@ void hud_update(void *param)
 	str_step = ft_itoa(program->man.step.value);
 	str_coin = ft_itoa(program->man.coin.value);
 	back.img = give_sprite(param,BLACKB);
-	//printf("\n%i",program->man.coin.value);
 	mlx_put_image_to_window(program->mlx,program->window.reference,back.img,155,program->window.size.y + 20);
 	mlx_string_put(program->mlx,program->window.reference, 155,program->window.size.y + 20,0xccccff,str_step);
 	mlx_put_image_to_window(program->mlx,program->window.reference,back.img,155,program->window.size.y + 50);
 	mlx_string_put(program->mlx,program->window.reference, 155,program->window.size.y + 50,0xccccff,str_coin);
 }
+bool overlap_circle_rectangle(t_Rect obj1,t_gameobject *obj2)
+{
+
+	int tx;
+	int ty; 
+	int disx;
+	int disy;
+	int distance;
+	tx = obj2->pos.x;
+	ty = obj2->pos.y;
+	if(obj2->pos.x < obj1.X1.x) 
+		tx = obj1.X1.x; 
+	else if(obj2->pos.x > obj1.Y2.x) 
+		tx =  obj1.Y2.x; 
+	else 
+		tx = obj2->pos.x; 
+	if(obj2->pos.y < obj1.X1.y) 
+		ty =  obj1.X1.y; 
+	else if(obj2->pos.y> obj1.Y2.y) 
+		ty = obj1.Y2.y; 
+	else 
+		ty = obj2->pos.y; 
+	disx = obj2->pos.x - tx;  
+	disy = obj2->pos.y - ty;
+	distance = sqrt((disx * disx) + (disy * disy)); 
+	return distance <= (obj2->c_collider.radius + 1);
+}
+

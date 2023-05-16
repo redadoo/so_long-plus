@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:26:25 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/15 12:03:25 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:44:49 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,51 @@ bool	check_move(void *param, t_vector2 pos,int dir)
 		x = x + 16;
 	if (y < 54 || y > program->window.size.y - 103 || x < 0 || x > program->window.size.x - 20)
 		return (false);
-	if (program->man.walk == 42)
+	if (!check_collide_wall(param,x,y))
+	{
 		return (false);
+	}
 	return (true);
+}
+
+t_Rect player_collider_updatate(void *param)
+{
+	t_program	*program;
+	t_player	player;
+	t_vector2	temp;
+	int			img_width;
+	int			img_height;
+
+	program = (t_program *)param;
+	player = program->man;
+	img_width = player.sprite.width;
+	img_height = player.sprite.height;
+	temp.x = (player.pos.x - img_width / 2);
+	temp.y = (player.pos.y - img_height / 2);
+	player.collider.X1 = temp;
+	temp.x = (player.pos.x + img_width / 2);
+	temp.y = (player.pos.y + img_height / 2) + 10;
+	player.collider.Y2 = temp;
+	return (player.collider);
+}
+
+t_Rect fixed_player_collider_updatate(void *param,int x,int y)
+{
+	t_program	*program;
+	t_player	player;
+	t_vector2	temp;
+	int			img_width;
+	int			img_height;
+
+	program = (t_program *)param;
+	player = program->man;
+	img_width = player.sprite.width;
+	img_height = player.sprite.height;
+	temp.x = (x - img_width / 2) + 12;
+	temp.y = (y - img_height / 2)+ 12;
+	player.collider.X1 = temp;
+	temp.x = (x + img_width / 2) - 12;
+	temp.y = (y + img_height / 2);
+	player.collider.Y2 = temp;
+	return (player.collider);
 }

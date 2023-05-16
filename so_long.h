@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/15 12:04:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:00:27 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_Rect
 
 typedef struct s_Circle
 {
-	t_vector2 center;
 	int radius;
 }	t_Circle;
 
@@ -88,6 +87,7 @@ typedef struct s_gameobject
 	t_vector2			pos;
 	t_vector2			b_pos;
 	t_Rect				collider;
+	t_Circle			c_collider;
 	void				*reference;
 	struct s_gameobject	*next;
 }	t_gameobject;
@@ -165,7 +165,7 @@ size_t			size_list(t_gameobject **head_ref);
 void			last_node(t_gameobject **head_ref, t_gameobject *node);
 t_gameobject	*find_node(t_gameobject **head_ref, size_t i);
 void			free_list(t_gameobject **head_ref);
-t_gameobject	*find_prev_node(t_gameobject **head_ref, t_gameobject *node);
+void			add_obj(t_gameobject **head_ref, t_gameobject *node);
 int				ft_close(void *program);
 void			*give_sprite(void *param, char *path);
 int				check_out_of_screen_vector(void *param, t_vector2 pos);
@@ -198,5 +198,10 @@ bool			check_overlap_circle(void *param,t_gameobject obj1,t_gameobject obj2);
 t_Rect			player_collider_updatate(void *param);
 t_player		set_hud(t_program program);
 void			hud_update(void *param);
-void			check_collide_wall(void *param);
+bool			check_collide_wall(void *param,int x,int y);
+t_Rect			fixed_player_collider_updatate(void *param,int x,int y);
+int				max(int a, int b);
+int				min(int a, int b);
+bool 			overlap_circle_rectangle(t_Rect obj1,t_gameobject *obj2);
+bool			collide_wall_tears(void *param,t_gameobject *tear);
 #endif

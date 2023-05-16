@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/15 13:33:12 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:25:52 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int	ft_update(void *param)
 	t_gameobject 	*last;
 
 	program = (t_program *)param;
-	//manage_attack(param);
+	manage_attack(param);
 	collect_coin(param);
 	hud_update(param);
-	check_collide_wall(param);
 	return (0);
 }
 int	key_hook(int keycode, void *param)
@@ -73,23 +72,4 @@ int	special_key_hook(int keycode, void *param)
 		attack(param);
 	return (0);
 }
-t_Rect player_collider_updatate(void *param)
-{
-	t_program	*program;
-	t_player	player;
-	t_vector2	temp;
-	int			img_width;
-	int			img_height;
 
-	program = (t_program *)param;
-	player = program->man;
-	img_width = player.sprite.width;
-	img_height = player.sprite.height;
-	temp.x = (player.pos.x - img_width / 2);
-	temp.y = (player.pos.y - img_height / 2);
-	player.collider.X1 = temp;
-	temp.x = (player.pos.x + img_width / 2);
-	temp.y = (player.pos.y + img_height / 2) + 10;
-	player.collider.Y2 = temp;
-	return (player.collider);
-}
