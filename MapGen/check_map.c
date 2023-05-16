@@ -40,6 +40,7 @@ void check(t_program program)
 		i++;
 	} 
 }
+
 void check_wall(char c, int i, int j,t_program program)
 {
 	if (((i == 0) || (i == program.map.height - 1)) && (j < program.map.widht - 1))
@@ -53,6 +54,7 @@ void check_wall(char c, int i, int j,t_program program)
 			null_error("the map is not surrounded by walls",program.reference);
 	}
 }
+
 void check_env(char c,t_program program)
 {
 	int 	i;

@@ -73,3 +73,18 @@ int	special_key_hook(int keycode, void *param)
 	return (0);
 }
 
+<<<<<<< HEAD
+=======
+	program = (t_program *)param;
+	player = program->man;
+	img_width = player.sprite.width;
+	img_height = player.sprite.height;
+	temp.x = (player.pos.x - img_width / 2);
+	temp.y = (player.pos.y - img_height / 2);
+	player.collider.tl = temp;
+	temp.x = (player.pos.x + img_width / 2);
+	temp.y = (player.pos.y + img_height / 2) + 10;
+	player.collider.br = temp;
+	return (player.collider);
+}
+>>>>>>> 2be5e29a4f0290257215231d9ce1f7d550afffaa

@@ -74,10 +74,14 @@ int	check_out_of_screen(void *param, t_gameobject *game)
 
 	x = game->pos.x;
 	y = game->pos.y;
-
 	program = (t_program *)param;
 	map = program->map.matrix_map;
+<<<<<<< HEAD
 	if (y < 64 || y > program->window.size.y - 84 || x < 10 || x > program->window.size.x - 25)
+=======
+	if (y < 65 || y > program->window.size.y - 84
+		|| x < 10 || x > program->window.size.x - 25)
+>>>>>>> 2be5e29a4f0290257215231d9ce1f7d550afffaa
 		return (0);
 	return (1);
 }

@@ -12,7 +12,11 @@
 
 # include "../so_long.h"
 
+<<<<<<< HEAD
 t_map readmap(void *param, char *file)
+=======
+t_map	readmap(void *param, char *file)
+>>>>>>> 2be5e29a4f0290257215231d9ce1f7d550afffaa
 {
 	int				i;
 	int				fd;
@@ -20,7 +24,7 @@ t_map readmap(void *param, char *file)
 	char			**map;
 	t_map			game_map;
 
-	map = (char **)calloc((sizeof(char *)),file_linecount(file)+1);
+	map = (char **)calloc((sizeof(char *)), file_linecount(file)+1);
 	if (map == NULL)
 		return (game_map);
 	fd = open(file, O_RDONLY);
@@ -41,10 +45,10 @@ t_map readmap(void *param, char *file)
 
 int	file_linecount(char *file)
 {
-	int		linecount;
-	int		fd;
-	int		readcount;
 	char	c;	
+	int		fd;	
+	int		linecount;
+	int		readcount;
 
 	fd = open(file, O_RDONLY);
 	if (!fd)
@@ -64,14 +68,9 @@ int	file_linecount(char *file)
 	return (linecount);
 }
 
-t_env spawn_env(t_program program)
-{
-	return (coin(program));
-}
-int check_type_wall(char **m,int x,int y,t_program program)
+int	check_type_wall(char **m, int x, int y, t_program program)
 {
 
-		printf("\n x : %i | y : %i\n",x,y);
 		if (m[x][y - 1] == '0' && m[x][y + 1] == '0')
 			return (1);
 		else if (m[x][y - 1] == '1' && m[x][y + 1] == '0')

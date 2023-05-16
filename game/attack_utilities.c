@@ -6,18 +6,18 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:44:53 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:25:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:31:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void attack(void *param)
+void	attack(void *param)
 {
 	spawn_tear(param);
 }
 
-void spawn_tear(void *param)
+void	spawn_tear(void *param)
 {
 	t_program		*program;
 	int				w;
@@ -45,23 +45,25 @@ void spawn_tear(void *param)
 		last->next = tear;
 	}
 }
-void manage_attack(void *param)
+
+void	manage_attack(void *param)
 {
 	t_program		*program;
 	t_gameobject	*tear;
-	
+
 	program = (t_program *)param;
 	tear = program->man.tear_gameobject;
 	if (tear != NULL)
 	{
 		while (tear != NULL)
 		{
-			move_tear(param,tear);
+			move_tear(param, tear);
 			tear = tear->next;
 		}
 	}	
 }
-void move_tear(void *param,t_gameobject *tear)
+
+void	move_tear(void *param, t_gameobject *tear)
 {
 	t_program		*program;
 	t_vector2		pos_t;
@@ -71,12 +73,12 @@ void move_tear(void *param,t_gameobject *tear)
 	pos_t = tear->pos;
  	if (check_out_of_screen(param,tear) == 0 || !collide_wall_tears(param,tear))
 	{
-		mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.b_img, pos_t.x, pos_t.y);
+		mlx_put_image_to_window(program->mlx,
+			program->window.reference, tear->sprite.b_img, pos_t.x, pos_t.y);
 		return ;
-	} 
-	mlx_put_image_to_window(program->mlx, program->window.reference, tear->sprite.b_img, pos_t.x, pos_t.y);
+	}
+	put_sprite(param, pos_t, tear->sprite.b_img);
 	pos_t = move_toward(tear->dir, pos_t, 6);
-	mlx_put_image_to_window(program->mlx, program->window.reference,  tear->sprite.img, pos_t.x, pos_t.y);
+	put_sprite(param, pos_t, tear->sprite.img);
 	tear->pos = pos_t;
 }
-
