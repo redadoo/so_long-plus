@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:10:17 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/17 11:31:38 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:47:14 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,21 @@ int	ft_close(void *param)
 	t_program		*program;
 
 	program = (t_program *)param;
+ 	while (program->map.wall != NULL)
+	{
+		PrintMatrix(program->map.matrix_map);
+		tmp = program->map.wall;
+		program->map.wall = program->map.wall->next;	
+		free(tmp);
+	}
+	
 	exit(0);
 }
 
+void unlock_escape(void *param)
+{
+	t_program		*program;
+
+	program = (t_program *)param;
+	//if (program->man.coin.value == program->env.coins.)
+}

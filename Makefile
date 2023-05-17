@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/17 11:35:43 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/17 13:02:45 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ norm:
 	@echo $(NONE) ""
 
 leaks: all
-	@leaks --atExit -- ./so_long Map/map_2.ber
+	@leaks --atExit -- ./$(NAME) Map/map_2.ber
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)

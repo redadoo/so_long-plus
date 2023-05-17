@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/17 09:49:14 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:10:22 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	collect_coin(void *param)
 	if (program->env.coins.coin != NULL)
 	{
 		coins = program->env.coins.coin;
-		while (coins != NULL)
+ 		while (coins != NULL)
 		{
 			if (!check_overlap_rectangle(param, coins->collider,
 					program->man.collider) && coins->exist != 0)
@@ -32,7 +32,7 @@ void	collect_coin(void *param)
 				coins->exist = 0;
 			}
 			coins = coins->next;
-		}
+		} 
 	}
 }
 
