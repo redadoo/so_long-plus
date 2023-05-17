@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:51:21 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:21:47 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void			last_node(t_gameobject **head_ref, t_gameobject *node);
 t_gameobject	*find_node(t_gameobject **head_ref, size_t i);
 void			free_list(t_gameobject **head_ref);
 void			add_obj(t_gameobject **head_ref, t_gameobject *node);
-int				ft_close(void *program);
+int				ft_close(int keycode, void *program);
 void			*give_sprite(void *param, char *path);
 int				check_out_of_screen_vector(void *param, t_vector2 pos);
 void			spawn_tear(void *param);
@@ -179,7 +179,7 @@ t_gameobject	*insert_wall_enviroment(t_program program);
 void			check(t_program program);
 void			check_wall(char c, int i, int j, t_program program);
 void			check_env(char c, t_program program);
-int				close_w(void);
+int 			close_w(int keycode, void *param);
 t_gameobject	*put_wall_env(t_program program, int x, int y, int type);
 int				check_type_wall(char **m, int x, int y, t_program program);
 t_env			coin(t_program program);
@@ -199,5 +199,6 @@ t_Rect			fixed_player_collider_updatate(void *param,int x,int y);
 bool 			overlap_circle_rectangle(t_Rect obj1,t_gameobject *obj2);
 bool			collide_wall_tears(void *param,t_gameobject *tear);
 bool			check_overlap_circle(void *p, t_gameobject o1, t_gameobject o2);
+void			free_env(void *param);
 
 #endif

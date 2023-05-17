@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:11:31 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 16:54:11 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:49:14 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	hud_update(void *param)
 		back.img, 155, program->window.size.y + 50);
 	mlx_string_put(program->mlx, program->window.reference,
 		155, program->window.size.y + 50, 0xccccff, str_coin);
+	free(str_step);
+	free(str_coin);
 }
 bool overlap_circle_rectangle(t_Rect obj1,t_gameobject *obj2)
 {

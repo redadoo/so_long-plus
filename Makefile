@@ -6,11 +6,11 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 10:25:31 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/16 16:58:11 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/17 11:16:29 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long.out
+NAME = so_long
 
 
 SRC = $(MAIN_SRC) $(SRC_MAP) $(SRC_GAME) $(GNL_SRC) $(UTILIS_SRC)
@@ -70,6 +70,9 @@ norm:
 	@echo $(GRAY) ""
 	@norminette $(SRC) *.h */*.h
 	@echo $(NONE) ""
+
+leaks: all
+	@leaks --atExit -- ./so_long Map/map_1.ber
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)

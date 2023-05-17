@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:56:38 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/16 17:27:04 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:19:49 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,20 @@ t_player	set_hud(t_program program)
 
 void	set_game(t_program program, int argc, char **argv)
 {
-	if (argc == 2)
+ 	if (argc == 2)
 		program.map = readmap(program.reference, argv[1]);
 	program.window = ft_new_window(program,
 			(program.map.widht * 50), (program.map.height * 150), "test");
-	PrintMatrix(program.map.matrix_map);
 	check(program);
-	program.map.wall = NULL;
-	program.man = set_hud(program);
+ 	program.man = set_hud(program);
 	program.map.wall = background_instance(program, 1);
-	program.env = coin(program);
+/*	program.env = coin(program);
 	program.man = set_player(program, program.map.matrix_map);
 	program.man.coin.value = 0;
 	set_hud(program);
-	mlx_hook(program.window.reference, 2, 1L << 1, *key_hook, &program);
-	mlx_loop_hook(program.mlx, ft_update, &program);
+	mlx_hook(program.window.reference, 2, 1L << 1, *key_hook, &program);*/
+ 	mlx_hook(program.window.reference, 17, 0, *ft_close,  &program);
+  //mlx_loop_hook(program.mlx, ft_update, &program);
 	mlx_loop(program.mlx);
 }
 
