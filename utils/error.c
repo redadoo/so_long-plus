@@ -8,5 +8,5 @@ void	null_error(char *message,void *param)
 
 	program = (t_program *)param;
 	printf("\033[0;31m" " Error\n %s\n" "\033[0m", message);
-	ft_close(0,param);
+	ft_close(param);
 }

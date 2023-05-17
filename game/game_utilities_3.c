@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:10:17 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/17 11:21:55 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:31:38 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,12 @@ int	put_sprite(void *param, t_vector2 p, void *i)
 }
 
 
-int	ft_close(int keycode, void *param)
+int	ft_close(void *param)
 {
-	char 			**matrix;
-	char			*str;
+	t_gameobject    *tmp;
 	t_program		*program;
 
 	program = (t_program *)param;
- 	//free( program->map.matrix_map);
-	//program->map.matrix_map = NULL;
-	free_list(&program->map.wall);
-	//free(program->man.coin.value);
-	//free(program->man.walk);
-	//free(program->man.step.value); 
 	exit(0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:05:14 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/17 11:22:17 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:23:46 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	free_list(t_gameobject **head_ref)
 	{
 		current = (*head_ref);
 		(*head_ref) = (*head_ref)->next;
-		free(current);
+		free(current->sprite.img);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:16:20 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/17 11:21:47 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:31:49 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_program {
 	t_screen		window;
 	t_player		man;
 	t_map			map;
+	int				state;
 }	t_program;
 
 t_screen		ft_new_window(t_program prog, int w, int h, char *str);
@@ -163,7 +164,7 @@ void			last_node(t_gameobject **head_ref, t_gameobject *node);
 t_gameobject	*find_node(t_gameobject **head_ref, size_t i);
 void			free_list(t_gameobject **head_ref);
 void			add_obj(t_gameobject **head_ref, t_gameobject *node);
-int				ft_close(int keycode, void *program);
+int				ft_close(void *program);
 void			*give_sprite(void *param, char *path);
 int				check_out_of_screen_vector(void *param, t_vector2 pos);
 void			spawn_tear(void *param);

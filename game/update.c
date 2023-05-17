@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:50:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/17 10:17:21 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:32:22 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_update(void *param)
 	manage_attack(param);
 	collect_coin(param);
 	hud_update(param);
+ 	mlx_hook(program->window.reference, 17, 0, *ft_close,  &program);
 	return (0);
 }
 int	key_hook(int keycode, void *param)
@@ -67,7 +68,7 @@ int	special_key_hook(int keycode, void *param)
 	int			img_height;
 
 	if (keycode == 53)
-		ft_close(0,param);
+		ft_close(param);
 	if (keycode == 49)
 		attack(param);
 	return (0);

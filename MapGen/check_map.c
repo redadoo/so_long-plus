@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:28:54 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/17 10:17:17 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:32:08 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void check(t_program program)
 	j = program.map.widht;
 
 	if (i > j || !map)
-		ft_close(0,program.reference);
+		ft_close(program.reference);
 	i = 0;
 	j = 0;
 	check_env('P', program);
